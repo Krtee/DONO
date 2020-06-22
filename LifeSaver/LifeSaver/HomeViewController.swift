@@ -1,26 +1,28 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  LifeSaver
 //
-//  Created by Minh Vu Nguyen on 21.06.20.
+//  Created by Minh Vu Nguyen on 22.06.20.
 //  Copyright © 2020 Ansgar Gerlicher. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
     @IBOutlet weak var contentview: UIView!
     
     let dataSource = ["Viewcontroller one","Viewcontroller two"]
     
     var currentViewControllerIndex = 0
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         configurePageViewController()
+        // Do any additional setup after loading the view.
     }
-    
     
     func configurePageViewController() {
         guard let pageViewController = storyboard?.instantiateViewController(withIdentifier: String(describing: LandingPageViewController.self)) as? LandingPageViewController else{
@@ -89,16 +91,10 @@ class ViewController: UIViewController {
                               
         }
         
-
-        
-       
     }
-
-
-}
-
-extension ViewController: UIPageViewControllerDelegate,UIPageViewControllerDataSource{
-
+    
+    
+    
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         return currentViewControllerIndex
     }
@@ -145,4 +141,8 @@ extension ViewController: UIPageViewControllerDelegate,UIPageViewControllerDataS
         
         return detailViewControllerAt(index: currentIndex)
     }
+
+
 }
+
+

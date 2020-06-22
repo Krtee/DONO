@@ -16,6 +16,12 @@
 		66274B76249FBB5500F433E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */; };
 		66274B81249FBB5500F433E2 /* LifeSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B80249FBB5500F433E2 /* LifeSaverTests.swift */; };
 		66274B8C249FBB5600F433E2 /* LifeSaverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B8B249FBB5600F433E2 /* LifeSaverUITests.swift */; };
+		66274B9A24A0E0F500F433E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B9924A0E0F500F433E2 /* LoginViewController.swift */; };
+		66274B9C24A0E18F00F433E2 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */; };
+		66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BDE24A1159200F433E2 /* RegisterViewController.swift */; };
+		66274BE724A1676A00F433E2 /* homeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */; };
+		66274BE924A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */; };
+		66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		66274B87249FBB5500F433E2 /* LifeSaverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeSaverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66274B8B249FBB5600F433E2 /* LifeSaverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSaverUITests.swift; sourceTree = "<group>"; };
 		66274B8D249FBB5600F433E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		66274B9924A0E0F500F433E2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		66274BDE24A1159200F433E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCollectionViewController.swift; sourceTree = "<group>"; };
+		66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
+		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +93,7 @@
 		66274B5A249FBB5300F433E2 = {
 			isa = PBXGroup;
 			children = (
+				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B65249FBB5300F433E2 /* LifeSaver */,
 				66274B7F249FBB5500F433E2 /* LifeSaverTests */,
 				66274B8A249FBB5600F433E2 /* LifeSaverUITests */,
@@ -104,7 +117,12 @@
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
 				66274B6A249FBB5300F433E2 /* ViewController.swift */,
+				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
 				66274B6C249FBB5300F433E2 /* Main.storyboard */,
+				66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */,
+				66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */,
+				66274B9924A0E0F500F433E2 /* LoginViewController.swift */,
+				66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */,
 				66274B72249FBB5500F433E2 /* Assets.xcassets */,
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
@@ -262,9 +280,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66274BE924A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift in Sources */,
 				66274B6B249FBB5300F433E2 /* ViewController.swift in Sources */,
+				66274B9C24A0E18F00F433E2 /* LandingPageViewController.swift in Sources */,
+				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,
+				66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */,
 				66274B67249FBB5300F433E2 /* AppDelegate.swift in Sources */,
 				66274B69249FBB5300F433E2 /* SceneDelegate.swift in Sources */,
+				66274B9A24A0E0F500F433E2 /* LoginViewController.swift in Sources */,
+				66274BE724A1676A00F433E2 /* homeCollectionViewController.swift in Sources */,
 				66274B71249FBB5300F433E2 /* LifeSaver.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
