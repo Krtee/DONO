@@ -62,7 +62,7 @@
 		66274BDE24A1159200F433E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCollectionViewController.swift; sourceTree = "<group>"; };
 		66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
-		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DonateTypeCollectionViewCell.swift; path = ../DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,6 @@
 		66274B5A249FBB5300F433E2 = {
 			isa = PBXGroup;
 			children = (
-				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B65249FBB5300F433E2 /* LifeSaver */,
 				66274B7F249FBB5500F433E2 /* LifeSaverTests */,
 				66274B8A249FBB5600F433E2 /* LifeSaverUITests */,
@@ -114,6 +113,7 @@
 		66274B65249FBB5300F433E2 /* LifeSaver */ = {
 			isa = PBXGroup;
 			children = (
+				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
 				66274B6A249FBB5300F433E2 /* ViewController.swift */,

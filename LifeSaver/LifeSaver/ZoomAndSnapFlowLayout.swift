@@ -21,11 +21,12 @@ class ZoomAndSnapFlowLayout: UICollectionViewFlowLayout {
 
         scrollDirection = .horizontal
         minimumLineSpacing = 40
-        itemSize = CGSize(width: 150, height: 150)
+        itemSize = CGSize(width: 180, height: 300)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        //fatalError("init(coder:) has not been implemented")
     }
 
     override func prepare() {
