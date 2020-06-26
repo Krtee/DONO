@@ -9,7 +9,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     var displayText: String? 
     
@@ -21,15 +22,15 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func loginButtonPressed(_ sender: Any) {
+        print("Login Button pressed")
+        
+        if emailTextField.text!.count > 0 && passwordTextField.text!.count > 0 {
+            
+            let email = emailTextField.text
+            let password = passwordTextField.text
+             
+        }
     }
-    */
-
+    
 }
