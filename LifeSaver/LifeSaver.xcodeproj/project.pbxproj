@@ -23,6 +23,7 @@
 		66274BE924A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */; };
 		66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */; };
 		B6BE3D2624A52EEB00D452D5 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */; };
+		B6BE3D2824A674C700D452D5 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DonateTypeCollectionViewCell.swift; path = ../DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				66274B9924A0E0F500F433E2 /* LoginViewController.swift */,
 				66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */,
 				B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */,
+				B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */,
 				66274B72249FBB5500F433E2 /* Assets.xcassets */,
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66274BE924A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift in Sources */,
+				B6BE3D2824A674C700D452D5 /* QRCodeGenerator.swift in Sources */,
 				66274B6B249FBB5300F433E2 /* ViewController.swift in Sources */,
 				66274B9C24A0E18F00F433E2 /* LandingPageViewController.swift in Sources */,
 				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,

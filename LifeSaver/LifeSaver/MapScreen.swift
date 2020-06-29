@@ -13,7 +13,8 @@ import CoreLocation
 
 class MapScreen: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var hospitalLabel: UILabel!    
+    @IBOutlet weak var hospitalLabel: UILabel!
+    @IBOutlet weak var directionButton: UIButton!
     let locationManager         = CLLocationManager()
     let geoCoder                = CLGeocoder()
     var previousLocation: CLLocation?
@@ -22,7 +23,7 @@ class MapScreen: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //directionsButton.layer.cornerRadius = directionsButton.frame.size.height/2
+        directionButton.layer.cornerRadius = directionButton.frame.size.height/2
         checkLocationServices()
     }
     
