@@ -11,13 +11,29 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         UITabBar.appearance().barTintColor = .black
         UITabBar.appearance().tintColor = .purple
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospitals")
+        
+        do {
+            if let results = try
+                persistentContainer.viewContext.fetch(fetchRequest) as?
+                [NSManagedObject] {
+                for result in results {
+                    if let hospitalID = result.value(forKey: "hospitalID") as? String,
+                        let name = result.value(forKey: "name") as? String {
+                            print("Got hospital: \(name) with the id: \(hospitalID)")
+                    }
+                }
+            }
+        } catch {
+            print("Failed to fetch data request!")
+        }
         
         return true
     }
@@ -80,6 +96,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 
