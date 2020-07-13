@@ -11,6 +11,15 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var contentview: UIView!
+    @IBAction func switchToLogin(_ sender: Any) {
+        currentViewControllerIndex = 0
+        configurePageViewController()
+    }
+    @IBAction func switchToRegister(_ sender: Any) {
+        currentViewControllerIndex = 1
+        configurePageViewController()
+        
+    }
     
     let dataSource = ["Viewcontroller one","Viewcontroller two"]
     

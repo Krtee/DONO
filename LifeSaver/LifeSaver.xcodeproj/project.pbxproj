@@ -16,12 +16,17 @@
 		66274B76249FBB5500F433E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */; };
 		66274B81249FBB5500F433E2 /* LifeSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B80249FBB5500F433E2 /* LifeSaverTests.swift */; };
 		66274B8C249FBB5600F433E2 /* LifeSaverUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B8B249FBB5600F433E2 /* LifeSaverUITests.swift */; };
-		66274B9A24A0E0F500F433E2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B9924A0E0F500F433E2 /* LoginViewController.swift */; };
 		66274B9C24A0E18F00F433E2 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */; };
 		66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BDE24A1159200F433E2 /* RegisterViewController.swift */; };
 		66274BE724A1676A00F433E2 /* homeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */; };
 		66274BE924A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */; };
 		66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */; };
+		666EA84F24BB968C0003E31C /* innerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666EA84E24BB968B0003E31C /* innerViews.swift */; };
+		666EA85124BB98EA0003E31C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666EA85024BB98EA0003E31C /* LoginViewController.swift */; };
+		66718AF524AA5AD1004D6BE3 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */; };
+		66718AF624AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */; };
+		66718AF724AA5AD1004D6BE3 /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */; };
+		66A2BD3C24AEBB4F00423717 /* TimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */; };
 		B6BE3D2624A52EEB00D452D5 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */; };
 		B6BE3D2824A674C700D452D5 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */; };
 /* End PBXBuildFile section */
@@ -59,12 +64,17 @@
 		66274B87249FBB5500F433E2 /* LifeSaverUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeSaverUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		66274B8B249FBB5600F433E2 /* LifeSaverUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSaverUITests.swift; sourceTree = "<group>"; };
 		66274B8D249FBB5600F433E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		66274B9924A0E0F500F433E2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
 		66274BDE24A1159200F433E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeCollectionViewController.swift; sourceTree = "<group>"; };
 		66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DonateTypeCollectionViewCell.swift; path = ../DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		666EA84E24BB968B0003E31C /* innerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = innerViews.swift; sourceTree = "<group>"; };
+		666EA85024BB98EA0003E31C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
+		66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
+		66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +127,11 @@
 		66274B65249FBB5300F433E2 /* LifeSaver */ = {
 			isa = PBXGroup;
 			children = (
+				666EA85024BB98EA0003E31C /* LoginViewController.swift */,
+				66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */,
+				66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */,
+				66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */,
+				66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */,
 				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
@@ -125,7 +140,6 @@
 				66274B6C249FBB5300F433E2 /* Main.storyboard */,
 				66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */,
 				66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */,
-				66274B9924A0E0F500F433E2 /* LoginViewController.swift */,
 				66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */,
 				B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */,
 				B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */,
@@ -133,6 +147,7 @@
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
 				66274B6F249FBB5300F433E2 /* LifeSaver.xcdatamodeld */,
+				666EA84E24BB968B0003E31C /* innerViews.swift */,
 			);
 			path = LifeSaver;
 			sourceTree = "<group>";
@@ -289,13 +304,18 @@
 				66274BE924A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift in Sources */,
 				B6BE3D2824A674C700D452D5 /* QRCodeGenerator.swift in Sources */,
 				66274B6B249FBB5300F433E2 /* ViewController.swift in Sources */,
+				66718AF724AA5AD1004D6BE3 /* CalendarVars.swift in Sources */,
+				666EA84F24BB968C0003E31C /* innerViews.swift in Sources */,
 				66274B9C24A0E18F00F433E2 /* LandingPageViewController.swift in Sources */,
 				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,
 				66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */,
 				66274B67249FBB5300F433E2 /* AppDelegate.swift in Sources */,
 				66274B69249FBB5300F433E2 /* SceneDelegate.swift in Sources */,
-				66274B9A24A0E0F500F433E2 /* LoginViewController.swift in Sources */,
+				66718AF624AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift in Sources */,
+				66718AF524AA5AD1004D6BE3 /* CalendarViewController.swift in Sources */,
 				66274BE724A1676A00F433E2 /* homeCollectionViewController.swift in Sources */,
+				666EA85124BB98EA0003E31C /* LoginViewController.swift in Sources */,
+				66A2BD3C24AEBB4F00423717 /* TimeCollectionViewCell.swift in Sources */,
 				66274B71249FBB5300F433E2 /* LifeSaver.xcdatamodeld in Sources */,
 				B6BE3D2624A52EEB00D452D5 /* MapScreen.swift in Sources */,
 			);

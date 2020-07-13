@@ -12,16 +12,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    var displayText: String? 
+    var displayText: String?
     
     var index: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
-    
     @IBAction func loginButtonPressed(_ sender: Any) {
         print("Login Button pressed")
         
@@ -34,3 +32,4 @@ class LoginViewController: UIViewController {
     }
     
 }
+

@@ -30,6 +30,7 @@ class homeCollectionViewController: UICollectionViewController {
         collectionView.collectionViewLayout = flowLayout
         
 
+
         //guard let collectionView = collectionView else { fatalError() }
         //collectionView.decelerationRate = .fast // uncomment if necessary
         //collectionview.collectionViewLayout = flowLayout
@@ -39,6 +40,16 @@ class homeCollectionViewController: UICollectionViewController {
         //collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: true)
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+
     }
 
     /*
@@ -66,12 +77,7 @@ class homeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DonateTypeCell", for: indexPath) as! DonateTypeCollectionViewCell
-        
-        cell.backgroundColor = UIColor.cyan
-        
-        let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.green
-        cell.selectedBackgroundView = backgroundView// make cell more visible in our example project
+                
         
         return cell
         // Configure the cell
@@ -112,5 +118,7 @@ class homeCollectionViewController: UICollectionViewController {
     
     }
     */
+    
+
 
 }
