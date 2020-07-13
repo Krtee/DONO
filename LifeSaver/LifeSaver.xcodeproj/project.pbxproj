@@ -24,6 +24,7 @@
 		66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */; };
 		B6BE3D2624A52EEB00D452D5 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */; };
 		B6BE3D2824A674C700D452D5 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */; };
+		B6C32D7824BC757800041D12 /* HospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C32D7724BC757800041D12 /* HospitalCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DonateTypeCollectionViewCell.swift; path = ../DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+		B6C32D7724BC757800041D12 /* HospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,18 +119,13 @@
 		66274B65249FBB5300F433E2 /* LifeSaver */ = {
 			isa = PBXGroup;
 			children = (
+				B6C32D7624BC742400041D12 /* View */,
+				B6C32D7524BC73CB00041D12 /* ViewController */,
 				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
-				66274B6A249FBB5300F433E2 /* ViewController.swift */,
-				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
 				66274B6C249FBB5300F433E2 /* Main.storyboard */,
 				66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */,
-				66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */,
-				66274B9924A0E0F500F433E2 /* LoginViewController.swift */,
-				66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */,
-				B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */,
-				B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */,
 				66274B72249FBB5500F433E2 /* Assets.xcassets */,
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
@@ -153,6 +150,28 @@
 				66274B8D249FBB5600F433E2 /* Info.plist */,
 			);
 			path = LifeSaverUITests;
+			sourceTree = "<group>";
+		};
+		B6C32D7524BC73CB00041D12 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66274B6A249FBB5300F433E2 /* ViewController.swift */,
+				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
+				66274BE624A1676A00F433E2 /* homeCollectionViewController.swift */,
+				66274B9924A0E0F500F433E2 /* LoginViewController.swift */,
+				B6BE3D2524A52EEB00D452D5 /* MapScreen.swift */,
+				B6BE3D2724A674C700D452D5 /* QRCodeGenerator.swift */,
+				66274B9B24A0E18F00F433E2 /* LandingPageViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B6C32D7624BC742400041D12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6C32D7724BC757800041D12 /* HospitalCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,6 +310,7 @@
 				66274B6B249FBB5300F433E2 /* ViewController.swift in Sources */,
 				66274B9C24A0E18F00F433E2 /* LandingPageViewController.swift in Sources */,
 				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,
+				B6C32D7824BC757800041D12 /* HospitalCell.swift in Sources */,
 				66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */,
 				66274B67249FBB5300F433E2 /* AppDelegate.swift in Sources */,
 				66274B69249FBB5300F433E2 /* SceneDelegate.swift in Sources */,
