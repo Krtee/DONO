@@ -235,7 +235,7 @@ extension MapScreen: MKMapViewDelegate {
             let streetNumber    = placemark.subThoroughfare ?? ""
 
             DispatchQueue.main.async {
-                self.hospitalLabel.text = "\(streetName) \(streetNumber)" //Die Adresse die beim Label angezeigt wird
+                //self.hospitalLabel.text = "\(streetName) \(streetNumber)" //Die Adresse die beim Label angezeigt wird
             }
         }
     }

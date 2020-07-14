@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -127,7 +127,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-Ex-8Qw">
                                                         <rect key="frame" x="20" y="54.333333333333343" width="334" height="131"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
@@ -282,16 +282,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFt-H3-unc" customClass="InnerView" customModule="LifeSaver" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="16" width="356" height="613"/>
+                                            <rect key="frame" x="16" y="16" width="18" height="18"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ufN-Ky-Eeq">
-                                                    <rect key="frame" x="47" y="145.66666666666663" width="262" height="322"/>
+                                                    <rect key="frame" x="47" y="-152" width="0.0" height="322"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="322" id="wxJ-I5-k1t"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spende Art" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3w-r1-Y7J">
-                                                    <rect key="frame" x="8" y="20" width="340" height="27"/>
+                                                    <rect key="frame" x="8" y="20" width="2" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -586,16 +586,6 @@
                                     <outlet property="delegate" destination="kSP-Zp-98l" id="ejV-jZ-I16"/>
                                 </connections>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Dein Aufenhaltsort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bM8-7Z-ut8">
-                                <rect key="frame" x="32" y="107" width="350" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nächster Spendeort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V1n-yh-vzH">
-                                <rect key="frame" x="32" y="163" width="350" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4n-a1-6HL">
                                 <rect key="frame" x="176" y="379" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -604,52 +594,128 @@
                                     <action selector="DirectionButtonPressed:" destination="kSP-Zp-98l" eventType="touchUpInside" id="c9a-DS-7fI"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mappin" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vhd-6L-X6H">
-                                <rect key="frame" x="190" y="313.33333333333348" width="34" height="39"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9x-cg-VeK">
+                                <rect key="frame" x="178" y="470" width="60" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Krankenhaus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4b-Ru-JHS">
-                                <rect key="frame" x="32" y="540" width="350" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7V0-aa-K5k">
-                                <rect key="frame" x="184" y="441" width="47" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Termin"/>
+                                <state key="normal" image="Set"/>
                                 <connections>
-                                    <segue destination="9hW-W9-fVX" kind="show" id="z2t-KW-mAp"/>
+                                    <segue destination="iAS-vr-Wod" kind="show" id="5To-Yh-HuC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="leading" secondItem="yaI-Va-yM9" secondAttribute="leading" id="0VN-G7-VJ1"/>
-                            <constraint firstItem="bM8-7Z-ut8" firstAttribute="leading" secondItem="yaI-Va-yM9" secondAttribute="leading" constant="32" id="1i6-CQ-ZCr"/>
                             <constraint firstAttribute="bottom" secondItem="9L4-dY-rhB" secondAttribute="bottom" constant="20" symbolic="YES" id="1q6-pZ-wKL"/>
-                            <constraint firstItem="yaI-Va-yM9" firstAttribute="trailing" secondItem="bM8-7Z-ut8" secondAttribute="trailing" constant="32" id="Hvt-ym-Jdo"/>
-                            <constraint firstItem="V1n-yh-vzH" firstAttribute="leading" secondItem="yaI-Va-yM9" secondAttribute="leading" constant="32" id="L62-Nw-Tdg"/>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="trailing" secondItem="yaI-Va-yM9" secondAttribute="trailing" id="QBg-lh-SC1"/>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" id="USd-F7-1bx"/>
-                            <constraint firstItem="yaI-Va-yM9" firstAttribute="trailing" secondItem="V1n-yh-vzH" secondAttribute="trailing" constant="32" id="Z7u-MN-FWD"/>
-                            <constraint firstItem="V1n-yh-vzH" firstAttribute="top" secondItem="bM8-7Z-ut8" secondAttribute="bottom" constant="4" id="bMv-2B-Uw4"/>
-                            <constraint firstItem="bM8-7Z-ut8" firstAttribute="centerX" secondItem="ZGv-T3-dFL" secondAttribute="centerX" id="dLa-Sg-IAw"/>
-                            <constraint firstItem="V1n-yh-vzH" firstAttribute="top" secondItem="bM8-7Z-ut8" secondAttribute="bottom" constant="4" id="rlG-Sb-Ecs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yaI-Va-yM9"/>
                     </view>
                     <navigationItem key="navigationItem" id="17i-4r-T5X"/>
                     <connections>
                         <outlet property="directionButton" destination="o4n-a1-6HL" id="4mp-Vb-UuM"/>
-                        <outlet property="hospitalLabel" destination="D4b-Ru-JHS" id="qof-CJ-44R"/>
                         <outlet property="mapView" destination="9L4-dY-rhB" id="RaX-Q1-GOu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh5-xe-2MS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2648" y="1734"/>
+            <point key="canvasLocation" x="2647.826086956522" y="1733.967391304348"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8MR-Ae-wfl">
+            <objects>
+                <viewController id="I3J-xt-cqF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5QX-HO-gQh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Set" translatesAutoresizingMaskIntoConstraints="NO" id="j7O-XJ-Z3z">
+                                <rect key="frame" x="45" y="53" width="324" height="388"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adresse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0n-nn-7wP">
+                                <rect key="frame" x="45" y="530" width="62" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distanz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuA-fY-UCl">
+                                <rect key="frame" x="45" y="566" width="58" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr7-Um-qjg">
+                                <rect key="frame" x="229" y="622" width="140" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Zur Terminbuchung"/>
+                                <connections>
+                                    <segue destination="9hW-W9-fVX" kind="show" id="IqP-DV-Kgt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Krankenhaus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CZ-qd-IYa">
+                                <rect key="frame" x="45" y="489" width="140" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="mow-ne-jK0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oDv-px-v9p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P4p-r2-5S3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2647.826086956522" y="2511.684782608696"/>
+        </scene>
+        <!--Hospital List Table View Controller-->
+        <scene sceneID="qBq-M3-4bI">
+            <objects>
+                <tableViewController id="iAS-vr-Wod" customClass="HospitalListTableViewController" customModule="LifeSaver" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="UAh-so-i7B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="hospitalCell" textLabel="UOu-qA-2w8" style="IBUITableViewCellStyleDefault" id="uSo-cf-YWQ">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uSo-cf-YWQ" id="cwW-Zu-yjl">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UOu-qA-2w8">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="I3J-xt-cqF" kind="show" id="haz-Bi-fNI"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iAS-vr-Wod" id="KXp-vx-uP9"/>
+                            <outlet property="delegate" destination="iAS-vr-Wod" id="7pA-XJ-gNk"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="vXh-Ip-xmp"/>
+                    <connections>
+                        <outlet property="hospitalListTableView" destination="UAh-so-i7B" id="Pvh-lc-aQd"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pst-7R-zaZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3586" y="2512"/>
         </scene>
         <!--Code Generator-->
         <scene sceneID="fuk-iF-HNu">
@@ -912,9 +978,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Set" width="60" height="60.333332061767578"/>
         <image name="icons8-drop-of-blood-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-home-page-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-person-female-100" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="mappin" catalog="system" width="105" height="128"/>
     </resources>
 </document>

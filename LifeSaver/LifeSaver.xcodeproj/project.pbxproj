@@ -30,6 +30,8 @@
 		66CBCCB224BCD82B00708A97 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAE24BCD82B00708A97 /* MapScreen.swift */; };
 		66CBCCB324BCD82B00708A97 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */; };
 		B6C32D7824BC757800041D12 /* HospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C32D7724BC757800041D12 /* HospitalCell.swift */; };
+		B6C9D74E24BD93F100CA3263 /* HospitalListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */; };
+		B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,10 +77,12 @@
 		66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = homeCollectionViewController.swift; path = ViewController/homeCollectionViewController.swift; sourceTree = "<group>"; };
 		66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = ViewController/LandingPageViewController.swift; sourceTree = "<group>"; };
-		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewController/LoginViewController.swift; sourceTree = "<group>"; };
-		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapScreen.swift; path = ViewController/MapScreen.swift; sourceTree = "<group>"; };
-		66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeGenerator.swift; path = ViewController/QRCodeGenerator.swift; sourceTree = "<group>"; };
+		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		B6C32D7724BC757800041D12 /* HospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCell.swift; sourceTree = "<group>"; };
+		B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListTableViewController.swift; sourceTree = "<group>"; };
+		B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,23 +137,22 @@
 				66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */,
 				66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */,
 				66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */,
+				B6C9D73B24BD0C2A00CA3263 /* Model */,
 				B6C32D7624BC742400041D12 /* View */,
 				B6C32D7524BC73CB00041D12 /* ViewController */,
 				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
-				66274B6C249FBB5300F433E2 /* Main.storyboard */,
 				66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */,
 				66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */,
 				66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */,
-				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
-				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
-				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
+				B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */,
+				666EA84E24BB968B0003E31C /* innerViews.swift */,
+				66274B6C249FBB5300F433E2 /* Main.storyboard */,
 				66274B72249FBB5500F433E2 /* Assets.xcassets */,
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
 				66274B6F249FBB5300F433E2 /* LifeSaver.xcdatamodeld */,
-				666EA84E24BB968B0003E31C /* innerViews.swift */,
 			);
 			path = LifeSaver;
 			sourceTree = "<group>";
@@ -177,6 +180,9 @@
 			children = (
 				66274B6A249FBB5300F433E2 /* ViewController.swift */,
 				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
+				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
+				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
+				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -187,6 +193,14 @@
 				B6C32D7724BC757800041D12 /* HospitalCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B6C9D73B24BD0C2A00CA3263 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,11 +346,13 @@
 				B6C32D7824BC757800041D12 /* HospitalCell.swift in Sources */,
 				66CBCCB024BCD82B00708A97 /* LandingPageViewController.swift in Sources */,
 				66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */,
+				B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */,
 				66274B67249FBB5300F433E2 /* AppDelegate.swift in Sources */,
 				66274B69249FBB5300F433E2 /* SceneDelegate.swift in Sources */,
 				66718AF624AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift in Sources */,
 				66718AF524AA5AD1004D6BE3 /* CalendarViewController.swift in Sources */,
 				66A2BD3C24AEBB4F00423717 /* TimeCollectionViewCell.swift in Sources */,
+				B6C9D74E24BD93F100CA3263 /* HospitalListTableViewController.swift in Sources */,
 				66274B71249FBB5300F433E2 /* LifeSaver.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
