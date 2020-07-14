@@ -127,7 +127,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-Ex-8Qw">
                                                         <rect key="frame" x="20" y="54.333333333333343" width="334" height="131"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
@@ -149,7 +149,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <state key="normal" title="Login"/>
                                                         <connections>
-                                                            <segue destination="SgE-UJ-hzC" kind="show" id="k9a-qe-LaO"/>
+                                                            <action selector="loginButtonPressed:" destination="IqB-To-VN3" eventType="touchUpInside" id="rih-dd-kiv"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -183,6 +183,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="4At-iL-ji6" id="XwA-i6-UUT"/>
                         <outlet property="passwordTextField" destination="SqZ-Ex-8Qw" id="wBi-de-y1W"/>
+                        <segue destination="SgE-UJ-hzC" kind="show" identifier="loginsegue" id="0Nm-xx-ea6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qrc-vx-3ya" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -224,7 +225,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="eZL-vk-2yT">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="SgE-UJ-hzC" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabbar" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SgE-UJ-hzC" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="5ct-XO-doN"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mTK-Zm-zpM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -249,7 +250,7 @@
         <!--Blood-->
         <scene sceneID="Wch-hp-R9k">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" id="Xhp-e9-Kgg" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xhp-e9-Kgg" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Blood" image="icons8-drop-of-blood-100" id="ztE-Af-eJe"/>
                     <navigationItem key="navigationItem" id="0ae-eO-JOm"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GQb-kj-UmK">
@@ -904,6 +905,7 @@
                         <outlet property="email" destination="eYs-df-dsc" id="FhB-te-W3T"/>
                         <outlet property="password" destination="AUW-Yi-ZnR" id="QDl-lG-QrI"/>
                         <outlet property="reppassword" destination="DOT-1I-B80" id="WqM-S6-aC5"/>
+                        <segue destination="SgE-UJ-hzC" kind="show" identifier="registersegue" id="oGe-4g-5oq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rc-8g-Dp9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -911,6 +913,9 @@
             <point key="canvasLocation" x="2216.666666666667" y="-219.29347826086959"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Nm-xx-ea6"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="icons8-drop-of-blood-100" width="33.333332061767578" height="33.333332061767578"/>
         <image name="icons8-home-page-100" width="33.333332061767578" height="33.333332061767578"/>

@@ -67,17 +67,17 @@
 		66274B8D249FBB5600F433E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		66274BDE24A1159200F433E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
-		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DonateTypeCollectionViewCell.swift; path = ../DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		666EA84E24BB968B0003E31C /* innerViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = innerViews.swift; sourceTree = "<group>"; };
 		66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarVars.swift; sourceTree = "<group>"; };
 		66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCollectionViewCell.swift; sourceTree = "<group>"; };
-		66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = homeCollectionViewController.swift; path = ViewController/homeCollectionViewController.swift; sourceTree = "<group>"; };
-		66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = ViewController/LandingPageViewController.swift; sourceTree = "<group>"; };
-		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = ViewController/LoginViewController.swift; sourceTree = "<group>"; };
-		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapScreen.swift; path = ViewController/MapScreen.swift; sourceTree = "<group>"; };
-		66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRCodeGenerator.swift; path = ViewController/QRCodeGenerator.swift; sourceTree = "<group>"; };
+		66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeCollectionViewController.swift; sourceTree = "<group>"; };
+		66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingPageViewController.swift; sourceTree = "<group>"; };
+		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
 		B6C32D7724BC757800041D12 /* HospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,27 +129,15 @@
 		66274B65249FBB5300F433E2 /* LifeSaver */ = {
 			isa = PBXGroup;
 			children = (
-				66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */,
-				66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */,
-				66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */,
-				66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */,
 				B6C32D7624BC742400041D12 /* View */,
 				B6C32D7524BC73CB00041D12 /* ViewController */,
-				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
 				66274B6C249FBB5300F433E2 /* Main.storyboard */,
-				66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */,
-				66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */,
-				66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */,
-				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
-				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
-				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
 				66274B72249FBB5500F433E2 /* Assets.xcassets */,
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
 				66274B6F249FBB5300F433E2 /* LifeSaver.xcdatamodeld */,
-				666EA84E24BB968B0003E31C /* innerViews.swift */,
 			);
 			path = LifeSaver;
 			sourceTree = "<group>";
@@ -175,6 +163,12 @@
 		B6C32D7524BC73CB00041D12 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				66718AF224AA5AD1004D6BE3 /* CalendarViewController.swift */,
+				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
+				66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */,
+				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
+				66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */,
+				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
 				66274B6A249FBB5300F433E2 /* ViewController.swift */,
 				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
 			);
@@ -184,6 +178,12 @@
 		B6C32D7624BC742400041D12 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				66A2BD3B24AEBB4F00423717 /* TimeCollectionViewCell.swift */,
+				66718AF324AA5AD1004D6BE3 /* CalendarCollectionViewCell.swift */,
+				66718AF424AA5AD1004D6BE3 /* CalendarVars.swift */,
+				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
+				66274BE824A1685D00F433E2 /* ZoomAndSnapFlowLayout.swift */,
+				666EA84E24BB968B0003E31C /* innerViews.swift */,
 				B6C32D7724BC757800041D12 /* HospitalCell.swift */,
 			);
 			path = View;
