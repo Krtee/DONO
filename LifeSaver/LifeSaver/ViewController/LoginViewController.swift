@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -20,16 +21,53 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    @IBAction func loginButtonPressed(_ sender: Any) {
+    /*@IBAction func loginButtonPressed(_ sender: Any) {
         print("Login Button pressed")
         
         if emailTextField.text!.count > 0 && passwordTextField.text!.count > 0 {
             
-            let email = emailTextField.text
-            let password = passwordTextField.text
+            if checkIfUserExist(email: emailTextField.text!, password: passwordTextField.text!) {
+                self.performSegue(withIdentifier: "loginsegue", sender: self)
+            }
+            else{
+                print("user not exist")
+            }
              
         }
-    }
+        else{
+            print("yo missing somthin")
+        }
+    }*/
+    
+    /*func checkIfUserExist (email: String, password: String)-> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entityName = "User"
+             
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        let predicate = NSPredicate(format: "email == %@", email)
+        request.predicate = predicate
+
+        
+        do {
+            let results = try context.fetch(request)
+            
+             
+            for r in results {
+                if let result = r as? NSManagedObject {
+                    let fetchedEmail = result.value(forKey: "email") as? String
+                    let fetchedPassword = result.value(forKey: "password") as? String
+                    if email == fetchedEmail! && password == fetchedPassword!{
+                        return true
+                    }
+                }
+            }
+        }
+        catch let error {
+         print(error)
+        }
+        return false
+    }*/
     
 }
 

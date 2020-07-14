@@ -13,9 +13,12 @@ class HospitalListTableViewController: UITableViewController {
 
     @IBOutlet weak var hospitalListTableView: UITableView!
     
-    //Context wo sich die Daten/Objekte befinden
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var selectedHospital: Hospitals?
     
+    //Context wo sich die Daten/Objekte befinden
+    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var hospitalListArray = [Hospitals]()
     //Ein Array zum zwischenspeichern der Daten/Objekte aus dem Context
     var hospital = [Hospitals]() {
         didSet {
@@ -27,17 +30,107 @@ class HospitalListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        hospitalListTableView.delegate = self
+        hospitalListTableView.dataSource = self
+        hospitalListTableView.rowHeight = 80
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
+        loadData()
     }
 
+    
+    //MARK: - Action Buttons
+    @IBAction func createButton_Tapped(_sender: UIBarButtonItem) {
+        createHospital()
+    }
+    
+    @IBAction func refreshButton_Tapped(_sender: UIBarButtonItem) {
+        loadData()
+    }
+    
+    
+    //MARK: - Methoden
+    func createHospital() {
+        let alert = UIAlertController(title: "Add Hospital", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "HospitalID"
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Name"
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Street"
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "PostCode"
+            textField.keyboardType = .numberPad
+        }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "coordinates"
+        }
+        
+        let action = UIAlertAction(title: "OK", style: .default) { (_) in
+            if alert.textFields?[0].text?.count != 0
+                && alert.textFields?[1].text?.count != 0
+                && alert.textFields?[2].text?.count != 0
+                && alert.textFields?[3].text?.count != 0
+                && alert.textFields?[4].text?.count != 0 {
+                let hospitalID = alert.textFields?[0].text
+                let name = alert.textFields?[1].text
+                let street = alert.textFields?[2].text
+                let postCode = Int64((alert.textFields?[3].text)!)
+                let coordinates = alert.textFields?[4].text
+                
+                //Core Data
+                let hospitalInformation = CoreDataService.defaults.createHospital(_hospitalID: hospitalID!, _name: name!, _coordinates: coordinates!, _street: street!, _postCode: postCode!)
+                
+                //Array
+                self.hospitalListArray.append(hospitalInformation)
+                self.hospitalListTableView.reloadData()
+                
+            } else {
+                self.errorMessage(_message: "Bitte Daten eingeben")
+            }
+        }
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //Daten laden -> Erhalten einen Array zurück
+    func loadData() {
+        let hospitalListArray = CoreDataService.defaults.loadData()
+        
+        if let _hospitalListArray = hospitalListArray {
+            self.hospitalListArray = _hospitalListArray
+            self.hospitalListTableView.reloadData()
+        }
+    }
+    
+    func errorMessage(_message: String) {
+        let alert = UIAlertController(title: "Fehler", message: _message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in }
+        
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Navigation
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // goToShowUserInformationSegue
+        if segue.identifier == "goToHospitalDetailsSegue" {
+            let destVC = segue.destination as! HospitalListTableViewController
+            destVC.hospital = selectedHospital
+        }
+    }*/
+    
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -46,131 +139,26 @@ class HospitalListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 10
-        //return hospital.count
+        //return hospitalArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hospitalCell", for: indexPath)
-        //let hospitalArray = hospital[indexPath.row]
-        
-        cell.textLabel?.text = "Test"
-        //cell.textLavel?.text = Hospitals[indexPath.row]
 
+        //let hospitalArray = hospital[indexPath.row]
+        cell.textLabel?.text = "Test"
+        
         return cell
     }
     
-    
-    
-    func createHospitalTestData() {
-        createHospital(hospitalID: "9189248", name: "Marien Hospital", coordinates: "981.241.122.456", street: "Stuttgarter Straße 111", postCode: 70569)
-        
-        print("Krankenhaus erstellt")
-    }
-    func loadHospitalTestData() {
-        if let hospitalArray = loadData() {
-            self.hospital = hospitalArray
-            print("Hospital Test Data wurde geladen")
-        }
-    }
-    
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         print("Sektion:  \(indexPath.section)")
         print("Zeile:  \(indexPath.row)")
-            
-            let row = indexPath.row
-    }
-
-    //Daten einfügen/User Object erstellen
-    func createHospital(hospitalID: String, name: String, coordinates: String, street: String, postCode: Int) {
-        let entity = NSEntityDescription.entity(forEntityName: "Hospitals", in: context)
-        let managedObject = NSManagedObject(entity: entity!, insertInto: context)
+         
+        //selectedHospital = hospitalListArray[indexPath.row]
+        //performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: nil)
         
-        managedObject.setValue(hospitalID, forKey: "hospitalID")
-        managedObject.setValue(name, forKey: "name")
-        managedObject.setValue(coordinates, forKey: "coordinates")
-        managedObject.setValue(street, forKey: "street")
-        managedObject.setValue(postCode, forKey: "postCode")
-        
-        saveContext()
+        //tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    //Daten laden -> Erhalten einen Array zurück
-    func loadData() -> [Hospitals]? {
-        let fetchRequest: NSFetchRequest<Hospitals> = Hospitals.fetchRequest() //Anfrage
-        
-        do {
-            let resultArray = try context.fetch(fetchRequest) //Daten holen
-            return resultArray
-        } catch  {
-            print(error.localizedDescription)
-        }
-        return nil
-    }
-    
-    //Speichern/Immer aufrufen sobald sich im context etwas veränderts
-    func  saveContext() {
-        do {
-            try context.save()
-        } catch  {
-            print(error.localizedDescription)
-        }
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

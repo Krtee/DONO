@@ -2,6 +2,8 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="hospital" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hospitals"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
     </entity>
     <entity name="Hospitals" representedClassName="Hospitals" syncable="YES" codeGenerationType="class">
         <attribute name="coordinates" optional="YES" attributeType="String"/>
@@ -31,5 +33,6 @@
         <element name="Appointment" positionX="-54" positionY="27" width="128" height="58"/>
         <element name="Hospitals" positionX="-36" positionY="9" width="128" height="118"/>
         <element name="User" positionX="-54" positionY="-9" width="128" height="268"/>
+        <element name="Appointment" positionX="-54" positionY="27" width="128" height="88"/>
     </elements>
 </model>
