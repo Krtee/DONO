@@ -15,17 +15,21 @@ class homeCollectionViewController: UICollectionViewController {
     @IBOutlet var collectionview: UICollectionView! 
     
     let flowLayout = ZoomAndSnapFlowLayout()
-    var items = ["1", "2", "3"]
+    var items = ["Blutplasma", "Thrombozyten", "Vollblut"]
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let defaults = UserDefaults.standard
+        
+        defaults.set("",forKey: "DonateType")
+        
         
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        title = "Zoomed & snapped cells"
+        title = "Spende Arten"
         
         collectionView.collectionViewLayout = flowLayout
         
@@ -78,6 +82,10 @@ class homeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DonateTypeCell", for: indexPath) as! DonateTypeCollectionViewCell
                 
+        cell.donatypeName.text=items[indexPath.row]
+        
+        let logo = UIImage(named: "Logo")
+        cell.donatePic.image = logo
         
         return cell
         // Configure the cell
@@ -100,7 +108,10 @@ class homeCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let defaults = UserDefaults.standard
         
+        defaults.set(items[indexPath.row],forKey: "DonateType")
+
     }
     
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
@@ -44,7 +45,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
 
                 
                 
-                Calendar.reloadData()
+                CalenderView.reloadData()
             default:
                 Direction = 1
                 GetStartDateDayPosition()
@@ -59,7 +60,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 showWeek = 0
 
                 
-                Calendar.reloadData()
+                CalenderView.reloadData()
                 
             }
 
@@ -67,7 +68,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         }
         else {
             showWeek = showWeek + 1
-            Calendar.reloadData()
+            CalenderView.reloadData()
 
         }
 
@@ -92,7 +93,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
             showWeek = WeeklyBoxes.count - 1
 
             
-            Calendar.reloadData()
+            CalenderView.reloadData()
         default:
             month -= 1
             Direction = -1
@@ -106,19 +107,61 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
             showWeek = WeeklyBoxes.count - 1
 
             
-            Calendar.reloadData()
+            CalenderView.reloadData()
             
             }
             
         }
         else{
             showWeek = showWeek - 1
-            Calendar.reloadData()
+            CalenderView.reloadData()
         }
     }
     
-    @IBOutlet weak var monthDisplay: UILabel!    
-    @IBOutlet weak var Calendar: UICollectionView!
+    @IBAction func setAppointment(_ sender: Any) {
+        let defaults = UserDefaults.standard
+        
+        let hospital: Int? = defaults.integer(forKey: "Hospital")
+        let donateType: String? = defaults.string(forKey: "DonateType")
+        let userId: Int? = defaults.integer(forKey: "userID")
+        
+        if hospital != nil && donateType != "" && userId != nil {
+            if selectedDay != -1 && selectedTime != "" && selectedMonth != -1 {
+                
+                do{
+                let timeArr = selectedTime.components(separatedBy: ":")
+                let hour: String = timeArr[0]
+                let minute: String = timeArr.count > 1 ? timeArr[1] : "00"
+                
+                var dateComponents = DateComponents()
+                dateComponents.year = year
+                dateComponents.month = selectedMonth
+                dateComponents.day = selectedDay
+                dateComponents.timeZone = TimeZone(abbreviation: "CEST")
+                dateComponents.hour = Int(hour)
+                dateComponents.minute = Int(minute)
+
+                // Create date from components
+                let userCalendar = Calendar.current
+                let appointmentDate = userCalendar.date(from: dateComponents)
+                
+                    if saveData(hospitalID: hospital!, userID: userId!, donatetype: donateType!, appointmentDate: appointmentDate!) {
+                        print("successfully added appointment")
+                    }
+                    else{
+                        print("could not save appointment")
+                    }
+                
+                }
+                catch let error{
+                    print(error)
+                }
+                
+            }
+        }
+    }
+    @IBOutlet weak var monthDisplay: UILabel!
+    @IBOutlet weak var CalenderView: UICollectionView!
     @IBOutlet weak var TimeTable: UICollectionView!
     
     //-------------------------------------------------------------------
@@ -151,6 +194,9 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     var showWeek = 0
     
     var BoxArray: [String] = []
+    
+    private let spacing:CGFloat = 16.0
+
         
     
     //--------------------------------------------------------------------------------------
@@ -167,9 +213,9 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     //------------------------------------------------------------------------------------
     
         
-    var selectedDay: Int = 0
+    var selectedDay: Int = -1
     
-    var selectedMonth: String = ""
+    var selectedMonth: Int = -1
     
     var selectedTime: String = ""
     //-------------------------------------------------
@@ -189,7 +235,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         initWeeks()
 
         
-        Calendar.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCollectionViewCell")
+        CalenderView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCollectionViewCell")
 
         initTimeTable()
         //print(dayArray)
@@ -275,59 +321,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
             fatalError()
         }
     }
-    
-    /*func getDays(weeksAfterCurrent: Int){
-        
-        let thisMonthHasDays = DaysInMonths[month]
-        let daywithWeeks = day + weeksAfterCurrent * 7
-        
-        print(daywithWeeks)
-        
-        if daywithWeeks == 1 {
-            dayArray[weekday] = String(day)
-            var prevDay = DaysInMonths[month-1]
-            for n in 0...weekday-1 {
-                prevDay = prevDay-1
-                if(prevDay<thisMonthHasDays){
-                    dayArray[n] = String(prevDay)
-                }
-            }
-            var nextDay = daywithWeeks
-            for n in weekday+1...6 {
-                nextDay = nextDay+1
-                dayArray[n] = String(nextDay)
-            }
-        }
-        else if  day == thisMonthHasDays {
-            dayArray[weekday] = String(day)
-            var prevDay = daywithWeeks
-            for n in 0...weekday-1 {
-                prevDay = prevDay-1
-                if(prevDay<thisMonthHasDays){
-                    dayArray[n] = String(prevDay)
-                }
-            }
-            var nextDay = 0
-            for n in weekday+1...6 {
-                nextDay = nextDay+1
-                dayArray[n] = String(nextDay)
-            }
-        } else {
-            dayArray[weekday] = String(day)
-            var prevDay = daywithWeeks
-            for n in 0...weekday-1 {
-                prevDay = prevDay-1
-                if(prevDay<thisMonthHasDays){
-                    dayArray[n] = String(prevDay)
-                }
-            }
-            var nextDay = daywithWeeks
-            for n in weekday+1...6 {
-                nextDay = nextDay+1
-                dayArray[n] = String(nextDay)
-            }
-        }
-    }*/
+
 
     /*
     // MARK: - Navigation
@@ -341,7 +335,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if collectionView == Calendar{
+        if collectionView == CalenderView{
             return 7
         } else {
             return 12
@@ -350,7 +344,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        if collectionView == Calendar{
+        if collectionView == CalenderView{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calendarCell", for: indexPath) as! CalendarCollectionViewCell
             //cell.backgroundColor = UIColor.clear
             cell.calendarDay.textColor = UIColor.black
@@ -402,12 +396,37 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == Calendar {
+        if collectionView == CalenderView {
             print(WeeklyBoxes[showWeek][indexPath.row])
             selectedDay = Int(WeeklyBoxes[showWeek][indexPath.row]) ?? 0
-            selectedMonth = currentMonth
+            
+            for index in 0...Months.count {
+                if currentMonth == Months[index] {
+                    selectedMonth = index
+                    break
+                }
+            }
         } else {
             selectedTime = TimeArray[indexPath.row]
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == CalenderView{
+            let numberOfItemsPerRow:CGFloat = 7
+            let spacingBetweenCells:CGFloat = 16
+            
+            let totalSpacing = (2 * spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells) //Amount of total spacing in a row
+            
+            if let collection = self.CalenderView{
+                let width = (collection.bounds.width - totalSpacing)/numberOfItemsPerRow
+                return CGSize(width: width, height: width)
+            }else{
+                return CGSize(width: 0, height: 0)
+            }
+        }
+        else{
+            return CGSize(width: 0, height: 0)
         }
     }
     
@@ -422,6 +441,66 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         default:
             fatalError()
         }
+    }
+    
+    func saveData (hospitalID: Int, userID: Int,donatetype: String, appointmentDate: Date)-> Bool {
+        let context = CoreDataService.defaults.persistentContainer.viewContext
+        let entityName = "Appointment"
+        
+        let newEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)
+        
+        let appointment = NSManagedObject(entity: newEntity!, insertInto: context)
+        
+        let requestUser = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let userpredicate = NSPredicate(format: "userID == %@", userID)
+        requestUser.predicate = userpredicate
+        
+        let requestHospital = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospital")
+        let hospitalpredicate = NSPredicate(format: " hostpitalID == %@", hospitalID)
+        requestHospital.predicate = hospitalpredicate
+
+        
+        do {
+            let resultsUsers = try context.fetch(requestUser)
+            let resultsHospitals = try context.fetch(requestHospital)
+            
+            var fetchedHospital: NSManagedObject?
+            var fetchedUser: NSManagedObject?
+             
+            for r in resultsUsers {
+                if let result = r as? NSManagedObject {
+                   fetchedUser = result
+                }
+                else{
+                    fetchedUser = nil
+                }
+            }
+            
+            for r in resultsHospitals {
+                if let result = r as? NSManagedObject {
+                    fetchedHospital = result
+                } else{
+                    fetchedHospital = nil
+                }
+            }
+            if fetchedHospital != nil && fetchedUser != nil {
+                appointment.setValue(fetchedHospital, forKey: "hospital")
+                appointment.setValue(fetchedUser, forKey: "patient")
+                appointment.setValue(appointmentDate, forKey: "date")
+            } else {
+                return false
+            }
+            
+            try context.save()
+            return true
+
+        }
+        catch let error {
+        print(error)
+        return false
+        }
+        
+        
     }
     
 }

@@ -14,7 +14,7 @@ class CalendarCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.contentView.backgroundColor = isSelected ? UIColor.blue : UIColor.yellow
+            self.contentView.backgroundColor = isSelected ? UIColor.gray : UIColor.clear
         }
       }
     
@@ -23,6 +23,9 @@ class CalendarCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.layer.cornerRadius = 20
+
         
         NSLayoutConstraint.activate([
             contentView.leftAnchor.constraint(equalTo: leftAnchor),

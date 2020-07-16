@@ -78,7 +78,7 @@
 		B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeCollectionViewCell.swift; path = View/TimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCollectionViewCell.swift; path = View/CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		B642EC5224BDE78500F779EC /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVars.swift; path = View/CalendarVars.swift; sourceTree = "<group>"; };
-		B642EC5424BDE7A000F779EC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = ViewController/CalendarViewController.swift; sourceTree = "<group>"; };
+		B642EC5424BDE7A000F779EC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAndSnapFlowLayout.swift; path = View/ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		B6C32D7724BC757800041D12 /* HospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCell.swift; sourceTree = "<group>"; };
 		B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListTableViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */,
-				B642EC5424BDE7A000F779EC /* CalendarViewController.swift */,
 				B642EC5224BDE78500F779EC /* CalendarVars.swift */,
 				B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */,
 				B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */,
@@ -177,6 +176,7 @@
 		B6C32D7524BC73CB00041D12 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				B642EC5424BDE7A000F779EC /* CalendarViewController.swift */,
 				66274B6A249FBB5300F433E2 /* ViewController.swift */,
 				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
 				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,

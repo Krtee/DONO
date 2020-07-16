@@ -18,7 +18,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var reppassword: UITextField!
     
-    /*@IBAction func registerButton(_ sender: Any) {
+    @IBAction func registerButton(_ sender: Any) {
         if email.text!.count > 0 && password.text!.count > 0 {
             if password.text == reppassword.text {
                 if !checkIfUserExist(email: email.text!) {
@@ -37,7 +37,7 @@ class RegisterViewController: UIViewController {
         } else{
             print("somethin is missing")
         }
-    }*/
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,32 +45,30 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    /*func saveData () {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let contex = appDelegate.persistentContainer.viewContext
+    func saveData () {
+        let context = CoreDataService.defaults.persistentContainer.viewContext
         let entityName = "User"
         
-        let newEntity = NSEntityDescription.entity(forEntityName: entityName, in: contex)
+        let newEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)
         
-        let user = NSManagedObject(entity: newEntity!, insertInto: contex)
+        let user = NSManagedObject(entity: newEntity!, insertInto: context)
         
         user.setValue(email.text, forKey: "email")
         user.setValue(password.text, forKey: "password")
         
         do {
             print("IT WORKED")
-            try contex.save()
+            try context.save()
             
 
         } catch {
             print("hii")
         }
         
-    }*/
+    }
     
-    /*func checkIfUserExist (email: String)-> Bool {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let contex = appDelegate.persistentContainer.viewContext
+    func checkIfUserExist (email: String)-> Bool {
+        let context = CoreDataService.defaults.persistentContainer.viewContext
         let entityName = "User"
              
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -79,7 +77,7 @@ class RegisterViewController: UIViewController {
 
         
         do {
-            let results = try contex.fetch(request)
+            let results = try context.fetch(request)
             
             print("i am here: \(results)")
             
@@ -103,7 +101,7 @@ class RegisterViewController: UIViewController {
          print(error)
         }
         return false
-    }*/
+    }
     
 
     /*

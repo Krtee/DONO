@@ -12,6 +12,7 @@ class DonateTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var donatypeName: UILabel!
     
     @IBOutlet weak var donatePic: UIImageView!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 

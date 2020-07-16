@@ -14,7 +14,15 @@ class TimeCollectionViewCell: UICollectionViewCell {
     
     override var isSelected: Bool {
         didSet {
-            self.contentView.backgroundColor = isSelected ? UIColor.blue : UIColor.white
+            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : UIColor.clear
         }
       }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+        self.layer.cornerRadius = 5
+
+        
+    }
 }

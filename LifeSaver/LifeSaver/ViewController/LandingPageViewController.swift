@@ -7,11 +7,19 @@
 //
 
 import UIKit
+import UserNotifications
 
 class LandingPageViewController: UIPageViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.requestAuthorization(options: [.alert,.sound]) { (granted, error) in
+            
+        }
+        
 
         // Do any additional setup after loading the view.
     }

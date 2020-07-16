@@ -21,12 +21,14 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    /*@IBAction func loginButtonPressed(_ sender: Any) {
+    @IBAction func loginButtonPressed(_ sender: Any) {
         print("Login Button pressed")
         
         if emailTextField.text!.count > 0 && passwordTextField.text!.count > 0 {
             
             if checkIfUserExist(email: emailTextField.text!, password: passwordTextField.text!) {
+                                                
+     
                 self.performSegue(withIdentifier: "loginsegue", sender: self)
             }
             else{
@@ -37,11 +39,10 @@ class LoginViewController: UIViewController {
         else{
             print("yo missing somthin")
         }
-    }*/
+    }
     
-    /*func checkIfUserExist (email: String, password: String)-> Bool {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
+    func checkIfUserExist (email: String, password: String)-> Bool {
+        let context = CoreDataService.defaults.persistentContainer.viewContext
         let entityName = "User"
              
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -57,8 +58,15 @@ class LoginViewController: UIViewController {
                 if let result = r as? NSManagedObject {
                     let fetchedEmail = result.value(forKey: "email") as? String
                     let fetchedPassword = result.value(forKey: "password") as? String
+                    let fetchedUserID = result.value(forKey: "userID") as? Int
                     if email == fetchedEmail! && password == fetchedPassword!{
+                        let defaults = UserDefaults.standard
+                        
+                        defaults.set(fetchedUserID, forKey: "UserID")
+
                         return true
+                        
+                        
                     }
                 }
             }
@@ -67,7 +75,7 @@ class LoginViewController: UIViewController {
          print(error)
         }
         return false
-    }*/
+    }
     
 }
 
