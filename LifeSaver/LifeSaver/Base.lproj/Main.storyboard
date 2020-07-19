@@ -17,38 +17,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N9L-DT-Ckc">
-                                <rect key="frame" x="0.0" y="76" width="414" height="660"/>
+                                <rect key="frame" x="0.0" y="162" width="414" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ho0-X6-r7p">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="42"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-ia-PhB">
-                                        <rect key="frame" x="0.0" y="4" width="199" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Anmelden"/>
-                                        <connections>
-                                            <action selector="switchToLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RsS-nH-vRg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-D5-SZf">
-                                        <rect key="frame" x="215" y="4" width="199" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Registrieren"/>
-                                        <connections>
-                                            <action selector="switchToRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1bm-bA-J4E"/>
-                                        </connections>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQ6-FU-9Qy">
+                                        <rect key="frame" x="0.0" y="0.0" width="199" height="128"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jd7-ia-PhB">
+                                                <rect key="frame" x="8" y="4" width="175" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Anmelden"/>
+                                                <connections>
+                                                    <action selector="switchToLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RsS-nH-vRg"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="alO-ud-KXc">
+                                        <rect key="frame" x="215" y="0.0" width="199" height="128"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWl-D5-SZf">
+                                                <rect key="frame" x="-1" y="4" width="192" height="120"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                <state key="normal" title="Registrieren"/>
+                                                <connections>
+                                                    <action selector="switchToRegister:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1bm-bA-J4E"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="jd7-ia-PhB" secondAttribute="bottom" constant="4" id="7XO-wa-clw"/>
-                                    <constraint firstItem="jd7-ia-PhB" firstAttribute="top" secondItem="Ho0-X6-r7p" secondAttribute="top" constant="4" id="Upt-Dc-a52"/>
-                                    <constraint firstItem="EWl-D5-SZf" firstAttribute="leading" secondItem="jd7-ia-PhB" secondAttribute="trailing" constant="4" id="agk-QZ-w7P"/>
-                                    <constraint firstItem="jd7-ia-PhB" firstAttribute="leading" secondItem="Ho0-X6-r7p" secondAttribute="leading" constant="4" id="ahK-91-gFr"/>
-                                    <constraint firstAttribute="bottom" secondItem="EWl-D5-SZf" secondAttribute="bottom" constant="4" id="d9Q-ss-IYy"/>
-                                    <constraint firstItem="EWl-D5-SZf" firstAttribute="top" secondItem="Ho0-X6-r7p" secondAttribute="top" constant="4" id="oTH-D2-5PW"/>
-                                    <constraint firstAttribute="trailing" secondItem="EWl-D5-SZf" secondAttribute="trailing" constant="4" id="wvm-92-Zvj"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
