@@ -51,11 +51,12 @@ class CoreDataService {
     //MARK: - CRUD - Create/Read/(Update)/(Delete)
     
     //Create Information
-    func createHospital(_hospitalID: String, _name: String, _coordinates: String, _street: String, _postCode: Int64) -> Hospitals {
+    func createHospital(_hospitalID: String, _name: String, _longitude: Double, _latitude: Double, _street: String, _postCode: Int64) -> Hospitals {
         let hospitals = Hospitals(context: context)
         hospitals.hospitalID = _hospitalID
         hospitals.name = _name
-        hospitals.coordinates = _coordinates
+        hospitals.longitude = _longitude
+        hospitals.latitude = _latitude
         hospitals.street = _street
         hospitals.postCode = _postCode
         

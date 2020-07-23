@@ -45,7 +45,7 @@
 	<string>LaunchScreen</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>To save the QR Code, we need access to your photos</string>
-	<key>UIMainStoryboardFile</key>
+	<key></key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
