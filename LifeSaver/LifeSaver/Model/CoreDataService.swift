@@ -50,7 +50,7 @@ class CoreDataService {
     
     //MARK: - CRUD - Create/Read/(Update)/(Delete)
     
-    //Create Information
+    //MARK: - Create Information
     func createHospital(_hospitalID: String, _name: String, _longitude: Double, _latitude: Double, _street: String, _postCode: Int64) -> Hospitals {
         let hospitals = Hospitals(context: context)
         hospitals.hospitalID = _hospitalID
@@ -65,7 +65,7 @@ class CoreDataService {
         return hospitals
     }
     
-    //Read
+    //MARK: - Read
     func loadData() -> [Hospitals]? {
         let fetchRequest: NSFetchRequest<Hospitals> = Hospitals.fetchRequest() //Nur die Anfrage
         
@@ -76,5 +76,26 @@ class CoreDataService {
             print("Fehler beim Laden der Daten ", error.localizedDescription)
         }
         return nil
+    }
+    
+    //MARK: - Delete
+    func cleanCoreDatastack(){
+         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospitals") //das Objekt das gelöscht werden soll
+         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch) //Anfrage an den Kontext
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print("Fehler beim Löschen, ", error.localizedDescription)
+        }
+    }
+    
+    //MARK: - Delete one stuff
+    func deleteUserFromDataStack(indexPath: IndexPath, hospitalArray: inout [Hospitals]){
+        //inout -> Parameter sind in Swift standardmäßig Konstanten. Wenn man einen Wert innerhalb der Methode verändern will dann muss man inout benutzen
+        context.delete(hospitalArray[indexPath.row])
+        hospitalArray.remove(at: indexPath.row)
+        saveContext()
     }
 }

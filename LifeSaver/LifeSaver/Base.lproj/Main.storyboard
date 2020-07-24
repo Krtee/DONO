@@ -750,11 +750,18 @@
                                 <action selector="refreshButton_TappedWith_sender:" destination="iAS-vr-Wod" id="09I-9h-L8s"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Add" image="icons8-rh+-100" id="1Oj-Mi-QQV">
-                            <connections>
-                                <action selector="createButton_TappedWith_sender:" destination="iAS-vr-Wod" id="bpC-im-oal"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Add" image="icons8-rh+-100" id="1Oj-Mi-QQV">
+                                <connections>
+                                    <action selector="createButton_TappedWith_sender:" destination="iAS-vr-Wod" id="bpC-im-oal"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="asH-6Q-ocu">
+                                <connections>
+                                    <action selector="deleteButtonTapped:" destination="iAS-vr-Wod" id="Mh3-fj-V2F"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="hospitalListTableView" destination="UAh-so-i7B" id="Pvh-lc-aQd"/>

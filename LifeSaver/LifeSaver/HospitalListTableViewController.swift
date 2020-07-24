@@ -51,6 +51,11 @@ class HospitalListTableViewController: UITableViewController {
         loadData()
     }
     
+    @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
+        CoreDataService.defaults.cleanCoreDatastack()
+    }
+    
+    
     
     //MARK: - Methoden
     func createHospital() {
@@ -94,8 +99,8 @@ class HospitalListTableViewController: UITableViewController {
                 let name = alert.textFields?[1].text
                 let street = alert.textFields?[2].text
                 let postCode = Int64((alert.textFields?[3].text)!)
-                let latitude = Double((alert.textFields?[4].text)!)
-                let longitude = Double((alert.textFields?[5].text)!)
+                let longitude = Double((alert.textFields?[4].text)!)
+                let latitude = Double((alert.textFields?[5].text)!)
 
                 
                 //Core Data
@@ -121,9 +126,9 @@ class HospitalListTableViewController: UITableViewController {
             self.hospitalListArray = hospital
             self.hospitalListTableView.reloadData()
         }
-        
     }
     
+    //MARK: - Error message - Fehlermeldung die angezeigt wird, wenn die Eingabefelder nicht vom User befüllt werden
     func errorMessage(_message: String) {
         let alert = UIAlertController(title: "Fehler", message: _message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (_) in }
@@ -156,8 +161,8 @@ class HospitalListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "hospitalCell", for: indexPath)
 
-        let h = hospital[indexPath.row]
-        cell.textLabel?.text = h.name
+        let arrayOfHospitals = hospital[indexPath.row]
+        cell.textLabel?.text = arrayOfHospitals.name
         
         return cell
     }
@@ -171,5 +176,20 @@ class HospitalListTableViewController: UITableViewController {
         
         //tableView.deselectRow(at: indexPath, animated: true)
     }
+}
 
+
+extension ViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        /*if editingStyle == .delete {
+            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &hospitalListArray)
+        }*/
+    }
+    
+    /*func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        if editingStyle == .delete {
+            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &ho)
+            tableView.reloadData()
+        }
+    }*/
 }

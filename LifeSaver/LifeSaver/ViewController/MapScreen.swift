@@ -21,10 +21,17 @@ class MapScreen: UIViewController {
     let regionInMeters: Double  = 10000
     var directionsArray: [MKDirections] = []
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         directionButton.layer.cornerRadius = directionButton.frame.size.height/2
         checkLocationServices()
+        
+        guard let hospitals = CoreDataService.defaults.loadData() else {
+            return
+        }
+        
+        addAnnoations(hospitals: hospitals)
     }
     
     @IBAction func DirectionButtonPressed(_ sender: UIButton) {
@@ -99,8 +106,8 @@ class MapScreen: UIViewController {
      Funktion, wenn der User die Authorisation gegeben hat, die Location "when in use" genehmigt hat
      */
     func startTrackingUserLocation() {
-        mapView.showsUserLocation = true //Location dot (der blaue Punkt)
-        centerViewOnUserLocation()
+        //mapView.showsUserLocation = true //Location dot (der blaue Punkt)
+        //centerViewOnUserLocation()
         locationManager.startUpdatingLocation() //Delegate Methode mit dem updaten der Location
         previousLocation = getCenterLocation(for: mapView)
     }
@@ -168,10 +175,7 @@ class MapScreen: UIViewController {
         return request
     }
         
-    /**
-        TODO:3
-        Die Routen werden wieder entfernt, damit die sich nicht überlappen
-    */
+    //MARK: - Reset Map View, Routen werden entfernt, damit die sich nicht überlappen
     func resetMapView (withNew directions: MKDirections) {
             mapView.removeOverlays(mapView.overlays)
             directionsArray.append(directions)
@@ -180,6 +184,8 @@ class MapScreen: UIViewController {
         }
     }
 }
+
+
 
 extension MapScreen: CLLocationManagerDelegate {
     /**
@@ -210,6 +216,7 @@ extension MapScreen: CLLocationManagerDelegate {
  */
 extension MapScreen: MKMapViewDelegate {
     
+    /*
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         let center = getCenterLocation(for: mapView)
         
@@ -225,6 +232,7 @@ extension MapScreen: MKMapViewDelegate {
                 return
             }
             
+            
             guard let placemark = placemarks?.first else {
                 //TODO: Show alert informing the user
                 return
@@ -238,9 +246,12 @@ extension MapScreen: MKMapViewDelegate {
                 //self.hospitalLabel.text = "\(streetName) \(streetNumber)" //Die Adresse die beim Label angezeigt wird
             }
         }
-    }
+    }*/
+    
+    
+    
     /**
-        Funktion für die Route
+        Funktion für das Aussehen der Route
      */
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer           = MKPolylineRenderer(overlay: overlay as! MKPolyline)
@@ -248,5 +259,32 @@ extension MapScreen: MKMapViewDelegate {
         
         return renderer
     }
+    
+    func mapView(_mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else {
+            return nil
+        }
+        let pinIdentifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: pinIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotationView as? MKAnnotation, reuseIdentifier: pinIdentifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView
+    }
+    
+    func addAnnoations(hospitals: [Hospitals]) {
+        for hospital in hospitals {
+            let longitude = hospital.longitude
+            let latitude = hospital.latitude
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let anno = MKPointAnnotation()
+            anno.coordinate = coordinate
+            mapView.addAnnotation(anno)
+        }
+    }
 }
-
