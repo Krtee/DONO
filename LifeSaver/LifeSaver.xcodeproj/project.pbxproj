@@ -32,6 +32,9 @@
 		B642EC5524BDE7A000F779EC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5424BDE7A000F779EC /* CalendarViewController.swift */; };
 		B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */; };
 		B6739B9D24CC793F002ECEA7 /* HospitalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */; };
+		B6739BA524CCA09A002ECEA7 /* LifeSaverUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739BA424CCA09A002ECEA7 /* LifeSaverUnitTests.swift */; };
+		B6739BAE24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6739BAC24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld */; };
+		B6739BB024CCE153002ECEA7 /* HospitalStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739BAF24CCE153002ECEA7 /* HospitalStoreManager.swift */; };
 		B6C9D74E24BD93F100CA3263 /* HospitalListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */; };
 		B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
@@ -45,6 +48,13 @@
 			remoteInfo = LifeSaver;
 		};
 		66274B88249FBB5600F433E2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 66274B5B249FBB5300F433E2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 66274B62249FBB5300F433E2;
+			remoteInfo = LifeSaver;
+		};
+		B6739BA724CCA09A002ECEA7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 66274B5B249FBB5300F433E2 /* Project object */;
 			proxyType = 1;
@@ -85,6 +95,11 @@
 		B642EC5424BDE7A000F779EC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAndSnapFlowLayout.swift; path = View/ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
 		B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HospitalAnnotation.swift; path = LifeSaver/HospitalAnnotation.swift; sourceTree = SOURCE_ROOT; };
+		B6739BA224CCA09A002ECEA7 /* LifeSaverUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeSaverUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B6739BA424CCA09A002ECEA7 /* LifeSaverUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSaverUnitTests.swift; sourceTree = "<group>"; };
+		B6739BA624CCA09A002ECEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6739BAD24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PersistentHospitalTest.xcdatamodel; sourceTree = "<group>"; };
+		B6739BAF24CCE153002ECEA7 /* HospitalStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalStoreManager.swift; sourceTree = "<group>"; };
 		B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListTableViewController.swift; sourceTree = "<group>"; };
 		B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +126,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6739B9F24CCA09A002ECEA7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,6 +142,7 @@
 				66274B65249FBB5300F433E2 /* LifeSaver */,
 				66274B7F249FBB5500F433E2 /* LifeSaverTests */,
 				66274B8A249FBB5600F433E2 /* LifeSaverUITests */,
+				B6739BA324CCA09A002ECEA7 /* LifeSaverUnitTests */,
 				66274B64249FBB5300F433E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +153,7 @@
 				66274B63249FBB5300F433E2 /* LifeSaver.app */,
 				66274B7C249FBB5500F433E2 /* LifeSaverTests.xctest */,
 				66274B87249FBB5500F433E2 /* LifeSaverUITests.xctest */,
+				B6739BA224CCA09A002ECEA7 /* LifeSaverUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,6 +198,17 @@
 				66274B8D249FBB5600F433E2 /* Info.plist */,
 			);
 			path = LifeSaverUITests;
+			sourceTree = "<group>";
+		};
+		B6739BA324CCA09A002ECEA7 /* LifeSaverUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				B6739BA424CCA09A002ECEA7 /* LifeSaverUnitTests.swift */,
+				B6739BA624CCA09A002ECEA7 /* Info.plist */,
+				B6739BAC24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld */,
+				B6739BAF24CCE153002ECEA7 /* HospitalStoreManager.swift */,
+			);
+			path = LifeSaverUnitTests;
 			sourceTree = "<group>";
 		};
 		B6C32D7524BC73CB00041D12 /* ViewController */ = {
@@ -265,13 +300,31 @@
 			productReference = 66274B87249FBB5500F433E2 /* LifeSaverUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		B6739BA124CCA09A002ECEA7 /* LifeSaverUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6739BAB24CCA09A002ECEA7 /* Build configuration list for PBXNativeTarget "LifeSaverUnitTests" */;
+			buildPhases = (
+				B6739B9E24CCA09A002ECEA7 /* Sources */,
+				B6739B9F24CCA09A002ECEA7 /* Frameworks */,
+				B6739BA024CCA09A002ECEA7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B6739BA824CCA09A002ECEA7 /* PBXTargetDependency */,
+			);
+			name = LifeSaverUnitTests;
+			productName = LifeSaverUnitTests;
+			productReference = B6739BA224CCA09A002ECEA7 /* LifeSaverUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		66274B5B249FBB5300F433E2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Ansgar Gerlicher";
 				TargetAttributes = {
@@ -284,6 +337,10 @@
 					};
 					66274B86249FBB5500F433E2 = {
 						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 66274B62249FBB5300F433E2;
+					};
+					B6739BA124CCA09A002ECEA7 = {
+						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 66274B62249FBB5300F433E2;
 					};
 				};
@@ -304,6 +361,7 @@
 				66274B62249FBB5300F433E2 /* LifeSaver */,
 				66274B7B249FBB5500F433E2 /* LifeSaverTests */,
 				66274B86249FBB5500F433E2 /* LifeSaverUITests */,
+				B6739BA124CCA09A002ECEA7 /* LifeSaverUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -327,6 +385,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		66274B85249FBB5500F433E2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6739BA024CCA09A002ECEA7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,6 +446,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B6739B9E24CCA09A002ECEA7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B6739BAE24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld in Sources */,
+				B6739BB024CCE153002ECEA7 /* HospitalStoreManager.swift in Sources */,
+				B6739BA524CCA09A002ECEA7 /* LifeSaverUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -393,6 +468,11 @@
 			isa = PBXTargetDependency;
 			target = 66274B62249FBB5300F433E2 /* LifeSaver */;
 			targetProxy = 66274B88249FBB5600F433E2 /* PBXContainerItemProxy */;
+		};
+		B6739BA824CCA09A002ECEA7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 66274B62249FBB5300F433E2 /* LifeSaver */;
+			targetProxy = B6739BA724CCA09A002ECEA7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -652,6 +732,48 @@
 			};
 			name = Release;
 		};
+		B6739BA924CCA09A002ECEA7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8N2DD8GK7;
+				INFOPLIST_FILE = LifeSaverUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hdmstuttgart.LifeSaverUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeSaver.app/LifeSaver";
+			};
+			name = Debug;
+		};
+		B6739BAA24CCA09A002ECEA7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = R8N2DD8GK7;
+				INFOPLIST_FILE = LifeSaverUnitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.hdmstuttgart.LifeSaverUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeSaver.app/LifeSaver";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -691,6 +813,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B6739BAB24CCA09A002ECEA7 /* Build configuration list for PBXNativeTarget "LifeSaverUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B6739BA924CCA09A002ECEA7 /* Debug */,
+				B6739BAA24CCA09A002ECEA7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
@@ -701,6 +832,16 @@
 			);
 			currentVersion = 66274B70249FBB5300F433E2 /* LifeSaver.xcdatamodel */;
 			path = LifeSaver.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		B6739BAC24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B6739BAD24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodel */,
+			);
+			currentVersion = B6739BAD24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodel */;
+			path = PersistentHospitalTest.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

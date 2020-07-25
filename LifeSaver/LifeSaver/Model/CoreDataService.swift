@@ -48,7 +48,7 @@ class CoreDataService {
     }
     
     
-    //MARK: - CRUD - Create/Read/(Update)/(Delete)
+    //MARK: - CRUD - Create/Read/Update/Delete
     
     //MARK: - Create Information
     func createHospital(_hospitalID: String, _name: String, _longitude: Double, _latitude: Double, _street: String, _postCode: Int64) -> Hospitals {
