@@ -125,7 +125,10 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         let donateType: String? = defaults.string(forKey: "DonateType")
         let userId: Int? = defaults.integer(forKey: "userID")
         
-        if hospital != nil && donateType != "" && userId != nil {
+        
+        if hospital != 0 && donateType != "" && userId != 0 {
+            print("\(String(describing: hospital))+\(String(describing: donateType))+\(String(describing: userId))")
+
             if selectedDay != -1 && selectedTime != "" && selectedMonth != -1 {
                 
                 do{
@@ -145,12 +148,12 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 let userCalendar = Calendar.current
                 let appointmentDate = userCalendar.date(from: dateComponents)
                 
-                    if saveData(hospitalID: hospital!, userID: userId!, donatetype: donateType!, appointmentDate: appointmentDate!) {
-                        print("successfully added appointment")
-                    }
-                    else{
-                        print("could not save appointment")
-                    }
+                if saveData(hospitalID: hospital!, userID: userId!, donatetype: donateType!, appointmentDate: appointmentDate!) {
+                    print("successfully added appointment")
+                }
+                else{
+                    print("could not save appointment")
+                }
                 
                 }
                 catch let error{
@@ -158,8 +161,16 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 }
                 
             }
+            else{
+                print("no time selected")
+            }
+        }else{
+            print("no hospital or user")
+
         }
     }
+    
+    
     @IBOutlet weak var monthDisplay: UILabel!
     @IBOutlet weak var CalenderView: UICollectionView!
     @IBOutlet weak var TimeTable: UICollectionView!
@@ -444,6 +455,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func saveData (hospitalID: Int, userID: Int,donatetype: String, appointmentDate: Date)-> Bool {
+        print("i am here")
         let context = CoreDataService.defaults.persistentContainer.viewContext
         let entityName = "Appointment"
         
@@ -455,7 +467,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         let userpredicate = NSPredicate(format: "userID == %@", userID)
         requestUser.predicate = userpredicate
         
-        let requestHospital = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospital")
+        let requestHospital = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospitals")
         let hospitalpredicate = NSPredicate(format: " hostpitalID == %@", hospitalID)
         requestHospital.predicate = hospitalpredicate
 
