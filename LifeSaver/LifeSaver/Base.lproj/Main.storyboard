@@ -289,8 +289,8 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFt-H3-unc" customClass="InnerView" customModule="LifeSaver" customModuleProvider="target">
                                             <rect key="frame" x="16" y="16" width="18" height="18"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufN-Ky-Eeq">
-                                                    <rect key="frame" x="47" y="-152" width="262" height="322"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ufN-Ky-Eeq">
+                                                    <rect key="frame" x="47" y="-152" width="102" height="322"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="322" id="wxJ-I5-k1t"/>
                                                     </constraints>
@@ -383,11 +383,11 @@
             <objects>
                 <viewController id="9hW-W9-fVX" customClass="CalendarViewController" customModule="LifeSaver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dPt-rx-50t">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tvW-6q-XyC" customClass="InnerView" customModule="LifeSaver" customModuleProvider="target">
-                                <rect key="frame" x="20" y="138" width="374" height="147.33333333333337"/>
+                                <rect key="frame" x="20" y="150" width="374" height="143.33333333333337"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yet-BC-8wy">
                                         <rect key="frame" x="8" y="2.3333333333333446" width="34" height="31.666666666666671"/>
@@ -457,7 +457,7 @@
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GDh-Ku-zUJ">
-                                        <rect key="frame" x="8" y="84.333333333333343" width="358" height="37"/>
+                                        <rect key="frame" x="8" y="84.333333333333343" width="358" height="33"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <viewLayoutGuide key="contentLayoutGuide" id="iiq-tb-4bD"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="pm7-sF-YsB"/>
@@ -523,7 +523,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TO7-gD-Kcb">
-                                <rect key="frame" x="20" y="305.33333333333326" width="374" height="289.66666666666674"/>
+                                <rect key="frame" x="20" y="313.33333333333326" width="374" height="261.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="5" id="Sma-fF-aPW">
                                     <size key="itemSize" width="100" height="35"/>
@@ -565,14 +565,14 @@
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ioi-ja-lwK">
-                                <rect key="frame" x="142" y="613" width="130" height="30"/>
+                                <rect key="frame" x="142" y="593" width="130" height="30"/>
                                 <state key="normal" title="Termin ausmachen"/>
                                 <connections>
                                     <action selector="setAppointment:" destination="9hW-W9-fVX" eventType="touchUpInside" id="Itb-7V-qF7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SPENDETERMIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYS-DW-fAu">
-                                <rect key="frame" x="8" y="76" width="398" height="30"/>
+                                <rect key="frame" x="8" y="88" width="398" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -652,18 +652,19 @@
                     <connections>
                         <outlet property="directionButton" destination="o4n-a1-6HL" id="4mp-Vb-UuM"/>
                         <outlet property="mapView" destination="9L4-dY-rhB" id="RaX-Q1-GOu"/>
+                        <segue destination="I3J-xt-cqF" kind="show" identifier="goToHospitalDetailsSegue" id="qDF-kt-gkz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vh5-xe-2MS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2647.826086956522" y="1733.967391304348"/>
         </scene>
-        <!--View Controller-->
+        <!--Hospital Details View Controller-->
         <scene sceneID="8MR-Ae-wfl">
             <objects>
-                <viewController id="I3J-xt-cqF" sceneMemberID="viewController">
+                <viewController id="I3J-xt-cqF" customClass="HospitalDetailsViewController" customModule="LifeSaver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5QX-HO-gQh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Set" translatesAutoresizingMaskIntoConstraints="NO" id="j7O-XJ-Z3z">
@@ -671,14 +672,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adresse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0n-nn-7wP">
-                                <rect key="frame" x="45" y="530" width="62" height="21"/>
+                                <rect key="frame" x="45" y="530" width="324" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distanz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuA-fY-UCl">
-                                <rect key="frame" x="45" y="566" width="58" height="21"/>
+                                <rect key="frame" x="45" y="566" width="324" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -693,7 +694,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Krankenhaus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CZ-qd-IYa">
-                                <rect key="frame" x="45" y="489" width="140" height="33"/>
+                                <rect key="frame" x="45" y="489" width="324" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -704,10 +705,15 @@
                         <viewLayoutGuide key="safeArea" id="mow-ne-jK0"/>
                     </view>
                     <navigationItem key="navigationItem" id="oDv-px-v9p"/>
+                    <connections>
+                        <outlet property="addressLabel" destination="x0n-nn-7wP" id="lNv-Os-i9C"/>
+                        <outlet property="distanceLabel" destination="kuA-fY-UCl" id="9vu-vO-O83"/>
+                        <outlet property="hospitalNameLabel" destination="1CZ-qd-IYa" id="Owd-io-zAu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4p-r2-5S3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3671" y="2615"/>
+            <point key="canvasLocation" x="3669.5652173913045" y="2614.4021739130435"/>
         </scene>
         <!--Hospital List Table View Controller-->
         <scene sceneID="qBq-M3-4bI">
@@ -735,7 +741,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="I3J-xt-cqF" kind="show" id="KjW-k5-soz"/>
+                                    <segue destination="I3J-xt-cqF" kind="show" identifier="goToHospitalDetailsSegue" id="KjW-k5-soz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -776,7 +782,7 @@
             <objects>
                 <viewController id="rLL-6a-Ajv" customClass="QRCodeGenerator" customModule="LifeSaver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bIh-FA-4hu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PT6-jN-o1e">
@@ -1052,6 +1058,7 @@
         <image name="icons8-rh+-100" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="qDF-kt-gkz"/>
         <segue reference="f2U-DM-41X"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -88,22 +88,14 @@ class ViewController: UIViewController {
             guard let dataViewController = storyboard? .instantiateViewController(withIdentifier: String(describing: RegisterViewController.self)) as? RegisterViewController else {
                 print("error3")
                 return nil
-                
             }
                               
             dataViewController.index = index
             //dataViewController.displayText = dataSource[index]
                               
             return dataViewController
-                              
         }
-        
-
-        
-       
     }
-
-
 }
 
 extension ViewController: UIPageViewControllerDelegate,UIPageViewControllerDataSource{

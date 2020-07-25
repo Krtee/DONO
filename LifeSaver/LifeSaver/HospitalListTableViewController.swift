@@ -17,7 +17,6 @@ class HospitalListTableViewController: UITableViewController {
     
     //Context wo sich die Daten/Objekte befinden
     //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     var hospitalListArray = [Hospitals]()
     //Ein Array zum zwischenspeichern der Daten/Objekte aus dem Context
     var hospital = [Hospitals]() {
@@ -53,8 +52,8 @@ class HospitalListTableViewController: UITableViewController {
     
     @IBAction func deleteButtonTapped(_ sender: UIBarButtonItem) {
         CoreDataService.defaults.cleanCoreDatastack()
+        tableView.reloadData()
     }
-    
     
     
     //MARK: - Methoden
@@ -137,14 +136,18 @@ class HospitalListTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Navigation
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    // MARK: - Navigation zu HospitalDetailViewController
+    /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // goToShowUserInformationSegue
         if segue.identifier == "goToHospitalDetailsSegue" {
-            let destVC = segue.destination as! HospitalListTableViewController
+            let destVC = segue.destination as! HospitalDetailsViewController
             destVC.hospital = selectedHospital
         }
-    }*/
+    } */
+    
+    /* func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: nil)
+    } */
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -171,25 +174,21 @@ class HospitalListTableViewController: UITableViewController {
         print("Sektion:  \(indexPath.section)")
         print("Zeile:  \(indexPath.row)")
          
-        //selectedHospital = hospitalListArray[indexPath.row]
+        selectedHospital = hospitalListArray[indexPath.row]
         //performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: nil)
         
         //tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-
+//MARK: - Löschen einzelner Elemente
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         /*if editingStyle == .delete {
-            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &hospitalListArray)
+            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &Hospitals)
+            tableView.reloadData()
         }*/
     }
     
-    /*func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        if editingStyle == .delete {
-            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &ho)
-            tableView.reloadData()
-        }
-    }*/
+    
 }
