@@ -23,6 +23,7 @@
 		66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */; };
 		66CBCCB224BCD82B00708A97 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAE24BCD82B00708A97 /* MapScreen.swift */; };
 		66CBCCB324BCD82B00708A97 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */; };
+		66E78FC824C5F2FC002541AA /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E78FC724C5F2FC002541AA /* button.swift */; };
 		B642EC4D24BDE72100F779EC /* innerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC4C24BDE72100F779EC /* innerViews.swift */; };
 		B642EC4F24BDE73800F779EC /* TimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */; };
 		B642EC5124BDE74F00F779EC /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */; };
@@ -74,7 +75,8 @@
 		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
-		B642EC4C24BDE72100F779EC /* innerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = innerViews.swift; path = View/innerViews.swift; sourceTree = "<group>"; };
+		66E78FC724C5F2FC002541AA /* button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
+		B642EC4C24BDE72100F779EC /* innerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = innerViews.swift; sourceTree = "<group>"; };
 		B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeCollectionViewCell.swift; path = View/TimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCollectionViewCell.swift; path = View/CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		B642EC5224BDE78500F779EC /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVars.swift; path = View/CalendarVars.swift; sourceTree = "<group>"; };
@@ -137,7 +139,6 @@
 				B642EC5224BDE78500F779EC /* CalendarVars.swift */,
 				B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */,
 				B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */,
-				B642EC4C24BDE72100F779EC /* innerViews.swift */,
 				B6C9D73B24BD0C2A00CA3263 /* Model */,
 				B6C32D7624BC742400041D12 /* View */,
 				B6C32D7524BC73CB00041D12 /* ViewController */,
@@ -198,7 +199,9 @@
 		B6C9D73B24BD0C2A00CA3263 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B642EC4C24BDE72100F779EC /* innerViews.swift */,
 				B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */,
+				66E78FC724C5F2FC002541AA /* button.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				66CBCCAB24BCD7E900708A97 /* homeCollectionViewController.swift in Sources */,
 				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,
 				66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */,
+				66E78FC824C5F2FC002541AA /* button.swift in Sources */,
 				B6C32D7824BC757800041D12 /* HospitalCell.swift in Sources */,
 				B642EC4F24BDE73800F779EC /* TimeCollectionViewCell.swift in Sources */,
 				B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */,
