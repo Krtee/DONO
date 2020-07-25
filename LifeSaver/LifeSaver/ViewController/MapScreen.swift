@@ -16,6 +16,8 @@ class MapScreen: UIViewController {
     @IBOutlet weak var hospitalLabel: UILabel!
     @IBOutlet weak var directionButton: UIButton!
     
+    var hospitals: HospitalAnnotation?
+    
     var previousLocation: CLLocation?
     var directionsArray: [MKDirections] = []
     let regionInMeters: Double  = 10000
@@ -125,14 +127,12 @@ class MapScreen: UIViewController {
         let directions  = MKDirections(request: request)
         resetMapView(withNew: directions)
         
-        
         //Nachdem man das MKDirections Objekt hat, kann man den Weg hier berechnen
         directions.calculate {
             [unowned self] (response, error) in
             //TODO: Handle error if needed
             guard let response = response else { return } //TODO: Show response not available in an alert
 
-            
             //Handled wenn man mehr als eine Route zurück bekommt
             for route in response.routes {
                 self.mapView.addOverlay(route.polyline)
@@ -175,7 +175,6 @@ extension MapScreen: CLLocationManagerDelegate {
         guard let location = locations.last else {
             return //wenn keine Location da ist. Kondition nicht erfüllt, dann passiert nichts
         }
-        
         let locationCenter = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) //users last known location
         let region = MKCoordinateRegion.init(center: locationCenter, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters) //die view vom users center location wird angepasst
         }
@@ -189,7 +188,6 @@ extension MapScreen: CLLocationManagerDelegate {
 
 
 extension MapScreen: MKMapViewDelegate {
-    
     //MARK: - Funktion für das Aussehen der Route
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer           = MKPolylineRenderer(overlay: overlay as! MKPolyline)
@@ -214,18 +212,6 @@ extension MapScreen: MKMapViewDelegate {
         return annotationView
     }
     
-    func addAnnoations(hospitals: [Hospitals]) {
-        for hospital in hospitals {
-            let longitude = hospital.longitude
-            let latitude = hospital.latitude
-            
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let anno = HospitalAnnotation(hospital: hospital)
-            anno.coordinate = coordinate
-            mapView.addAnnotation(anno)
-        }
-    }
-    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: view)
     }
@@ -247,6 +233,18 @@ extension MapScreen: MKMapViewDelegate {
             return annoView
     }
     
+    func addAnnoations(hospitals: [Hospitals]) {
+        for hospital in hospitals {
+            let longitude = hospital.longitude
+            let latitude = hospital.latitude
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let anno = HospitalAnnotation(hospital: hospital)
+            anno.coordinate = coordinate
+            mapView.addAnnotation(anno)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (sender is MKAnnotationView) {
             let hAnno = (sender as! MKAnnotationView).annotation as! HospitalAnnotation
@@ -255,14 +253,5 @@ extension MapScreen: MKMapViewDelegate {
                 vc.hospital = hAnno.hospital
             }
         }
-    }
-    
-}
-
-class HospitalAnnotation : MKPointAnnotation {
-    var hospital : Hospitals
-    
-    init(hospital: Hospitals) {
-        self.hospital = hospital
     }
 }

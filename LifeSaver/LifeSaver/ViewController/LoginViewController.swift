@@ -65,8 +65,6 @@ class LoginViewController: UIViewController {
                         defaults.set(fetchedUserID, forKey: "UserID")
 
                         return true
-                        
-                        
                     }
                 }
             }

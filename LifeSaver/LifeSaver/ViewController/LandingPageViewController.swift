@@ -15,16 +15,10 @@ class LandingPageViewController: UIPageViewController {
         super.viewDidLoad()
         
         let center = UNUserNotificationCenter.current()
-        
         center.requestAuthorization(options: [.alert,.sound]) { (granted, error) in
-            
         }
-        
-
         // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -34,5 +28,4 @@ class LandingPageViewController: UIPageViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

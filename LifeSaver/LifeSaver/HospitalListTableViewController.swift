@@ -14,9 +14,6 @@ class HospitalListTableViewController: UITableViewController {
     @IBOutlet weak var hospitalListTableView: UITableView!
     
     var selectedHospital: Hospitals?
-    
-    //Context wo sich die Daten/Objekte befinden
-    //let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var hospitalListArray = [Hospitals]()
     //Ein Array zum zwischenspeichern der Daten/Objekte aus dem Context
     var hospital = [Hospitals]() {
@@ -24,8 +21,6 @@ class HospitalListTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +35,6 @@ class HospitalListTableViewController: UITableViewController {
         loadData()
     }
 
-    
     //MARK: - Action Buttons
     @IBAction func createButton_Tapped(_sender: UIBarButtonItem) {
         createHospital()
@@ -86,7 +80,6 @@ class HospitalListTableViewController: UITableViewController {
             textField.keyboardType = .numberPad
         }
         
-        
         let action = UIAlertAction(title: "OK", style: .default) { (_) in
             if alert.textFields?[0].text?.count != 0
                 && alert.textFields?[1].text?.count != 0
@@ -101,14 +94,12 @@ class HospitalListTableViewController: UITableViewController {
                 let longitude = Double((alert.textFields?[4].text)!)
                 let latitude = Double((alert.textFields?[5].text)!)
 
-                
                 //Core Data
                 let hospitalInformation = CoreDataService.defaults.createHospital(_hospitalID: hospitalID!, _name: name!, _longitude: longitude!, _latitude: latitude!, _street: street!, _postCode: postCode!)
                 
                 //Array
                 self.hospitalListArray.append(hospitalInformation)
                 self.hospitalListTableView.reloadData()
-                
             } else {
                 self.errorMessage(_message: "Bitte Daten eingeben")
             }
@@ -136,29 +127,13 @@ class HospitalListTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    // MARK: - Navigation zu HospitalDetailViewController
-    /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // goToShowUserInformationSegue
-        if segue.identifier == "goToHospitalDetailsSegue" {
-            let destVC = segue.destination as! HospitalDetailsViewController
-            destVC.hospital = selectedHospital
-        }
-    } */
-    
-    /* func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: nil)
-    } */
-    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return hospital.count
-        //return hospitalArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -175,11 +150,10 @@ class HospitalListTableViewController: UITableViewController {
         print("Zeile:  \(indexPath.row)")
          
         selectedHospital = hospitalListArray[indexPath.row]
-        //performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: nil)
-        
-        //tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+
 
 //MARK: - Löschen einzelner Elemente
 extension ViewController: UITableViewDelegate {
@@ -189,6 +163,4 @@ extension ViewController: UITableViewDelegate {
             tableView.reloadData()
         }*/
     }
-    
-    
 }

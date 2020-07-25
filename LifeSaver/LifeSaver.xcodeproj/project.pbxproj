@@ -30,6 +30,7 @@
 		B642EC5324BDE78500F779EC /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5224BDE78500F779EC /* CalendarVars.swift */; };
 		B642EC5524BDE7A000F779EC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5424BDE7A000F779EC /* CalendarViewController.swift */; };
 		B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */; };
+		B6739B9D24CC793F002ECEA7 /* HospitalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */; };
 		B6C9D74E24BD93F100CA3263 /* HospitalListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */; };
 		B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		B642EC5224BDE78500F779EC /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVars.swift; path = View/CalendarVars.swift; sourceTree = "<group>"; };
 		B642EC5424BDE7A000F779EC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAndSnapFlowLayout.swift; path = View/ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
+		B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HospitalAnnotation.swift; path = LifeSaver/HospitalAnnotation.swift; sourceTree = SOURCE_ROOT; };
 		B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListTableViewController.swift; sourceTree = "<group>"; };
 		B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +183,7 @@
 				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
 				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
 				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
+				B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */,
 				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
 				B63F110724CB9C2F00468984 /* HospitalDetailsViewController.swift */,
 			);
@@ -341,6 +344,7 @@
 				66CBCCB324BCD82B00708A97 /* QRCodeGenerator.swift in Sources */,
 				66CBCCAB24BCD7E900708A97 /* homeCollectionViewController.swift in Sources */,
 				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,
+				B6739B9D24CC793F002ECEA7 /* HospitalAnnotation.swift in Sources */,
 				66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */,
 				B642EC4F24BDE73800F779EC /* TimeCollectionViewCell.swift in Sources */,
 				B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */,
