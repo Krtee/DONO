@@ -21,6 +21,11 @@ class QRCodeGenerator: UIViewController {
         super.viewDidLoad()
         
         saveQRCodeButton.isEnabled = false
+        
+        let defaults = UserDefaults.standard
+        let id: String? = defaults.string(forKey: "AppointmentID")
+
+        createQRCode(appointmentID: id ?? "no id")
     }
         //Button 1
     @IBAction func generateQRCodeButtonPressed(_ sender: Any) {
@@ -57,7 +62,7 @@ class QRCodeGenerator: UIViewController {
             for r in resultsAppointments {
                 if let result = r as? NSManagedObject {
                     
-                    let jsondata = convertToJSONArray(moArray: result)
+                    let jsondata = convertToJSONArray(item: result)
                    let data = jsondata.data(using: .ascii, allowLossyConversion: false)
                               let filter = CIFilter(name: "CIQRCodeGenerator")
                               filter?.setValue(data, forKey: "InputMessage")
@@ -69,11 +74,15 @@ class QRCodeGenerator: UIViewController {
                               qrImageView.image = image
                 }
             }
+            return true
             
+        } catch let err {
+            print(err)
+            return false
         }
     }
     
-    func convertToJSONArray(item: NSManagedObject) -> Any {
+    func convertToJSONArray(item: NSManagedObject) -> String {
         var jsonArray: [[String: Any]] = []
         var dict: [String: Any] = [:]
         for attribute in item.entity.attributesByName {
@@ -83,7 +92,7 @@ class QRCodeGenerator: UIViewController {
             }
             jsonArray.append(dict)
         }
-        return jsonArray
+        return jsonArray[0].description
     }
     
     

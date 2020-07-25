@@ -127,7 +127,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         
         
         if hospital != 0 && donateType != "" && userId != 0 {
-            print("\(hospital)+\(donateType)+\(userId)")
+            print("\(String(describing: hospital))+\(String(describing: donateType))+\(String(describing: userId))")
 
             if selectedDay != -1 && selectedTime != "" && selectedMonth != -1 {
                 
