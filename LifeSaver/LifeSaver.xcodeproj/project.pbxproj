@@ -23,14 +23,17 @@
 		66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */; };
 		66CBCCB224BCD82B00708A97 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAE24BCD82B00708A97 /* MapScreen.swift */; };
 		66CBCCB324BCD82B00708A97 /* QRCodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */; };
+<<<<<<< HEAD
 		66E78FC824C5F2FC002541AA /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E78FC724C5F2FC002541AA /* button.swift */; };
+=======
+		B63F110824CB9C2F00468984 /* HospitalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63F110724CB9C2F00468984 /* HospitalDetailsViewController.swift */; };
+>>>>>>> 30953147f55c678a731dfb107d34ebd11419d0f0
 		B642EC4D24BDE72100F779EC /* innerViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC4C24BDE72100F779EC /* innerViews.swift */; };
 		B642EC4F24BDE73800F779EC /* TimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */; };
 		B642EC5124BDE74F00F779EC /* CalendarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */; };
 		B642EC5324BDE78500F779EC /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5224BDE78500F779EC /* CalendarVars.swift */; };
 		B642EC5524BDE7A000F779EC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5424BDE7A000F779EC /* CalendarViewController.swift */; };
 		B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */; };
-		B6C32D7824BC757800041D12 /* HospitalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C32D7724BC757800041D12 /* HospitalCell.swift */; };
 		B6C9D74E24BD93F100CA3263 /* HospitalListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */; };
 		B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */; };
 /* End PBXBuildFile section */
@@ -75,14 +78,18 @@
 		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
 		66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeGenerator.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		66E78FC724C5F2FC002541AA /* button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
 		B642EC4C24BDE72100F779EC /* innerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = innerViews.swift; sourceTree = "<group>"; };
+=======
+		B63F110724CB9C2F00468984 /* HospitalDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalDetailsViewController.swift; sourceTree = "<group>"; };
+		B642EC4C24BDE72100F779EC /* innerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = innerViews.swift; path = View/innerViews.swift; sourceTree = "<group>"; };
+>>>>>>> 30953147f55c678a731dfb107d34ebd11419d0f0
 		B642EC4E24BDE73800F779EC /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeCollectionViewCell.swift; path = View/TimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		B642EC5024BDE74F00F779EC /* CalendarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCollectionViewCell.swift; path = View/CalendarCollectionViewCell.swift; sourceTree = "<group>"; };
 		B642EC5224BDE78500F779EC /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVars.swift; path = View/CalendarVars.swift; sourceTree = "<group>"; };
 		B642EC5424BDE7A000F779EC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAndSnapFlowLayout.swift; path = View/ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
-		B6C32D7724BC757800041D12 /* HospitalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalCell.swift; sourceTree = "<group>"; };
 		B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListTableViewController.swift; sourceTree = "<group>"; };
 		B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +190,7 @@
 				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
 				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
 				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
+				B63F110724CB9C2F00468984 /* HospitalDetailsViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -191,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */,
-				B6C32D7724BC757800041D12 /* HospitalCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +360,7 @@
 				66274BEF24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift in Sources */,
 				B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */,
 				66274B67249FBB5300F433E2 /* AppDelegate.swift in Sources */,
+				B63F110824CB9C2F00468984 /* HospitalDetailsViewController.swift in Sources */,
 				B642EC5324BDE78500F779EC /* CalendarVars.swift in Sources */,
 				66274B69249FBB5300F433E2 /* SceneDelegate.swift in Sources */,
 				B642EC4D24BDE72100F779EC /* innerViews.swift in Sources */,

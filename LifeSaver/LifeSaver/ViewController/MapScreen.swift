@@ -15,16 +15,24 @@ class MapScreen: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var hospitalLabel: UILabel!
     @IBOutlet weak var directionButton: UIButton!
+    
+    var previousLocation: CLLocation?
+    var directionsArray: [MKDirections] = []
+    let regionInMeters: Double  = 10000
     let locationManager         = CLLocationManager()
     let geoCoder                = CLGeocoder()
-    var previousLocation: CLLocation?
-    let regionInMeters: Double  = 10000
-    var directionsArray: [MKDirections] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         directionButton.layer.cornerRadius = directionButton.frame.size.height/2
         checkLocationServices()
+        
+        guard let hospitals = CoreDataService.defaults.loadData() else {
+            return
+        }
+        
+        addAnnoations(hospitals: hospitals)
     }
     
     @IBAction func DirectionButtonPressed(_ sender: UIButton) {
@@ -38,9 +46,7 @@ class MapScreen: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    /**
-     Funktion dass in die Map reinzoomt in die Mitte von der Location vom User aus
-     */
+    //MARK: - Funktion, dass in die Map reinzoom in die Mitte von der Location vom User aus
     func centerViewOnUserLocation() {
         if let location = locationManager.location?.coordinate {
             let region  = MKCoordinateRegion.init(center: location, latitudinalMeters:  regionInMeters, longitudinalMeters:  regionInMeters)
@@ -48,9 +54,7 @@ class MapScreen: UIViewController {
         }
     }
     
-    /**
-        Funktion checkt die Authorisation für Locations von den Einstellungen her vom iPhone für die App
-     */
+    //MARK: - Funktion checkt die Authorisation für Locations vong Einstellungen her vom iPhone für die App
     func checkLocationServices() {
         if CLLocationManager.locationServicesEnabled() {
             setUpLocationManager()
@@ -60,8 +64,8 @@ class MapScreen: UIViewController {
         }
     }
     
+    //MARK: - Check Location Authorization - Funktion, dass die Authorisation des Users checkt, die er einem gegeben hat.
     /**
-        Funktion, dass die Authorisation des Users checkt, die er einem gegeben hat.
      - .authorizedWhenInUse
             Location kann nur gecheckt werden, wenn die App in Nutzung ist
      - .denied
@@ -80,6 +84,7 @@ class MapScreen: UIViewController {
             startTrackingUserLocation()
         case .denied:
             //show alert instructing them how to turn on permission
+            print("auth denied!!!!!!")
             break
         case .notDetermined:
             locationManager.requestWhenInUseAuthorization()
@@ -91,13 +96,10 @@ class MapScreen: UIViewController {
             break
         @unknown default:
             break
-    }
+        }
     }
     
-    /**
-    TODO: 2
-     Funktion, wenn der User die Authorisation gegeben hat, die Location "when in use" genehmigt hat
-     */
+    //MARK: - Funktion, wenn der User die Authorisation gegeben hat, die Location "when in use" genehmigt wurde
     func startTrackingUserLocation() {
         mapView.showsUserLocation = true //Location dot (der blaue Punkt)
         centerViewOnUserLocation()
@@ -105,10 +107,7 @@ class MapScreen: UIViewController {
         previousLocation = getCenterLocation(for: mapView)
     }
     
-    /**
-     TODO: 2
-        Funktion, dass die Mitte der Map hält
-     */
+    //MARK: - Funktion, dass die Mitte der Map halten soll
     func getCenterLocation(for mapView: MKMapView) -> CLLocation {
         let latitude    = mapView.centerCoordinate.latitude
         let longitude   = mapView.centerCoordinate.longitude
@@ -116,12 +115,9 @@ class MapScreen: UIViewController {
         return CLLocation(latitude: latitude, longitude: longitude)
     }
     
-    /**
-        TODO: 3
-        Funktion um von der User location und der Ziellocation einen Weg zu bekommen
-     */
+    //MARK: - Funktion, um von der User Lcoation und der Ziellocation einen Weg zu bekommen
     func getDirections() {
-        guard let location = locationManager.location?.coordinate else { //schaut ob man die location vom User bereits hat
+        guard let location = locationManager.location?.coordinate else { //schaut ob man die Location vom User bereits hat
             //TODO: Inform user we don't have their current location
             return
         }
@@ -129,31 +125,23 @@ class MapScreen: UIViewController {
         let directions  = MKDirections(request: request)
         resetMapView(withNew: directions)
         
-        /**
-            Nachdem man das MKDirections Objekt hat, kann man den Weg hier berechnen
-         */
+        
+        //Nachdem man das MKDirections Objekt hat, kann man den Weg hier berechnen
         directions.calculate {
             [unowned self] (response, error) in
             //TODO: Handle error if needed
-            
             guard let response = response else { return } //TODO: Show response not available in an alert
 
-            /**
-                Handled wenn man mehr als eine Route zurück bekommt
-             */
+            
+            //Handled wenn man mehr als eine Route zurück bekommt
             for route in response.routes {
-                //TODO: Kommen noch Navigationsschritte rein? -> let steps = route.steps
                 self.mapView.addOverlay(route.polyline)
                 self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
             }
         }
     }
     
-    /**
-        TODO: 3
-        Helper Funktion für getDirections() für das MKDirections.Request
-        Um eine Instanz von MKDirections erstellen zu können, benötigt man eine request (wurde in Z. 116 weitergegeben)
-     */
+    //MARK: - Helper Funktion für getDirections() für das MKDirections.request, um eine Instanz von MKDirections erstellen zu können, benötigt man eine request (wurde in Z. 116 weiteregegeben)
     func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
         let destinationCoordinate       = getCenterLocation(for: mapView).coordinate
         let startingLocation            = MKPlacemark(coordinate: coordinate)
@@ -168,10 +156,7 @@ class MapScreen: UIViewController {
         return request
     }
         
-    /**
-        TODO:3
-        Die Routen werden wieder entfernt, damit die sich nicht überlappen
-    */
+    //MARK: - Reset Map View, Routen werden entfernt, damit die sich nicht überlappen
     func resetMapView (withNew directions: MKDirections) {
             mapView.removeOverlays(mapView.overlays)
             directionsArray.append(directions)
@@ -181,11 +166,11 @@ class MapScreen: UIViewController {
     }
 }
 
+
+
 extension MapScreen: CLLocationManagerDelegate {
-    /**
-        Funktion wird immer aufgerufen, wenn der User die Location updated
-     */
-    /*func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    //MARK: - Funktion wird immer aufgerufen, wenn der User die Location updated
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         //Wenn die Lokalisation vom User geupdatet wird
         guard let location = locations.last else {
             return //wenn keine Location da ist. Kondition nicht erfüllt, dann passiert nichts
@@ -193,11 +178,9 @@ extension MapScreen: CLLocationManagerDelegate {
         
         let locationCenter = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) //users last known location
         let region = MKCoordinateRegion.init(center: locationCenter, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters) //die view vom users center location wird angepasst
-        }*/
+        }
     
-    /**
-        Funktion, dass immer aufgerufen wird, wenn die User Authorisation geändert wurde
-    */
+    //MARK: - Funktion, dass immer aufgerufen wird, wenn die User Authorisation geändert wurde
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
     }
@@ -205,48 +188,81 @@ extension MapScreen: CLLocationManagerDelegate {
    
 
 
-/**
- TODO: 2
- */
 extension MapScreen: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let center = getCenterLocation(for: mapView)
-        
-        guard let previousLocation = self.previousLocation else { return }
-        guard center.distance(from: previousLocation) > 50 else { return }
-        self.previousLocation = center
-        
-        geoCoder.cancelGeocode()
-        geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
-            guard let self = self else { return }
-            if let _ = error {
-                //TODO: Show alert informing the user
-                return
-            }
-            
-            guard let placemark = placemarks?.first else {
-                //TODO: Show alert informing the user
-                return
-            }
-            
-            //TODO: Was genau von der Adresse soll gezeigt werden?
-            let streetName      = placemark.thoroughfare ?? ""
-            let streetNumber    = placemark.subThoroughfare ?? ""
-
-            DispatchQueue.main.async {
-                //self.hospitalLabel.text = "\(streetName) \(streetNumber)" //Die Adresse die beim Label angezeigt wird
-            }
-        }
-    }
-    /**
-        Funktion für die Route
-     */
+    //MARK: - Funktion für das Aussehen der Route
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer           = MKPolylineRenderer(overlay: overlay as! MKPolyline)
         renderer.strokeColor   = .purple
         
         return renderer
     }
+    
+    func mapView(_mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else {
+            return nil
+        }
+        let pinIdentifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: pinIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotationView as? MKAnnotation, reuseIdentifier: pinIdentifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        return annotationView
+    }
+    
+    func addAnnoations(hospitals: [Hospitals]) {
+        for hospital in hospitals {
+            let longitude = hospital.longitude
+            let latitude = hospital.latitude
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            let anno = HospitalAnnotation(hospital: hospital)
+            anno.coordinate = coordinate
+            mapView.addAnnotation(anno)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: view)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let identifier = "pin"
+        
+        let annoView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annoView == nil {
+            let annoView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annoView.isEnabled = true
+            annoView.canShowCallout = true
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annoView.rightCalloutAccessoryView = btn
+        } else {
+            annoView!.annotation = annotation
+        }
+            return annoView
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (sender is MKAnnotationView) {
+            let hAnno = (sender as! MKAnnotationView).annotation as! HospitalAnnotation
+            if segue.destination is HospitalDetailsViewController {
+                let vc = segue.destination as! HospitalDetailsViewController
+                vc.hospital = hAnno.hospital
+            }
+        }
+    }
+    
 }
 
+class HospitalAnnotation : MKPointAnnotation {
+    var hospital : Hospitals
+    
+    init(hospital: Hospitals) {
+        self.hospital = hospital
+    }
+}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Appointment" representedClassName="Appointment" syncable="YES" codeGenerationType="class">
         <attribute name="appointmentID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -8,8 +8,9 @@
         <relationship name="patient" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
     </entity>
     <entity name="Hospitals" representedClassName="Hospitals" syncable="YES" codeGenerationType="class">
-        <attribute name="coordinates" optional="YES" attributeType="String"/>
         <attribute name="hospitalID" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="postCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="street" optional="YES" attributeType="String"/>
@@ -32,8 +33,8 @@
         <attribute name="userID" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-54" positionY="27" width="128" height="118"/>
-        <element name="Hospitals" positionX="-36" positionY="9" width="128" height="118"/>
+        <element name="Appointment" positionX="-54" positionY="27" width="128" height="103"/>
+        <element name="Hospitals" positionX="-36" positionY="9" width="128" height="133"/>
         <element name="User" positionX="-54" positionY="-9" width="128" height="268"/>
     </elements>
 </model>
