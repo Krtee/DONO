@@ -38,6 +38,7 @@
 		B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */; };
 		B6F1D6C324CDFE5B008A90DE /* LifeSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1D6C024CDFC04008A90DE /* LifeSaverTests.swift */; };
 		B6F1D6C424CE000C008A90DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B66249FBB5300F433E2 /* AppDelegate.swift */; };
+		B6F1D6C624CE23DF008A90DE /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1D6C524CE23DF008A90DE /* CoreLocationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		B6F1D6BD24CDFA83008A90DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6F1D6C024CDFC04008A90DE /* LifeSaverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeSaverTests.swift; path = LifeSaverUnitTests/LifeSaverTests.swift; sourceTree = SOURCE_ROOT; };
+		B6F1D6C524CE23DF008A90DE /* CoreLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +219,7 @@
 				667CEAC824CC76D800ED3BE1 /* innerViews.swift */,
 				B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */,
 				66E78FC724C5F2FC002541AA /* button.swift */,
+				B6F1D6C524CE23DF008A90DE /* CoreLocationService.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				B642EC5524BDE7A000F779EC /* CalendarViewController.swift in Sources */,
 				66274B6B249FBB5300F433E2 /* ViewController.swift in Sources */,
 				66CBCCB224BCD82B00708A97 /* MapScreen.swift in Sources */,
+				B6F1D6C624CE23DF008A90DE /* CoreLocationService.swift in Sources */,
 				B642EC5124BDE74F00F779EC /* CalendarCollectionViewCell.swift in Sources */,
 				66CBCCB324BCD82B00708A97 /* QRCodeGenerator.swift in Sources */,
 				66CBCCAB24BCD7E900708A97 /* homeCollectionViewController.swift in Sources */,

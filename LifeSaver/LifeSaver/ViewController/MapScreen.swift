@@ -16,23 +16,26 @@ class MapScreen: UIViewController {
     @IBOutlet weak var hospitalLabel: UILabel!
     @IBOutlet weak var directionButton: UIButton!
     
+    let locationManager = CoreLocationService.shared
+    
     var hospitals: HospitalAnnotation?
     
-    var previousLocation: CLLocation?
     var directionsArray: [MKDirections] = []
     let regionInMeters: Double  = 10000
-    let locationManager         = CLLocationManager()
     let geoCoder                = CLGeocoder()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         directionButton.layer.cornerRadius = directionButton.frame.size.height/2
-        checkLocationServices()
+        mapView.showsUserLocation = true
         
         guard let hospitals = CoreDataService.defaults.loadData() else {
             return
         }
+        
+        locationManager.updateCallback = centerViewOnUserLocation
+        locationManager.updateLocationAsync()
         
         addAnnoations(hospitals: hospitals)
     }
@@ -42,71 +45,11 @@ class MapScreen: UIViewController {
             getDirections()
     }
     
-    //LocationManager
-    func setUpLocationManager() {
-        locationManager.delegate        = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
     
     //MARK: - Funktion, dass in die Map reinzoom in die Mitte von der Location vom User aus
-    func centerViewOnUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region  = MKCoordinateRegion.init(center: location, latitudinalMeters:  regionInMeters, longitudinalMeters:  regionInMeters)
-            mapView.setRegion(region, animated: true)
-        }
-    }
-    
-    //MARK: - Funktion checkt die Authorisation für Locations vong Einstellungen her vom iPhone für die App
-    func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setUpLocationManager()
-            checkLocationAuthorization()
-        } else {
-            //Benachrichtigung an den User, dass er seine Location erlauben muss
-        }
-    }
-    
-    //MARK: - Check Location Authorization - Funktion, dass die Authorisation des Users checkt, die er einem gegeben hat.
-    /**
-     - .authorizedWhenInUse
-            Location kann nur gecheckt werden, wenn die App in Nutzung ist
-     - .denied
-            Location wurde nicht genehmigt
-     - .notDetermined
-            User hat noch nicht geklickt, ob er die Location genehmigt oder nicht
-            Fragt nach der Genehmigung
-     - .restricted
-            Location ist nur bedingt möglich
-     - .authorizedAlways
-            Location kann immer im Hintergrund gecheckt werden, auch wenn die App "aus" ist
-     */
-    func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            startTrackingUserLocation()
-        case .denied:
-            //show alert instructing them how to turn on permission
-            print("auth denied!!!!!!")
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            break
-        case .restricted:
-            //show an alert letting them know whats up
-            break
-        case .authorizedAlways:
-            break
-        @unknown default:
-            break
-        }
-    }
-    
-    //MARK: - Funktion, wenn der User die Authorisation gegeben hat, die Location "when in use" genehmigt wurde
-    func startTrackingUserLocation() {
-        mapView.showsUserLocation = true //Location dot (der blaue Punkt)
-        centerViewOnUserLocation()
-        locationManager.startUpdatingLocation() //Delegate Methode mit dem updaten der Location
-        previousLocation = getCenterLocation(for: mapView)
+    func centerViewOnUserLocation(location: CLLocation) {
+        let region  = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
     }
     
     //MARK: - Funktion, dass die Mitte der Map halten soll
@@ -119,10 +62,11 @@ class MapScreen: UIViewController {
     
     //MARK: - Funktion, um von der User Lcoation und der Ziellocation einen Weg zu bekommen
     func getDirections() {
-        guard let location = locationManager.location?.coordinate else { //schaut ob man die Location vom User bereits hat
+        guard let location = locationManager.lastLocation?.coordinate else { //schaut ob man die Location vom User bereits hat
             //TODO: Inform user we don't have their current location
             return
         }
+        
         let request     = createDirectionsRequest(from: location)
         let directions  = MKDirections(request: request)
         resetMapView(withNew: directions)
@@ -163,25 +107,6 @@ class MapScreen: UIViewController {
             let _ = directionsArray.map {
                 $0.cancel()
         }
-    }
-}
-
-
-
-extension MapScreen: CLLocationManagerDelegate {
-    //MARK: - Funktion wird immer aufgerufen, wenn der User die Location updated
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        //Wenn die Lokalisation vom User geupdatet wird
-        guard let location = locations.last else {
-            return //wenn keine Location da ist. Kondition nicht erfüllt, dann passiert nichts
-        }
-        let locationCenter = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude) //users last known location
-        let region = MKCoordinateRegion.init(center: locationCenter, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters) //die view vom users center location wird angepasst
-        }
-    
-    //MARK: - Funktion, dass immer aufgerufen wird, wenn die User Authorisation geändert wurde
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
     }
 }
    
