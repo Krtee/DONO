@@ -14,21 +14,15 @@ import CoreData
 //3. Then
 
 class LifeSaverUnitTests: XCTestCase {
-    var sut: Hospitals!
     var testklasse: CoreDataService!
     
-    
-
     override func setUp() {
         super.setUp()
-        let container = NSPersistentContainer(name: "LifeSaver")
-        sut = Hospitals(context: container.newBackgroundContext())
         
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         
         initStubs()
-        sut = Hospitals(context: container.newBackgroundContext())
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
 
@@ -38,30 +32,17 @@ class LifeSaverUnitTests: XCTestCase {
         super.tearDown()
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
-    /*func testCreateHospital() {
+    func testCreateHospital() {
         //Given - the parameter of hospitals
         let hospitalID = "Marienhospital1"
         let name = "Marienhospital1"
         let street = "Böheimstraße 371"
         let postCode = 70199
-        let longitude = "9.163325"
-        let latitude = "48.760981"
+        let longitude = 9.163325
+        let latitude = 48.760981
         
         //When add hospitals
-        let hospitals = sut.insertHospitalItems(hospitalID: "Marienhospital1", name: "Marienhospital1", street: "Böheimstraße 371", postCode: 70199, longitude: 9.163325, latitude: 48.760981)
+        let hospitals = insertHospitalItem(hospitalID: hospitalID, name: name, street: street, postCode: Int64(postCode), longitude: longitude, latitude: latitude)
         
         //Assert: return hospital item
         XCTAssertNotNil(hospitals)
@@ -70,63 +51,29 @@ class LifeSaverUnitTests: XCTestCase {
     func testFetchAllHospitals() {
         //Given - storage with the hospital item
         //When fetch
-        let results = sut.fetchAll()
+        let results = loadData()
         
         //Assert return five hospital items
-        XCTAssertEqual(results.count, 5)
+        XCTAssertEqual(results.count, 3)
     }
     
-    func testRemoveHospitals() {
-        //Given a item in persistent store
-        let items = sut.fetchAll()
-        let item = items[0]
+    private func loadData() -> [Hospitals] {
+        let fetchRequest: NSFetchRequest<Hospitals> = Hospitals.fetchRequest() //Nur die Anfrage
         
-        let numberOfItems = items.count
+        do {
+            let resultArray = try mockPersistantContainer.viewContext.fetch(fetchRequest)
+            return resultArray
+        } catch {
+            print("Fehler beim Laden der Daten", error.localizedDescription)
+        }
         
-        //When remove an item
-        sut.remove(hospitalID: item.hospitalID)
-        sut.save()
-        
-        //Assert number of item - 1
-        XCTAssertEqual(numberOfItemsInPersistentStore(), numberOfItems-1)
+        return []
     }
-     
-     func textSave() {
-         //Given
-         let hospitalID = "Marienhospital1"
-         let name = "Marienhospital1"
-         let street = "Böheimstraße 371"
-         let postCode = 70199
-         let longitude = "9.163325"
-         let latitude = "48.760981"
-         
-         let expect = expectation(description: "Context Saved")
-         
-         waitForSavedNotification { (notification) in
-             expect.fulfill()
-         }
-         
-         _ = sut.insertHospitalItem(hospitalID: "Marienhospital", name: "Marienhospital", street: "Böheimstraße 37", postCode: 70199, longitude: 9.163325, latitude: 48.760981)
-         
-         //When save
-         sut.save()
-         
-         //Assert save is called via notification (wait)
-         waitForExpectations(timeout: 1, handler nil)
-     }
-     */
-
-    func numberOfItemsInPersistentStore() -> Int {
-        let request: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "Hospitals")
-        let results = try! mockPersistantContainer.viewContext.fetch(request)
-    }
-    
-    
     
     //MARK: - Mock up container: NSInMemeoryStoreType - in-memory data store (fake)
     lazy var mockPersistantContainer: NSPersistentContainer = {
         //initialize the container with a customized managedObjectModel
-        let container = NSPersistentContainer(name: "PersistentHospitalList", managedObjectModel: self.managedObjectModel)
+        let container = NSPersistentContainer(name: "PersistentHospitalTest", managedObjectModel: self.managedObjectModel)
         let description = NSPersistentStoreDescription()
         description.type = NSInMemoryStoreType
         description.shouldAddStoreAsynchronously = false
@@ -142,6 +89,7 @@ class LifeSaverUnitTests: XCTestCase {
                 fatalError("Create an in-mem coordinator failed \(error)")
             }
         }
+        
         return container
     }()
     
@@ -154,19 +102,6 @@ class LifeSaverUnitTests: XCTestCase {
     
     //MARK: - Stub - canned responses - Insert Items, putting items into the database as objects
     func initStubs() {
-        func insertHospitalItem(hospitalID: String, name: String, street: String, postCode: Int64, longitude: Double, latitude: Double) -> Hospitals {
-            let hospitalObject = NSEntityDescription.insertNewObject(forEntityName: "Hospitals", into: mockPersistantContainer.viewContext)
-            
-            hospitalObject.setValue(hospitalID, forKey: "hospitalID")
-            hospitalObject.setValue(name, forKey: "Name")
-            hospitalObject.setValue(street, forKey: "Address")
-            hospitalObject.setValue(postCode, forKey: "PostCode")
-            hospitalObject.setValue(longitude, forKey: "Longitutde")
-            hospitalObject.setValue(latitude, forKey: "Latitude")
-            
-            return hospitalObject as? Hospitals ?? <#default value#>
-        }
-        
         insertHospitalItem(hospitalID: "Marienhospital", name: "Marienhospital", street: "Böheimstraße 37", postCode: 70199, longitude: 9.163325, latitude: 48.760981)
         insertHospitalItem(hospitalID: "Kliniken Schmieder Stuttgart", name: "Kliniken Schmieder Stuttgart", street: "Rötestraße 18a", postCode: 70197, longitude: 9.156899, latitude: 48.769740)
         insertHospitalItem(hospitalID: "Diakonie-Klinikum Stuttgart", name: "Diakonie-Klinikum Stuttgart", street: "Rosenbergstraße 38", postCode: 70176, longitude: 9.164053, latitude: 48.781406)
@@ -177,6 +112,17 @@ class LifeSaverUnitTests: XCTestCase {
           print("Create fakes error \(error)")
             }
         }
+    
+    func insertHospitalItem(hospitalID: String, name: String, street: String, postCode: Int64, longitude: Double, latitude: Double) {
+        let hospitalObject = NSEntityDescription.insertNewObject(forEntityName: "Hospitals", into: mockPersistantContainer.viewContext)
+        
+        hospitalObject.setValue(hospitalID, forKey: "hospitalID")
+        hospitalObject.setValue(name, forKey: "Name")
+        hospitalObject.setValue(street, forKey: "street")
+        hospitalObject.setValue(postCode, forKey: "postCode")
+        hospitalObject.setValue(longitude, forKey: "longitude")
+        hospitalObject.setValue(latitude, forKey: "latitude")
+    }
     
     //MARK: - Fetch Request - makes sure that every test case starts end ends with the same environment and condition. Removes all stubs from it after each test
     func flushData() {

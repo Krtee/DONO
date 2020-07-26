@@ -47,7 +47,6 @@ class CoreDataService {
         }
     }
     
-    
     //MARK: - CRUD - Create/Read/Update/Delete
     
     //MARK: - Create Information

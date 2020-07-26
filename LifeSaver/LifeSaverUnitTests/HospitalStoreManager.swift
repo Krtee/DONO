@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class HospitalStoreManager {
-    let persistenContainer: NSPersistenContainer!
+    let persistentContainer: NSPersistentContainer!
     
     //MARK: - Init with dependency
     init(container: NSPersistentContainer) {
@@ -19,13 +20,11 @@ class HospitalStoreManager {
     
     convenience init() {
         //Use the default container for production environment
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Can not get shared app delegate")
-        }
-        self.init(container: appDelegate.persistenContainer)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.init(container: appDelegate.persistentContainer)
     }
     
-    lazy var backgroundContext: NSMangagedObjectContext = {
+    lazy var backgroundContext: NSManagedObjectContext = {
         return self.persistentContainer.newBackgroundContext()
     }()
 }
