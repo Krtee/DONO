@@ -186,7 +186,6 @@ extension MapScreen: CLLocationManagerDelegate {
 }
    
 
-
 extension MapScreen: MKMapViewDelegate {
     //MARK: - Funktion für das Aussehen der Route
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
