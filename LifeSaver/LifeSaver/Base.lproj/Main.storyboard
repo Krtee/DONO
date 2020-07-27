@@ -103,11 +103,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iL-ji6">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iL-ji6">
                                                         <rect key="frame" x="20" y="70.333333333333329" width="334" height="114.99999999999999"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -129,7 +129,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-Ex-8Qw">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passwort" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-Ex-8Qw">
                                                         <rect key="frame" x="20" y="54.333333333333343" width="334" height="131"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -623,14 +623,6 @@
                                     <outlet property="delegate" destination="kSP-Zp-98l" id="ejV-jZ-I16"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4n-a1-6HL">
-                                <rect key="frame" x="176" y="379" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Direction"/>
-                                <connections>
-                                    <action selector="DirectionButtonPressed:" destination="kSP-Zp-98l" eventType="touchUpInside" id="c9a-DS-7fI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9x-cg-VeK">
                                 <rect key="frame" x="384" y="0.0" width="30" height="30"/>
                                 <constraints>
@@ -642,6 +634,13 @@
                                     <segue destination="cO7-M8-BOT" kind="show" id="Td6-5T-duI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4n-a1-6HL">
+                                <rect key="frame" x="8" y="8" width="62" height="30"/>
+                                <state key="normal" title="Direction"/>
+                                <connections>
+                                    <action selector="DirectionButtonPressed:" destination="kSP-Zp-98l" eventType="touchUpInside" id="c9a-DS-7fI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -649,8 +648,10 @@
                             <constraint firstAttribute="bottom" secondItem="9L4-dY-rhB" secondAttribute="bottom" constant="20" symbolic="YES" id="1q6-pZ-wKL"/>
                             <constraint firstItem="A9x-cg-VeK" firstAttribute="trailing" secondItem="yaI-Va-yM9" secondAttribute="trailing" id="KWD-hF-V7b"/>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="trailing" secondItem="yaI-Va-yM9" secondAttribute="trailing" id="QBg-lh-SC1"/>
+                            <constraint firstItem="o4n-a1-6HL" firstAttribute="leading" secondItem="yaI-Va-yM9" secondAttribute="leading" constant="8" id="Tao-LH-m26"/>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" id="USd-F7-1bx"/>
                             <constraint firstItem="A9x-cg-VeK" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" id="UiI-Q0-HL4"/>
+                            <constraint firstItem="o4n-a1-6HL" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" constant="8" id="vqN-Eu-JH4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yaI-Va-yM9"/>
                     </view>
@@ -920,11 +921,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-df-dsc">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-df-dsc">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -946,11 +947,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-Yi-ZnR">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-Yi-ZnR">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <nil key="textColor"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -972,11 +973,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-1I-B80">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-1I-B80">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1117,6 +1118,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qDF-kt-gkz"/>
-        <segue reference="3p1-ZF-F7B"/>
+        <segue reference="f2U-DM-41X"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,7 +18,8 @@ class MapScreen: UIViewController {
     
     let locationManager = CoreLocationService.shared
     
-    var hospitals: HospitalAnnotation?
+    var annotations: HospitalAnnotation?
+    var hospitals: Hospitals?
     
     var directionsArray: [MKDirections] = []
     let regionInMeters: Double  = 10000
@@ -37,7 +38,8 @@ class MapScreen: UIViewController {
         locationManager.updateCallback = centerViewOnUserLocation
         locationManager.updateLocationAsync()
         
-        addAnnoations(hospitals: hospitals)
+        annotations?.addAnnoations(hospitals: hospitals)
+        //addAnnoations(hospitals: hospitals)
     }
     
     @IBAction func DirectionButtonPressed(_ sender: UIButton) {
