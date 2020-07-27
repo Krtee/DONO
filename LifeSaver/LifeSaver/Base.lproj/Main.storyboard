@@ -634,13 +634,6 @@
                                     <segue destination="cO7-M8-BOT" kind="show" id="Td6-5T-duI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4n-a1-6HL">
-                                <rect key="frame" x="8" y="8" width="62" height="30"/>
-                                <state key="normal" title="Direction"/>
-                                <connections>
-                                    <action selector="DirectionButtonPressed:" destination="kSP-Zp-98l" eventType="touchUpInside" id="c9a-DS-7fI"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -648,16 +641,13 @@
                             <constraint firstAttribute="bottom" secondItem="9L4-dY-rhB" secondAttribute="bottom" constant="20" symbolic="YES" id="1q6-pZ-wKL"/>
                             <constraint firstItem="A9x-cg-VeK" firstAttribute="trailing" secondItem="yaI-Va-yM9" secondAttribute="trailing" id="KWD-hF-V7b"/>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="trailing" secondItem="yaI-Va-yM9" secondAttribute="trailing" id="QBg-lh-SC1"/>
-                            <constraint firstItem="o4n-a1-6HL" firstAttribute="leading" secondItem="yaI-Va-yM9" secondAttribute="leading" constant="8" id="Tao-LH-m26"/>
                             <constraint firstItem="9L4-dY-rhB" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" id="USd-F7-1bx"/>
                             <constraint firstItem="A9x-cg-VeK" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" id="UiI-Q0-HL4"/>
-                            <constraint firstItem="o4n-a1-6HL" firstAttribute="top" secondItem="yaI-Va-yM9" secondAttribute="top" constant="8" id="vqN-Eu-JH4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yaI-Va-yM9"/>
                     </view>
                     <navigationItem key="navigationItem" id="17i-4r-T5X"/>
                     <connections>
-                        <outlet property="directionButton" destination="o4n-a1-6HL" id="4mp-Vb-UuM"/>
                         <outlet property="mapView" destination="9L4-dY-rhB" id="RaX-Q1-GOu"/>
                         <segue destination="I3J-xt-cqF" kind="show" identifier="goToHospitalDetailsSegue" id="qDF-kt-gkz"/>
                     </connections>
@@ -950,7 +940,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-Yi-ZnR">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>

@@ -13,23 +13,19 @@ import CoreLocation
 
 class MapScreen: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var hospitalLabel: UILabel!
-    @IBOutlet weak var directionButton: UIButton!
+    //@IBOutlet weak var hospitalLabel: UILabel!
     
     let locationManager = CoreLocationService.shared
-    
-    var annotations: HospitalAnnotation?
+    var annotationManager : AnnotationManager?
     var hospitals: Hospitals?
-    
-    var directionsArray: [MKDirections] = []
     let regionInMeters: Double  = 10000
     let geoCoder                = CLGeocoder()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        directionButton.layer.cornerRadius = directionButton.frame.size.height/2
         mapView.showsUserLocation = true
+        annotationManager = AnnotationManager(forMapView: mapView)
         
         guard let hospitals = CoreDataService.defaults.loadData() else {
             return
@@ -38,13 +34,7 @@ class MapScreen: UIViewController {
         locationManager.updateCallback = centerViewOnUserLocation
         locationManager.updateLocationAsync()
         
-        annotations?.addAnnoations(hospitals: hospitals)
-        //addAnnoations(hospitals: hospitals)
-    }
-    
-    @IBAction func DirectionButtonPressed(_ sender: UIButton) {
-            //TODO: Get Directions
-            getDirections()
+        annotationManager?.addAnnoations(forHospitals: hospitals)
     }
     
     
@@ -60,55 +50,6 @@ class MapScreen: UIViewController {
         let longitude   = mapView.centerCoordinate.longitude
         
         return CLLocation(latitude: latitude, longitude: longitude)
-    }
-    
-    //MARK: - Funktion, um von der User Lcoation und der Ziellocation einen Weg zu bekommen
-    func getDirections() {
-        guard let location = locationManager.lastLocation?.coordinate else { //schaut ob man die Location vom User bereits hat
-            //TODO: Inform user we don't have their current location
-            return
-        }
-        
-        let request     = createDirectionsRequest(from: location)
-        let directions  = MKDirections(request: request)
-        resetMapView(withNew: directions)
-        
-        //Nachdem man das MKDirections Objekt hat, kann man den Weg hier berechnen
-        directions.calculate {
-            [unowned self] (response, error) in
-            //TODO: Handle error if needed
-            guard let response = response else { return } //TODO: Show response not available in an alert
-
-            //Handled wenn man mehr als eine Route zurück bekommt
-            for route in response.routes {
-                self.mapView.addOverlay(route.polyline)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
-            }
-        }
-    }
-    
-    //MARK: - Helper Funktion für getDirections() für das MKDirections.request, um eine Instanz von MKDirections erstellen zu können, benötigt man eine request (wurde in Z. 116 weiteregegeben)
-    func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request {
-        let destinationCoordinate       = getCenterLocation(for: mapView).coordinate
-        let startingLocation            = MKPlacemark(coordinate: coordinate)
-        let destination                 = MKPlacemark(coordinate: destinationCoordinate)
-        
-        let request                     = MKDirections.Request()
-        request.source                  = MKMapItem(placemark: startingLocation)
-        request.destination             = MKMapItem(placemark: destination)
-        request.transportType           = .automobile //TODO: über was machen wir die Direction? Auto/Fuß/Öffentlich??
-        request.requestsAlternateRoutes = true
-        
-        return request
-    }
-        
-    //MARK: - Reset Map View, Routen werden entfernt, damit die sich nicht überlappen
-    func resetMapView (withNew directions: MKDirections) {
-            mapView.removeOverlays(mapView.overlays)
-            directionsArray.append(directions)
-            let _ = directionsArray.map {
-                $0.cancel()
-        }
     }
 }
    
@@ -157,18 +98,6 @@ extension MapScreen: MKMapViewDelegate {
             annoView!.annotation = annotation
         }
             return annoView
-    }
-    
-    func addAnnoations(hospitals: [Hospitals]) {
-        for hospital in hospitals {
-            let longitude = hospital.longitude
-            let latitude = hospital.latitude
-            
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            let anno = HospitalAnnotation(hospital: hospital)
-            anno.coordinate = coordinate
-            mapView.addAnnotation(anno)
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
