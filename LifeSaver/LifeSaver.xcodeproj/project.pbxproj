@@ -33,12 +33,13 @@
 		B642EC5324BDE78500F779EC /* CalendarVars.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5224BDE78500F779EC /* CalendarVars.swift */; };
 		B642EC5524BDE7A000F779EC /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5424BDE7A000F779EC /* CalendarViewController.swift */; };
 		B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */; };
-		B6739B9D24CC793F002ECEA7 /* HospitalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */; };
+		B6739B9D24CC793F002ECEA7 /* AnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739B9C24CC793F002ECEA7 /* AnnotationManager.swift */; };
 		B6739BA524CCA09A002ECEA7 /* LifeSaverUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739BA424CCA09A002ECEA7 /* LifeSaverUnitTests.swift */; };
 		B6739BAE24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6739BAC24CCDE04002ECEA7 /* PersistentHospitalTest.xcdatamodeld */; };
 		B6739BB024CCE153002ECEA7 /* HospitalStoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6739BAF24CCE153002ECEA7 /* HospitalStoreManager.swift */; };
 		B6C9D74E24BD93F100CA3263 /* HospitalListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */; };
 		B6C9D75024BDA94100CA3263 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */; };
+		B6EBB0B124CF150B00386022 /* HospitalAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6EBB0B024CF150B00386022 /* HospitalAnnotation.swift */; };
 		B6F1D6C324CDFE5B008A90DE /* LifeSaverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1D6C024CDFC04008A90DE /* LifeSaverTests.swift */; };
 		B6F1D6C424CE000C008A90DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66274B66249FBB5300F433E2 /* AppDelegate.swift */; };
 		B6F1D6C624CE23DF008A90DE /* CoreLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F1D6C524CE23DF008A90DE /* CoreLocationService.swift */; };
@@ -92,7 +93,7 @@
 		B642EC5224BDE78500F779EC /* CalendarVars.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVars.swift; path = View/CalendarVars.swift; sourceTree = "<group>"; };
 		B642EC5424BDE7A000F779EC /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		B642EC5624BDE7BC00F779EC /* ZoomAndSnapFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZoomAndSnapFlowLayout.swift; path = View/ZoomAndSnapFlowLayout.swift; sourceTree = "<group>"; };
-		B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HospitalAnnotation.swift; path = LifeSaver/HospitalAnnotation.swift; sourceTree = SOURCE_ROOT; };
+		B6739B9C24CC793F002ECEA7 /* AnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnnotationManager.swift; path = LifeSaver/AnnotationManager.swift; sourceTree = SOURCE_ROOT; };
 		B6739BA224CCA09A002ECEA7 /* LifeSaverUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeSaverUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6739BA424CCA09A002ECEA7 /* LifeSaverUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeSaverUnitTests.swift; sourceTree = "<group>"; };
 		B6739BA624CCA09A002ECEA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		B6739BAF24CCE153002ECEA7 /* HospitalStoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalStoreManager.swift; sourceTree = "<group>"; };
 		B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalListTableViewController.swift; sourceTree = "<group>"; };
 		B6C9D74F24BDA94100CA3263 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		B6EBB0B024CF150B00386022 /* HospitalAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HospitalAnnotation.swift; sourceTree = "<group>"; };
 		B6F1D6BD24CDFA83008A90DE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6F1D6C024CDFC04008A90DE /* LifeSaverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LifeSaverTests.swift; path = LifeSaverUnitTests/LifeSaverTests.swift; sourceTree = SOURCE_ROOT; };
 		B6F1D6C524CE23DF008A90DE /* CoreLocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationService.swift; sourceTree = "<group>"; };
@@ -205,9 +207,10 @@
 				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,
 				66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */,
 				66CBCCAE24BCD82B00708A97 /* MapScreen.swift */,
-				B6739B9C24CC793F002ECEA7 /* HospitalAnnotation.swift */,
+				B6739B9C24CC793F002ECEA7 /* AnnotationManager.swift */,
 				66CBCCAF24BCD82B00708A97 /* QRCodeGenerator.swift */,
 				B63F110724CB9C2F00468984 /* HospitalDetailsViewController.swift */,
+				B6EBB0B024CF150B00386022 /* HospitalAnnotation.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -381,8 +384,9 @@
 				66CBCCB324BCD82B00708A97 /* QRCodeGenerator.swift in Sources */,
 				66CBCCAB24BCD7E900708A97 /* homeCollectionViewController.swift in Sources */,
 				66274BDF24A1159200F433E2 /* RegisterViewController.swift in Sources */,
-				B6739B9D24CC793F002ECEA7 /* HospitalAnnotation.swift in Sources */,
+				B6739B9D24CC793F002ECEA7 /* AnnotationManager.swift in Sources */,
 				66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */,
+				B6EBB0B124CF150B00386022 /* HospitalAnnotation.swift in Sources */,
 				66E78FC824C5F2FC002541AA /* button.swift in Sources */,
 				B642EC4F24BDE73800F779EC /* TimeCollectionViewCell.swift in Sources */,
 				B642EC5724BDE7BD00F779EC /* ZoomAndSnapFlowLayout.swift in Sources */,

@@ -103,11 +103,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iL-ji6">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4At-iL-ji6">
                                                         <rect key="frame" x="20" y="70.333333333333329" width="334" height="114.99999999999999"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
@@ -129,7 +129,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-Ex-8Qw">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passwort" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SqZ-Ex-8Qw">
                                                         <rect key="frame" x="20" y="54.333333333333343" width="334" height="131"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -621,14 +621,6 @@
                                     <outlet property="delegate" destination="kSP-Zp-98l" id="ejV-jZ-I16"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o4n-a1-6HL">
-                                <rect key="frame" x="176" y="379" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Direction"/>
-                                <connections>
-                                    <action selector="DirectionButtonPressed:" destination="kSP-Zp-98l" eventType="touchUpInside" id="c9a-DS-7fI"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A9x-cg-VeK">
                                 <rect key="frame" x="384" y="0.0" width="30" height="30"/>
                                 <constraints>
@@ -654,7 +646,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="17i-4r-T5X"/>
                     <connections>
-                        <outlet property="directionButton" destination="o4n-a1-6HL" id="4mp-Vb-UuM"/>
                         <outlet property="mapView" destination="9L4-dY-rhB" id="RaX-Q1-GOu"/>
                         <segue destination="I3J-xt-cqF" kind="show" identifier="goToHospitalDetailsSegue" id="qDF-kt-gkz"/>
                     </connections>
@@ -671,47 +662,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="496.33333333333326"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Set" translatesAutoresizingMaskIntoConstraints="NO" id="j7O-XJ-Z3z">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Set" translatesAutoresizingMaskIntoConstraints="NO" id="j7O-XJ-Z3z">
                                 <rect key="frame" x="45" y="53" width="324" height="388"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="324" id="MoS-Vo-n8s"/>
+                                    <constraint firstAttribute="height" constant="388" id="hkb-F2-BR1"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adresse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0n-nn-7wP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adresse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0n-nn-7wP">
                                 <rect key="frame" x="45" y="530" width="324" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distanz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kuA-fY-UCl">
-                                <rect key="frame" x="45" y="566" width="324" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr7-Um-qjg">
-                                <rect key="frame" x="229" y="622" width="140" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qr7-Um-qjg">
+                                <rect key="frame" x="234" y="622" width="135" height="30"/>
                                 <state key="normal" title="Zur Terminbuchung"/>
                                 <connections>
                                     <segue destination="9hW-W9-fVX" kind="show" id="1Yz-59-8YB"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Krankenhaus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CZ-qd-IYa">
-                                <rect key="frame" x="45" y="489" width="324" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Krankenhaus" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CZ-qd-IYa">
+                                <rect key="frame" x="45" y="489" width="324" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="x0n-nn-7wP" secondAttribute="trailing" constant="45" id="5FK-SQ-2mh"/>
+                            <constraint firstItem="1CZ-qd-IYa" firstAttribute="top" secondItem="j7O-XJ-Z3z" secondAttribute="bottom" constant="48" id="6El-kI-2Cn"/>
+                            <constraint firstItem="1CZ-qd-IYa" firstAttribute="leading" secondItem="mow-ne-jK0" secondAttribute="leading" constant="45" id="FQE-va-ydt"/>
+                            <constraint firstItem="mow-ne-jK0" firstAttribute="trailing" secondItem="1CZ-qd-IYa" secondAttribute="trailing" constant="45" id="Hme-Yj-zpE"/>
+                            <constraint firstItem="mow-ne-jK0" firstAttribute="trailing" secondItem="j7O-XJ-Z3z" secondAttribute="trailing" constant="45" id="K3H-OM-C6D"/>
+                            <constraint firstItem="j7O-XJ-Z3z" firstAttribute="leading" secondItem="mow-ne-jK0" secondAttribute="leading" constant="45" id="KHa-pp-a04"/>
+                            <constraint firstItem="qr7-Um-qjg" firstAttribute="top" secondItem="x0n-nn-7wP" secondAttribute="bottom" constant="71" id="V2w-MQ-deN"/>
+                            <constraint firstItem="x0n-nn-7wP" firstAttribute="leading" secondItem="5QX-HO-gQh" secondAttribute="leading" constant="45" id="ej6-7Y-xBj"/>
+                            <constraint firstItem="x0n-nn-7wP" firstAttribute="top" secondItem="1CZ-qd-IYa" secondAttribute="bottom" constant="20.670000000000002" id="esl-A2-FCM"/>
+                            <constraint firstAttribute="trailing" secondItem="qr7-Um-qjg" secondAttribute="trailing" constant="45" id="k1X-MU-Bg7"/>
+                            <constraint firstItem="j7O-XJ-Z3z" firstAttribute="top" secondItem="mow-ne-jK0" secondAttribute="top" constant="53" id="wRH-4H-azq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mow-ne-jK0"/>
                     </view>
                     <navigationItem key="navigationItem" id="oDv-px-v9p"/>
                     <connections>
                         <outlet property="addressLabel" destination="x0n-nn-7wP" id="lNv-Os-i9C"/>
-                        <outlet property="distanceLabel" destination="kuA-fY-UCl" id="9vu-vO-O83"/>
                         <outlet property="hospitalNameLabel" destination="1CZ-qd-IYa" id="Owd-io-zAu"/>
                     </connections>
                 </viewController>
@@ -918,11 +914,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-df-dsc">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eYs-df-dsc">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -944,11 +940,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-Yi-ZnR">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUW-Yi-ZnR">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -970,11 +966,11 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-1I-B80">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DOT-1I-B80">
                                                         <rect key="frame" x="8" y="29" width="363" height="34"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -13,7 +13,6 @@ class HospitalListTableViewController: UITableViewController {
 
     @IBOutlet weak var hospitalListTableView: UITableView!
     
-    var selectedHospital: Hospitals?
     var hospitalListArray = [Hospitals]()
     //Ein Array zum zwischenspeichern der Daten/Objekte aus dem Context
     var hospital = [Hospitals]() {
@@ -28,9 +27,6 @@ class HospitalListTableViewController: UITableViewController {
         hospitalListTableView.delegate = self
         hospitalListTableView.dataSource = self
         hospitalListTableView.rowHeight = 80
-        
-        print("File: ")
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
         loadData()
     }
@@ -112,10 +108,8 @@ class HospitalListTableViewController: UITableViewController {
     func loadData() {
         hospital = CoreDataService.defaults.loadData()!
         
-        if hospital != nil {
-            self.hospitalListArray = hospital
-            self.hospitalListTableView.reloadData()
-        }
+        self.hospitalListArray = hospital
+        self.hospitalListTableView.reloadData()
     }
     
     //MARK: - Error message - Fehlermeldung die angezeigt wird, wenn die Eingabefelder nicht vom User befüllt werden
@@ -144,23 +138,19 @@ class HospitalListTableViewController: UITableViewController {
         
         return cell
     }
-    
-   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        print("Sektion:  \(indexPath.section)")
-        print("Zeile:  \(indexPath.row)")
-         
-        selectedHospital = hospitalListArray[indexPath.row]
-    }
-}
 
-
-
-//MARK: - Löschen einzelner Elemente
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        /*if editingStyle == .delete {
-            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &Hospitals)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &hospital)
             tableView.reloadData()
-        }*/
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if sender is UITableViewCell && segue.destination is HospitalDetailsViewController {
+            let cell = sender as! UITableViewCell
+            let indexPathForSelectedCell = tableView.indexPath(for: cell)
+            (segue.destination as! HospitalDetailsViewController).hospital = hospitalListArray[indexPathForSelectedCell!.row]
+        }
     }
 }
