@@ -71,7 +71,7 @@
 		66274BDE24A1159200F433E2 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		66274BEE24A16A0500F433E2 /* DonateTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		667CEAC824CC76D800ED3BE1 /* innerViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = innerViews.swift; sourceTree = "<group>"; };
-		66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = homeCollectionViewController.swift; path = ViewController/homeCollectionViewController.swift; sourceTree = "<group>"; };
+		66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeCollectionViewController.swift; sourceTree = "<group>"; };
 		66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = ViewController/LandingPageViewController.swift; sourceTree = "<group>"; };
 		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		66CBCCAE24BCD82B00708A97 /* MapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
@@ -144,7 +144,6 @@
 				B6C32D7524BC73CB00041D12 /* ViewController */,
 				66274B66249FBB5300F433E2 /* AppDelegate.swift */,
 				66274B68249FBB5300F433E2 /* SceneDelegate.swift */,
-				66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */,
 				66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */,
 				B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */,
 				66274B6C249FBB5300F433E2 /* Main.storyboard */,
@@ -177,6 +176,7 @@
 		B6C32D7524BC73CB00041D12 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */,
 				B642EC5424BDE7A000F779EC /* CalendarViewController.swift */,
 				66274B6A249FBB5300F433E2 /* ViewController.swift */,
 				66274BDE24A1159200F433E2 /* RegisterViewController.swift */,

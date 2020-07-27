@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import CoreData
+import UserNotifications
+
 
 class QRCodeGenerator: UIViewController {
     @IBOutlet weak var qrImageView: UIImageView!
@@ -25,7 +27,41 @@ class QRCodeGenerator: UIViewController {
         let defaults = UserDefaults.standard
         let id: String? = defaults.string(forKey: "AppointmentID")
 
-        createQRCode(appointmentID: id ?? "no id")
+        let qrCodeworked = createQRCode(appointmentID: id ?? "no id")
+        
+        if qrCodeworked == true {
+            let notificationCenter = UNUserNotificationCenter.current()
+            let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+            
+            notificationCenter.getNotificationSettings { (settings) in
+              if settings.authorizationStatus == .authorized {
+                
+                let date = Date(timeIntervalSinceNow: 3600)
+                let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
+                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+                // Notifications not allowed
+                let identifier = "Local Notification"
+                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+
+                notificationCenter.add(request) { (error) in
+                    if let error = error {
+                        print("Error \(error.localizedDescription)")
+                    }
+                }
+              }
+            }
+
+        }
+    }
+    
+    func scheduleNotification(notificationType: String) {
+        
+        let content = UNMutableNotificationContent() // Содержимое уведомления
+        
+        content.title = notificationType
+        content.body = "This is example how to create " + notificationType Notifications"
+        content.sound = UNNotificationSound.default
+        content.badge = 1
     }
         //Button 1
     @IBAction func generateQRCodeButtonPressed(_ sender: Any) {
