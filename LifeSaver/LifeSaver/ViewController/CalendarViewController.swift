@@ -121,12 +121,12 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBAction func setAppointment(_ sender: Any) {
         let defaults = UserDefaults.standard
         
-        let hospital: Int? = defaults.integer(forKey: "Hospital")
+        let hospital: String? = defaults.string(forKey: "Hospital")
         let donateType: String? = defaults.string(forKey: "DonateType")
-        let userId: Int? = defaults.integer(forKey: "userID")
+        let userId: String? = defaults.string(forKey: "userID")
         
         
-        if hospital != 0 && donateType != "" && userId != 0 {
+        if hospital != "" && donateType != "" && userId != "" {
             print("\(String(describing: hospital))+\(String(describing: donateType))+\(String(describing: userId))")
 
             if selectedDay != -1 && selectedTime != "" && selectedMonth != -1 {
@@ -147,13 +147,14 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 // Create date from components
                 let userCalendar = Calendar.current
                 let appointmentDate = userCalendar.date(from: dateComponents)
+                    
+                let appointment = CoreDataAppointmentService.defaults.createAppointment(hospitalID: hospital!, userID: userId!, donatetype: donateType!, appointmentDate: appointmentDate!)
                 
-                if saveData(hospitalID: hospital!, userID: userId!, donatetype: donateType!, appointmentDate: appointmentDate!) {
-                    print("successfully added appointment")
-                }
-                else{
-                    print("could not save appointment")
-                }
+                    if appointment != nil {
+                        print("successfully added appointment")
+                        defaults.set(appointment?.appointmentID, forKey: "AppointmentID")
+                    }
+                    
                 
                 }
                 catch let error{
@@ -452,67 +453,6 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         default:
             fatalError()
         }
-    }
-    
-    func saveData (hospitalID: Int, userID: Int,donatetype: String, appointmentDate: Date)-> Bool {
-        print("i am here")
-        let context = CoreDataService.defaults.persistentContainer.viewContext
-        let entityName = "Appointment"
-        
-        let newEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)
-        
-        let appointment = NSManagedObject(entity: newEntity!, insertInto: context)
-        
-        let requestUser = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        let userpredicate = NSPredicate(format: "userID == %@", userID)
-        requestUser.predicate = userpredicate
-        
-        let requestHospital = NSFetchRequest<NSFetchRequestResult>(entityName: "Hospitals")
-        let hospitalpredicate = NSPredicate(format: " hostpitalID == %@", hospitalID)
-        requestHospital.predicate = hospitalpredicate
-
-        
-        do {
-            let resultsUsers = try context.fetch(requestUser)
-            let resultsHospitals = try context.fetch(requestHospital)
-            
-            var fetchedHospital: NSManagedObject?
-            var fetchedUser: NSManagedObject?
-             
-            for r in resultsUsers {
-                if let result = r as? NSManagedObject {
-                   fetchedUser = result
-                }
-                else{
-                    fetchedUser = nil
-                }
-            }
-            
-            for r in resultsHospitals {
-                if let result = r as? NSManagedObject {
-                    fetchedHospital = result
-                } else{
-                    fetchedHospital = nil
-                }
-            }
-            if fetchedHospital != nil && fetchedUser != nil {
-                appointment.setValue(fetchedHospital, forKey: "hospital")
-                appointment.setValue(fetchedUser, forKey: "patient")
-                appointment.setValue(appointmentDate, forKey: "date")
-            } else {
-                return false
-            }
-            
-            try context.save()
-            return true
-
-        }
-        catch let error {
-        print(error)
-        return false
-        }
-        
-        
     }
     
 }

@@ -18,6 +18,10 @@ class QRCodeGenerator: UIViewController {
     @IBOutlet weak var generateQRButton: UIButton!
     @IBOutlet weak var saveQRCodeButton: UIButton!
     
+    var notifications = NotificationDelegate()
+
+    var fetchedAppointment: Appointment?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,43 +30,20 @@ class QRCodeGenerator: UIViewController {
         
         let defaults = UserDefaults.standard
         let id: String? = defaults.string(forKey: "AppointmentID")
+        
+        fetchedAppointment = CoreDataAppointmentService.defaults.loadfromID(id: id ?? "")
 
-        let qrCodeworked = createQRCode(appointmentID: id ?? "no id")
+        let qrCodeworked = createQRCode()
         
         if qrCodeworked == true {
-            let notificationCenter = UNUserNotificationCenter.current()
-            let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+            notifications.scheduleNotification(notificationTitle: "Reminder", identifier: " First Reminder", notificationBody: "We will remind you a day before your Appointment", triggerdate: Date(timeIntervalSinceNow: 3600))
             
-            notificationCenter.getNotificationSettings { (settings) in
-              if settings.authorizationStatus == .authorized {
-                
-                let date = Date(timeIntervalSinceNow: 3600)
-                let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: date)
-                let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-                // Notifications not allowed
-                let identifier = "Local Notification"
-                let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-
-                notificationCenter.add(request) { (error) in
-                    if let error = error {
-                        print("Error \(error.localizedDescription)")
-                    }
-                }
-              }
+            if fetchedAppointment != nil {
+                notifications.scheduleNotification(notificationTitle: "Reminder", identifier: "AppointmentReminder", notificationBody: "Your is tomorrow! Don't forget it :)", triggerdate: (fetchedAppointment?.date)!)
             }
-
         }
     }
     
-    func scheduleNotification(notificationType: String) {
-        
-        let content = UNMutableNotificationContent() // Содержимое уведомления
-        
-        content.title = notificationType
-        content.body = "This is example how to create " + notificationType Notifications"
-        content.sound = UNNotificationSound.default
-        content.badge = 1
-    }
         //Button 1
     @IBAction func generateQRCodeButtonPressed(_ sender: Any) {
         print("generateQRCodeButton is pressed")
@@ -83,34 +64,26 @@ class QRCodeGenerator: UIViewController {
 
     }
     
-    func createQRCode(appointmentID: String) -> Bool {
-        let context = CoreDataService.defaults.persistentContainer.viewContext
-        
-        let requestAppointment = NSFetchRequest<NSFetchRequestResult>(entityName: "Appointment")
-               let predicate = NSPredicate(format: "userID == %@", appointmentID)
-               requestAppointment.predicate = predicate
+    func createQRCode() -> Bool {
         
         do{
-            let resultsAppointments = try context.fetch(requestAppointment)
-            
-            var fetchedAppointment: NSManagedObject?
              
-            for r in resultsAppointments {
-                if let result = r as? NSManagedObject {
-                    
-                    let jsondata = convertToJSONArray(item: result)
-                   let data = jsondata.data(using: .ascii, allowLossyConversion: false)
-                              let filter = CIFilter(name: "CIQRCodeGenerator")
-                              filter?.setValue(data, forKey: "InputMessage")
-                              let ciImage = filter?.outputImage
-                              let transform = CGAffineTransform(scaleX: 10, y: 10)
-                              let transformImage = ciImage?.transformed(by: transform)
-                              
-                              let image = UIImage(ciImage: transformImage!)
-                              qrImageView.image = image
-                }
+            if fetchedAppointment != nil {
+                let jsondata = convertToJSONArray(item: fetchedAppointment!)
+                let data = jsondata.data(using: .ascii, allowLossyConversion: false)
+                let filter = CIFilter(name: "CIQRCodeGenerator")
+                filter?.setValue(data, forKey: "InputMessage")
+                let ciImage = filter?.outputImage
+                let transform = CGAffineTransform(scaleX: 10, y: 10)
+                let transformImage = ciImage?.transformed(by: transform)
+                let image = UIImage(ciImage: transformImage!)
+                qrImageView.image = image
+                return true
             }
-            return true
+            else {
+                print("could not fetch appointment")
+                return false
+            }
             
         } catch let err {
             print(err)

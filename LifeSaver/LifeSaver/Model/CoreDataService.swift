@@ -47,8 +47,7 @@ class CoreDataService {
         }
     }
     
-    
-    //MARK: - CRUD - Create/Read/(Update)/(Delete)
+    //MARK: - CRUD - Create/Read/Update/Delete
     
     //MARK: - Create Information
     func createHospital(_hospitalID: String, _name: String, _longitude: Double, _latitude: Double, _street: String, _postCode: Int64) -> Hospitals {
@@ -76,6 +75,24 @@ class CoreDataService {
             print("Fehler beim Laden der Daten ", error.localizedDescription)
         }
         return nil
+    }
+    
+    //MARK: - ReadfromId
+    func loadfromID(id: String) -> Hospitals? {
+        let fetchRequest: NSFetchRequest<Hospitals> = Hospitals.fetchRequest() //Nur die Anfrage
+        let hospitalpredicate = NSPredicate(format: " hostpitalID == %@", id)
+        fetchRequest.predicate = hospitalpredicate
+        
+        do {
+            let resultArray = try context.fetch(fetchRequest)
+            for r in resultArray {
+                return r
+            }
+        } catch {
+            print("Fehler beim Laden der Daten ", error.localizedDescription)
+        }
+        return nil
+
     }
     
     //MARK: - Delete

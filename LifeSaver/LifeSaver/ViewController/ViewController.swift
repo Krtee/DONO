@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     let dataSource = ["Viewcontroller one","Viewcontroller two"]
     
     var currentViewControllerIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

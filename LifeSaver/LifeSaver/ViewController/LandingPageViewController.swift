@@ -10,21 +10,16 @@ import UIKit
 import UserNotifications
 
 class LandingPageViewController: UIPageViewController {
+    
+    let notifications = NotificationDelegate()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let center = UNUserNotificationCenter.current()
-        
-        center.requestAuthorization(options: [.alert,.sound]) { (granted, error) in
-            
-        }
-        
-
+        notifications.userRequest()
         // Do any additional setup after loading the view.
     }
-    
-
     /*
     // MARK: - Navigation
 
@@ -34,5 +29,4 @@ class LandingPageViewController: UIPageViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

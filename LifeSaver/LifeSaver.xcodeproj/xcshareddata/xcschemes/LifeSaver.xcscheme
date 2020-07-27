@@ -48,6 +48,16 @@
                ReferencedContainer = "container:LifeSaver.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B6739BA124CCA09A002ECEA7"
+               BuildableName = "LifeSaverUnitTests.xctest"
+               BlueprintName = "LifeSaverUnitTests"
+               ReferencedContainer = "container:LifeSaver.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
