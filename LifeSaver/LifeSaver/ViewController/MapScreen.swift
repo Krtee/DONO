@@ -13,7 +13,6 @@ import CoreLocation
 
 class MapScreen: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
-    //@IBOutlet weak var hospitalLabel: UILabel!
     
     let locationManager = CoreLocationService.shared
     var annotationManager : AnnotationManager?
@@ -23,18 +22,17 @@ class MapScreen: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         mapView.showsUserLocation = true
         annotationManager = AnnotationManager(forMapView: mapView)
         
-        guard let hospitals = CoreDataService.defaults.loadData() else {
-            return
-        }
+        guard let hospitals = CoreDataService.defaults.loadData() else { return }
         
         locationManager.updateCallback = centerViewOnUserLocation
         locationManager.updateLocationAsync()
-        
         annotationManager?.addAnnoations(forHospitals: hospitals)
     }
+    
     
     
     //MARK: - Funktion, dass in die Map reinzoom in die Mitte von der Location vom User aus
@@ -43,18 +41,12 @@ class MapScreen: UIViewController, MKMapViewDelegate {
         mapView.setRegion(region, animated: true)
     }
     
-    //MARK: - Funktion, dass die Mitte der Map halten soll
-    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
-        let latitude    = mapView.centerCoordinate.latitude
-        let longitude   = mapView.centerCoordinate.longitude
-        
-        return CLLocation(latitude: latitude, longitude: longitude)
-    }
-    
+    //MARK: - Funktion, Annotation Pin Übergang zur Detailansicht
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: view)
     }
 
+    //MARK: - View für die Annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pin"
         
@@ -69,10 +61,10 @@ class MapScreen: UIViewController, MKMapViewDelegate {
         } else {
             annoView!.annotation = annotation
         }
-        
         return annoView
     }
     
+    //MARK: - Bereitet die Detailansicht über die Annotation vor
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (sender is MKAnnotationView) {
             let hAnno = (sender as! MKAnnotationView).annotation as! HospitalAnnotation
