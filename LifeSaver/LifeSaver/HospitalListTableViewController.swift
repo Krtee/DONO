@@ -112,10 +112,8 @@ class HospitalListTableViewController: UITableViewController {
     func loadData() {
         hospital = CoreDataService.defaults.loadData()!
         
-        if hospital != nil {
-            self.hospitalListArray = hospital
-            self.hospitalListTableView.reloadData()
-        }
+        self.hospitalListArray = hospital
+        self.hospitalListTableView.reloadData()
     }
     
     //MARK: - Error message - Fehlermeldung die angezeigt wird, wenn die Eingabefelder nicht vom User befüllt werden
@@ -151,16 +149,11 @@ class HospitalListTableViewController: UITableViewController {
          
         selectedHospital = hospitalListArray[indexPath.row]
     }
-}
 
-
-
-//MARK: - Löschen einzelner Elemente
-extension ViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        /*if editingStyle == .delete {
-            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &Hospitals)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            CoreDataService.defaults.deleteUserFromDataStack(indexPath: indexPath, hospitalArray: &hospital)
             tableView.reloadData()
-        }*/
+        }
     }
 }

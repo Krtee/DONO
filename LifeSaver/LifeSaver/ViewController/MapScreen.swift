@@ -11,7 +11,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapScreen: UIViewController {
+class MapScreen: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var mapView: MKMapView!
     //@IBOutlet weak var hospitalLabel: UILabel!
     
@@ -20,7 +20,6 @@ class MapScreen: UIViewController {
     var hospitals: Hospitals?
     let regionInMeters: Double  = 10000
     let geoCoder                = CLGeocoder()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,38 +50,11 @@ class MapScreen: UIViewController {
         
         return CLLocation(latitude: latitude, longitude: longitude)
     }
-}
-   
-
-extension MapScreen: MKMapViewDelegate {
-    //MARK: - Funktion für das Aussehen der Route
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer           = MKPolylineRenderer(overlay: overlay as! MKPolyline)
-        renderer.strokeColor   = .purple
-        
-        return renderer
-    }
-    
-    func mapView(_mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is MKPointAnnotation else {
-            return nil
-        }
-        let pinIdentifier = "Annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: pinIdentifier)
-        
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotationView as? MKAnnotation, reuseIdentifier: pinIdentifier)
-            annotationView!.canShowCallout = true
-        } else {
-            annotationView!.annotation = annotation
-        }
-        return annotationView
-    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         performSegue(withIdentifier: "goToHospitalDetailsSegue", sender: view)
     }
-    
+
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "pin"
         
@@ -97,7 +69,8 @@ extension MapScreen: MKMapViewDelegate {
         } else {
             annoView!.annotation = annotation
         }
-            return annoView
+        
+        return annoView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
