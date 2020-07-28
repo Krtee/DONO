@@ -28,7 +28,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+      
         configurePageViewController()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let userID: String? = UserDefaults.standard.string(forKey: "userID")
+              print("\(String(describing: userID))")
+              
+              if userID != nil {
+                  self.performSegue(withIdentifier: "shortcutsegue", sender: self)
+              }
     }
     
     

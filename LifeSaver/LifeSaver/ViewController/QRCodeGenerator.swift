@@ -14,9 +14,10 @@ import UserNotifications
 
 class QRCodeGenerator: UIViewController {
     @IBOutlet weak var qrImageView: UIImageView!
-    @IBOutlet weak var qrTextField: UITextField!
-    @IBOutlet weak var generateQRButton: UIButton!
     @IBOutlet weak var saveQRCodeButton: UIButton!
+    @IBOutlet weak var hospitalName: UILabel!
+    @IBOutlet weak var appointmentDate: UILabel!
+    
     
     var notifications = NotificationDelegate()
 
@@ -31,11 +32,18 @@ class QRCodeGenerator: UIViewController {
         let defaults = UserDefaults.standard
         let id: String? = defaults.string(forKey: "AppointmentID")
         
-        fetchedAppointment = CoreDataAppointmentService.defaults.loadfromID(id: id ?? "")
+        
+        hospitalName.text = fetchedAppointment?.hospital?.name
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm, dd.MM.yyyy"
+
+        appointmentDate.text = formatter.string(from: (fetchedAppointment?.date)!)
 
         let qrCodeworked = createQRCode()
         
         if qrCodeworked == true {
+            print("me here")
             notifications.scheduleNotification(notificationTitle: "Reminder", identifier: " First Reminder", notificationBody: "We will remind you a day before your Appointment", triggerdate: Date(timeIntervalSinceNow: 3600))
             
             if fetchedAppointment != nil {
@@ -44,32 +52,13 @@ class QRCodeGenerator: UIViewController {
         }
     }
     
-        //Button 1
-    @IBAction func generateQRCodeButtonPressed(_ sender: Any) {
-        print("generateQRCodeButton is pressed")
-        
-        if let myString = qrTextField.text {
-            let data = myString.data(using: .ascii, allowLossyConversion: false)
-            let filter = CIFilter(name: "CIQRCodeGenerator")
-            filter?.setValue(data, forKey: "InputMessage")
-            let ciImage = filter?.outputImage
-            let transform = CGAffineTransform(scaleX: 10, y: 10)
-            let transformImage = ciImage?.transformed(by: transform)
-            
-            let image = UIImage(ciImage: transformImage!)
-            qrImageView.image = image
-            
-            saveQRCodeButton.isEnabled = true
-        }
-
-    }
     
     func createQRCode() -> Bool {
         
         do{
              
             if fetchedAppointment != nil {
-                let jsondata = convertToJSONArray(item: fetchedAppointment!)
+                let jsondata = convertToJSONArray(item: fetchedAppointment!.patient!)
                 let data = jsondata.data(using: .ascii, allowLossyConversion: false)
                 let filter = CIFilter(name: "CIQRCodeGenerator")
                 filter?.setValue(data, forKey: "InputMessage")
@@ -92,16 +81,21 @@ class QRCodeGenerator: UIViewController {
     }
     
     func convertToJSONArray(item: NSManagedObject) -> String {
-        var jsonArray: [[String: Any]] = []
         var dict: [String: Any] = [:]
         for attribute in item.entity.attributesByName {
                 //check if value is present, then add key to dictionary so as to avoid the nil value crash
             if let value = item.value(forKey: attribute.key) {
+                if attribute.key != "password"{
                     dict[attribute.key] = value
+                }
             }
-            jsonArray.append(dict)
         }
-        return jsonArray[0].description
+        print(dict.description)
+        return dict.description
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        UserDefaults.standard.set("",forKey: "AppointmentID")
     }
     
     

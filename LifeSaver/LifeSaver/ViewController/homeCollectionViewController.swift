@@ -16,7 +16,6 @@ class homeCollectionViewController: UICollectionViewController {
     
     let flowLayout = ZoomAndSnapFlowLayout()
     var items = ["Blutplasma", "Thrombozyten", "Vollblut"]
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +108,7 @@ class homeCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let defaults = UserDefaults.standard
-        
+                
         defaults.set(items[indexPath.row],forKey: "DonateType")
 
     }

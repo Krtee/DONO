@@ -53,9 +53,9 @@ class CoreDataUserService{
     func createUser(_email: String, _password: String) -> User {
         let user = User(context: context)
         
-        user.email=_email
-        user.password=_password
-        user.userID=_email
+        user.email = _email
+        user.password = _password
+        user.userID = _email
 
         saveContext()
         
@@ -80,5 +80,25 @@ class CoreDataUserService{
         return nil
 
     }
+    
+    
+    //MARK: - ReadfromId with external Context
+    func loadfromID(id: String,context: NSManagedObjectContext) -> User? {
+        let fetchRequest: NSFetchRequest<User> = User.fetchRequest() //Nur die Anfrage
+        let userpredicate = NSPredicate(format: " userID == %@", id)
+        fetchRequest.predicate = userpredicate
+        
+        do {
+            let resultArray = try context.fetch(fetchRequest)
+            for r in resultArray {
+                return r
+            }
+        } catch {
+            print("Fehler beim Laden der Daten ", error.localizedDescription)
+        }
+        return nil
+
+    }
+    
     
 }

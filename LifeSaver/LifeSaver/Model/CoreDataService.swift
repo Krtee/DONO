@@ -80,7 +80,25 @@ class CoreDataService {
     //MARK: - ReadfromId
     func loadfromID(id: String) -> Hospitals? {
         let fetchRequest: NSFetchRequest<Hospitals> = Hospitals.fetchRequest() //Nur die Anfrage
-        let hospitalpredicate = NSPredicate(format: " hostpitalID == %@", id)
+        let hospitalpredicate = NSPredicate(format: " hospitalID == %@", id)
+        fetchRequest.predicate = hospitalpredicate
+        
+        do {
+            let resultArray = try context.fetch(fetchRequest)
+            for r in resultArray {
+                return r
+            }
+        } catch {
+            print("Fehler beim Laden der Daten ", error.localizedDescription)
+        }
+        return nil
+
+    }
+    
+    //MARK: - ReadfromId
+    func loadfromID(id: String,context:NSManagedObjectContext) -> Hospitals? {
+        let fetchRequest: NSFetchRequest<Hospitals> = Hospitals.fetchRequest() //Nur die Anfrage
+        let hospitalpredicate = NSPredicate(format: " hospitalID == %@", id)
         fetchRequest.predicate = hospitalpredicate
         
         do {

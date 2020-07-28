@@ -16,6 +16,12 @@ class HospitalDetailsViewController: UIViewController {
     var hospital : Hospitals?
     
     //var hospitalDetail: Hospital?
+    @IBAction func toCalenderController(_ sender: Any) {
+        UserDefaults.standard.set(hospital?.hospitalID, forKey: "hospitalID")
+        
+        self.performSegue(withIdentifier: "hospitaltoCalendersegue", sender: self)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

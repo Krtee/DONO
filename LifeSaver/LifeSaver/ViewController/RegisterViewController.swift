@@ -22,7 +22,8 @@ class RegisterViewController: UIViewController {
         if email.text!.count > 0 && password.text!.count > 0 {
             if password.text == reppassword.text {
                 if !checkIfUserExist(email: email.text!) {
-                    saveData()
+                    let user: User = CoreDataUserService.defaults.createUser(_email: email.text!, _password: password.text!)
+                    UserDefaults.standard.set(user.userID, forKey: "userID")
                     self.performSegue(withIdentifier: "registersegue", sender: self)
                 }
                 else{
@@ -45,57 +46,17 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func saveData () {
-        let context = CoreDataService.defaults.persistentContainer.viewContext
-        let entityName = "User"
-        
-        let newEntity = NSEntityDescription.entity(forEntityName: entityName, in: context)
-        
-        let user = NSManagedObject(entity: newEntity!, insertInto: context)
-        
-        user.setValue(email.text, forKey: "email")
-        user.setValue(password.text, forKey: "password")
-        
-        do {
-            print("IT WORKED")
-            try context.save()
-            
-
-        } catch {
-            print("hii")
-        }
-        
-    }
     
     func checkIfUserExist (email: String)-> Bool {
-        let context = CoreDataService.defaults.persistentContainer.viewContext
-        let entityName = "User"
-             
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let predicate = NSPredicate(format: "email == %@", email)
-        request.predicate = predicate
-
-        
         do {
-            let results = try context.fetch(request)
             
-            print("i am here: \(results)")
+            let user: User? = CoreDataUserService.defaults.loadfromID(id: email)
             
-            if results.count >= 1 {
-                print("yup")
+            if user != nil {
                 return true
             }
-            /*
-             
-            for r in results {
-                if let result = r as? NSManagedObject {
-                    let title = result.value(forKey: "email") as? String
-                    print(title)
-                }
-                if r.count >=1 {
-                    return true
-                }
-            }*/
+            
+
         }
         catch let error {
          print(error)

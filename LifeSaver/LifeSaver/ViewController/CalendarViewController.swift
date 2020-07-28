@@ -121,10 +121,11 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBAction func setAppointment(_ sender: Any) {
         let defaults = UserDefaults.standard
         
-        let hospital: String? = defaults.string(forKey: "Hospital")
-        let donateType: String? = defaults.string(forKey: "DonateType")
-        let userId: String? = defaults.string(forKey: "userID")
+        let hospital: String = defaults.string(forKey: "hospitalID") ?? ""
+        let donateType: String = defaults.string(forKey: "DonateType") ?? ""
+        let userId: String = defaults.string(forKey: "userID") ?? ""
         
+        print("\(String(describing: hospital)) \(String(describing: donateType)) \(String(describing: userId))")
         
         if hospital != "" && donateType != "" && userId != "" {
             print("\(String(describing: hospital))+\(String(describing: donateType))+\(String(describing: userId))")
@@ -148,11 +149,18 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 let userCalendar = Calendar.current
                 let appointmentDate = userCalendar.date(from: dateComponents)
                     
-                let appointment = CoreDataAppointmentService.defaults.createAppointment(hospitalID: hospital!, userID: userId!, donatetype: donateType!, appointmentDate: appointmentDate!)
+                    let appointment = CoreDataAppointmentService.defaults.createAppointment(hospitalID: hospital, userID: userId, donatetype: donateType, appointmentDate: appointmentDate!)
                 
                     if appointment != nil {
                         print("successfully added appointment")
                         defaults.set(appointment?.appointmentID, forKey: "AppointmentID")
+                        defaults.set("", forKey: "hospitalID")
+                        defaults.set("", forKey: "DonateType")
+                        
+                        chosenAppointment = appointment
+                        
+                        self.performSegue(withIdentifier: "toQRGenerator", sender: self)
+
                     }
                     
                 
@@ -230,6 +238,8 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     var selectedMonth: Int = -1
     
     var selectedTime: String = ""
+    
+    var chosenAppointment: Appointment?
     //-------------------------------------------------
     
     override func viewDidLoad() {
@@ -286,7 +296,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         for n in 0...weeksInThisMonth-1 {
             var tempWeek: [String] = []
             for _ in 0...6 {
-                if count >= BoxArray.count {
+                if count >= BoxArray.count-1 {
                     tempWeek.append("-1")
                 } else {
                     tempWeek.append(BoxArray[count])
@@ -452,6 +462,18 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
             return DaysInMonths[month] + PrevNumberOfEmptyBox
         default:
             fatalError()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toQRGenerator" {
+            
+            if let vc = segue.destination as? QRCodeGenerator {
+
+                vc.fetchedAppointment = chosenAppointment
+
+            }
+            
         }
     }
     

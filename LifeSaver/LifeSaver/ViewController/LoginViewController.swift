@@ -28,7 +28,6 @@ class LoginViewController: UIViewController {
             
             if checkIfUserExist(email: emailTextField.text!, password: passwordTextField.text!) {
                                                 
-     
                 self.performSegue(withIdentifier: "loginsegue", sender: self)
             }
             else{
@@ -42,32 +41,23 @@ class LoginViewController: UIViewController {
     }
     
     func checkIfUserExist (email: String, password: String)-> Bool {
-        let context = CoreDataService.defaults.persistentContainer.viewContext
-        let entityName = "User"
-             
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-        let predicate = NSPredicate(format: "email == %@", email)
-        request.predicate = predicate
-
-        
         do {
-            let results = try context.fetch(request)
             
-             
-            for r in results {
-                if let result = r as? NSManagedObject {
-                    let fetchedEmail = result.value(forKey: "email") as? String
-                    let fetchedPassword = result.value(forKey: "password") as? String
-                    let fetchedUserID = result.value(forKey: "userID") as? Int
-                    if email == fetchedEmail! && password == fetchedPassword!{
-                        let defaults = UserDefaults.standard
-                        
-                        defaults.set(fetchedUserID, forKey: "UserID")
+            let user: User? = CoreDataUserService.defaults.loadfromID(id: email)
+            
+            if user != nil {
+                if email == user?.email && password == user?.password{
+                    let defaults = UserDefaults.standard
+                    
+                    defaults.set(user?.userID, forKey: "userID")
 
-                        return true
-                    }
+                    return true
                 }
+                
+            } else{
+                print("could not load user: \(email)")
             }
+             
         }
         catch let error {
          print(error)

@@ -63,11 +63,12 @@ class CoreDataAppointmentService{
         
         do {
             
-            let fetchedHospital: Hospitals? = CoreDataService.defaults.loadfromID(id: hospitalID)
-            let fetchedUser: User? = CoreDataUserService.defaults.loadfromID(id: userID)
+            let fetchedHospital: Hospitals? = CoreDataService.defaults.loadfromID(id: hospitalID,context: context)
+            let fetchedUser: User? = CoreDataUserService.defaults.loadfromID(id: userID,context: context)
              
             if fetchedHospital != nil && fetchedUser != nil {
                 
+                appointment.donateType = donatetype
                 appointment.hospital = fetchedHospital
                 appointment.patient = fetchedUser
                 appointment.date = appointmentDate

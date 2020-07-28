@@ -86,10 +86,10 @@ class MyButton: UIView{
     
     func setCornersAndShadows(){
         self.layer.cornerRadius = 12
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowRadius = 5
-        self.layer.shadowOffset = CGSize(width: 10, height: 10)
+        self.layer.shadowColor = UIColor.gray.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset = CGSize(width: 0, height: 10)
         
         self.backgroundColor = UIColor.clear
     }
