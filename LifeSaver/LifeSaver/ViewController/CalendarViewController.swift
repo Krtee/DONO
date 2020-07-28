@@ -11,111 +11,20 @@ import CoreData
 
 class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
+    var notifications = NotificationDelegate()
+    
     
     @IBAction func monthNext(_ sender: Any) {
-        if showWeek == WeeklyBoxes.count - 1 {
-            switch currentMonth {
-            case "December":
-                month = 0
-                year += 1
-                Direction = 1
-                
-                if LeapYearCounter < 5 {
-                    LeapYearCounter += 1
-                }
-                
-                if LeapYearCounter == 4 {
-                    DaysInMonths[1] = 29
-                }
-                
-                if LeapYearCounter == 5 {
-                    LeapYearCounter = 1
-                    DaysInMonths[1] = 28
-                }
-                
-                
-                GetStartDateDayPosition()
-                
-                currentMonth = Months[month]
-
-                monthDisplay.text = "\(currentMonth), \(year)"
-                
-                initWeeks()
-                showWeek = 0
-
-                
-                
-                CalenderView.reloadData()
-            default:
-                Direction = 1
-                GetStartDateDayPosition()
-                
-                month += 1
-
-
-                currentMonth = Months[month]
-                monthDisplay.text = "\(currentMonth), \(year)"
-                
-                initWeeks()
-                showWeek = 0
-
-                
-                CalenderView.reloadData()
-                
-            }
-
-            
-        }
-        else {
-            showWeek = showWeek + 1
-            CalenderView.reloadData()
-
-        }
-
-        
+        customCalendar?.monthforward()
+        monthDisplay.text = "\(customCalendar!.currentMonth), \(year)"
+        CalenderView.reloadData()
     }
     @IBAction func monthBack(_ sender: Any) {
-        if showWeek == 0 {
         
-        switch currentMonth {
-        case "January":
-            month = 11
-            year -= 1
-            Direction = -1
-            
-            GetStartDateDayPosition()
-            
-            currentMonth = Months[month]
-            
-            monthDisplay.text = "\(currentMonth), \(year)"
-            
-            initWeeks()
-            showWeek = WeeklyBoxes.count - 1
+        customCalendar?.monthbackwards()
+        monthDisplay.text = "\(customCalendar!.currentMonth), \(year)"
+        CalenderView.reloadData()
 
-            
-            CalenderView.reloadData()
-        default:
-            month -= 1
-            Direction = -1
-            
-            currentMonth = Months[month]
-
-            GetStartDateDayPosition()
-            monthDisplay.text = "\(currentMonth), \(year)"
-            
-            initWeeks()
-            showWeek = WeeklyBoxes.count - 1
-
-            
-            CalenderView.reloadData()
-            
-            }
-            
-        }
-        else{
-            showWeek = showWeek - 1
-            CalenderView.reloadData()
-        }
     }
     
     @IBAction func setAppointment(_ sender: Any) {
@@ -132,7 +41,6 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
 
             if selectedDay != -1 && selectedTime != "" && selectedMonth != -1 {
                 
-                do{
                 let timeArr = selectedTime.components(separatedBy: ":")
                 let hour: String = timeArr[0]
                 let minute: String = timeArr.count > 1 ? timeArr[1] : "00"
@@ -159,16 +67,15 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                         
                         chosenAppointment = appointment
                         
+                        notifications.scheduleNotification(notificationTitle: "Reminder", identifier: " First Reminder", notificationBody: "We will remind you a day before your Appointment", triggerdate: Date(timeIntervalSinceNow: 3))
+                        
+                        if chosenAppointment != nil {
+                            print("itll come")
+                            notifications.scheduleNotification(notificationTitle: "Reminder", identifier: "AppointmentReminder", notificationBody: "Your is tomorrow! Don't forget it :)", triggerdate: (chosenAppointment?.date)!)
+                        }
+                                                
                         self.performSegue(withIdentifier: "toQRGenerator", sender: self)
-
                     }
-                    
-                
-                }
-                catch let error{
-                    print(error)
-                }
-                
             }
             else{
                 print("no time selected")
@@ -184,36 +91,9 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBOutlet weak var CalenderView: UICollectionView!
     @IBOutlet weak var TimeTable: UICollectionView!
     
-    //-------------------------------------------------------------------
-    // calendar variables
+    var customCalendar: CustomCalendar?
     
-    let Months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
-    
-    let DaysOfMonth = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
-    
-    var DaysInMonths = [31,28,31,30,31,30,31,31,30,31,30,31]
-    
-    var currentMonth = String()
-    
-    var NumberOfEmptyBox = Int() //Number of empty boxes at the start of the month
-    
-    var NextNumberOfEmptyBox = Int() //Number of empty boxes at the start of the next month
-    
-    var PrevNumberOfEmptyBox = Int() //Number of empty boxes at the start of the last month
-    
-    var Direction = 0 // =0 if we are at the current month , = 1 if we are in a future month , = -1 if we are in a past month
-    
-    var PositionIndex = 0 //here we will store the above vars of the empty boxes
-    
-    var LeapYearCounter = 2
-    
-    var dayCounter = 0
-    
-    var WeeklyBoxes: [[String]] = []
-    
-    var showWeek = 0
-    
-    var BoxArray: [String] = []
+
     
     private let spacing:CGFloat = 16.0
 
@@ -244,17 +124,12 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        customCalendar = CustomCalendar.init()
         
-        currentMonth = Months[month]
         
-        monthDisplay.text = "\(currentMonth), \(year)"
-        if weekday == 0 {
-            weekday = 7
-        }
-        GetStartDateDayPosition()
-        //getDays(weeksAfterCurrent: 0)
+        customCalendar!.currentMonth = customCalendar!.Months[month]
         
-        initWeeks()
+        monthDisplay.text = "\(customCalendar!.currentMonth), \(year)"
 
         
         CalenderView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "CalendarCollectionViewCell")
@@ -269,78 +144,6 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         for n in openingTime...closingTime {
             TimeArray.append("\(n):00")
             TimeArray.append("\(n):30")
-        }
-    }
-    
-    // initialize 2d-Array of weeks in a month
-    func initWeeks() {
-        
-        for n in 0...getNumOfBoxes() {
-            switch Direction {
-            case 0:
-                BoxArray.append("\(n + 1 - NumberOfEmptyBox)")
-            case 1:
-                BoxArray.append("\(n + 1 - NextNumberOfEmptyBox)")
-            case -1:
-                BoxArray.append("\(n + 1 - PrevNumberOfEmptyBox)")
-            default:
-                fatalError()
-            }
-        }
-        
-        
-        let weeksInThisMonth = Int(ceil(Double(BoxArray.count)/7))
-                        
-        var count = 0
-        
-        for n in 0...weeksInThisMonth-1 {
-            var tempWeek: [String] = []
-            for _ in 0...6 {
-                if count >= BoxArray.count-1 {
-                    tempWeek.append("-1")
-                } else {
-                    tempWeek.append(BoxArray[count])
-                    if Int(BoxArray[count]) == day && currentMonth == Months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) {
-                        showWeek = n
-                    }
-                    
-                }
-                count = count + 1
-            }
-            WeeklyBoxes.append(tempWeek)
-        }
-    }
-    
-    
-    
-    func GetStartDateDayPosition() {
-        switch Direction{
-        case 0:
-            NumberOfEmptyBox = weekday
-            dayCounter = day
-            while dayCounter>0 {
-                NumberOfEmptyBox = NumberOfEmptyBox - 1
-                dayCounter = dayCounter - 1
-                if NumberOfEmptyBox == 0 {
-                    NumberOfEmptyBox = 7
-                }
-            }
-            if NumberOfEmptyBox == 7 {
-                NumberOfEmptyBox = 0
-            }
-            PositionIndex = NumberOfEmptyBox
-        case 1...:
-            NextNumberOfEmptyBox = (PositionIndex + DaysInMonths[month])%7
-            PositionIndex = NextNumberOfEmptyBox
-            
-        case -1 :
-            PrevNumberOfEmptyBox = (7 - (DaysInMonths[month] - PositionIndex )%7)
-            if PrevNumberOfEmptyBox == 7 {
-                PrevNumberOfEmptyBox = 0
-            }
-            PositionIndex = PrevNumberOfEmptyBox
-        default:
-            fatalError()
         }
     }
 
@@ -375,18 +178,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.isHidden = false
             }
             
-           /* switch Direction {      //the first cells that needs to be hidden (if needed) will be negative or zero so we can hide them
-            case 0:
-                cell.calendarDay.text = "\(indexPath.row + 1 - NumberOfEmptyBox)"
-            case 1:
-                cell.calendarDay.text = "\(indexPath.row + 1 - NextNumberOfEmptyBox)"
-            case -1:
-                cell.calendarDay.text = "\(indexPath.row + 1 - PreviousNumberOfEmptyBox)"
-            default:
-                fatalError()
-            }
-            */
-            cell.calendarDay.text = WeeklyBoxes[showWeek][indexPath.row]
+            cell.calendarDay.text = customCalendar!.WeeklyBoxes[customCalendar!.showWeek][indexPath.row]
             
             if Int(cell.calendarDay.text!)! < 1 {
                 cell.isHidden = true
@@ -402,7 +194,7 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
                 break
             }
             
-            if currentMonth == Months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) && indexPath.row + 1 == day{
+            if customCalendar!.currentMonth == customCalendar!.Months[calendar.component(.month, from: date) - 1] && year == calendar.component(.year, from: date) && indexPath.row + 1 == day{
                 cell.calendarDay.textColor = UIColor.red
             }
             
@@ -419,12 +211,11 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == CalenderView {
-            print(WeeklyBoxes[showWeek][indexPath.row])
-            selectedDay = Int(WeeklyBoxes[showWeek][indexPath.row]) ?? 0
+            selectedDay = Int(customCalendar!.WeeklyBoxes[customCalendar!.showWeek][indexPath.row]) ?? 0
             
-            for index in 0...Months.count {
-                if currentMonth == Months[index] {
-                    selectedMonth = index
+            for index in 0...customCalendar!.Months.count {
+                if customCalendar!.currentMonth == customCalendar!.Months[index] {
+                    selectedMonth = index+1
                     break
                 }
             }
@@ -449,19 +240,6 @@ class CalendarViewController: UIViewController,UICollectionViewDelegate,UICollec
         }
         else{
             return CGSize(width: 0, height: 0)
-        }
-    }
-    
-    func getNumOfBoxes() -> Int{
-        switch Direction {
-        case 0:
-            return DaysInMonths[month] + NumberOfEmptyBox
-        case 1...:
-            return DaysInMonths[month] + NextNumberOfEmptyBox
-        case -1:
-            return DaysInMonths[month] + PrevNumberOfEmptyBox
-        default:
-            fatalError()
         }
     }
     

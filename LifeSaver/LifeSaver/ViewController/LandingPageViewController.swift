@@ -11,13 +11,11 @@ import UserNotifications
 
 class LandingPageViewController: UIPageViewController {
     
-    let notifications = NotificationDelegate()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notifications.userRequest()
+        
         // Do any additional setup after loading the view.
     }
     /*

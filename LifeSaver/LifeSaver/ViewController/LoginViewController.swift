@@ -41,8 +41,6 @@ class LoginViewController: UIViewController {
     }
     
     func checkIfUserExist (email: String, password: String)-> Bool {
-        do {
-            
             let user: User? = CoreDataUserService.defaults.loadfromID(id: email)
             
             if user != nil {
@@ -57,11 +55,7 @@ class LoginViewController: UIViewController {
             } else{
                 print("could not load user: \(email)")
             }
-             
-        }
-        catch let error {
-         print(error)
-        }
+
         return false
     }
     

@@ -4,8 +4,8 @@
         <attribute name="appointmentID" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="donateType" optional="YES" attributeType="String"/>
-        <relationship name="hospital" maxCount="1" deletionRule="Nullify" destinationEntity="Hospitals"/>
-        <relationship name="patient" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="hospital" maxCount="1" deletionRule="Nullify" destinationEntity="Hospitals" inverseName="appointments" inverseEntity="Hospitals"/>
+        <relationship name="patient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="appointments" inverseEntity="User"/>
     </entity>
     <entity name="Hospitals" representedClassName="Hospitals" syncable="YES" codeGenerationType="class">
         <attribute name="hospitalID" attributeType="String"/>
@@ -14,6 +14,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="postCode" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="street" optional="YES" attributeType="String"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="hospital" inverseEntity="Appointment"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="email" attributeType="String"/>
@@ -31,10 +32,11 @@
         <attribute name="question10" optional="YES" attributeType="String"/>
         <attribute name="surname" optional="YES" attributeType="String"/>
         <attribute name="userID" attributeType="String"/>
+        <relationship name="appointments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Appointment" inverseName="patient" inverseEntity="Appointment"/>
     </entity>
     <elements>
-        <element name="Appointment" positionX="-54" positionY="27" width="128" height="118"/>
-        <element name="Hospitals" positionX="-36" positionY="9" width="128" height="133"/>
-        <element name="User" positionX="-54" positionY="-9" width="128" height="268"/>
+        <element name="Appointment" positionX="292.37890625" positionY="35.8828125" width="128" height="118"/>
+        <element name="Hospitals" positionX="-36" positionY="9" width="128" height="148"/>
+        <element name="User" positionX="-38.79296875" positionY="248.6796875" width="128" height="283"/>
     </elements>
 </model>

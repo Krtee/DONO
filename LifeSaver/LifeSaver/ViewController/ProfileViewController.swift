@@ -10,6 +10,11 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
+    @IBAction func logout(_ sender: Any) {
+        UserDefaults.standard.set("", forKey: "userID")
+        
+        self.performSegue(withIdentifier: "logoutsegue", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

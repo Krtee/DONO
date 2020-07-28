@@ -27,12 +27,8 @@ class QRCodeGenerator: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveQRCodeButton.isEnabled = false
-        
-        let defaults = UserDefaults.standard
-        let id: String? = defaults.string(forKey: "AppointmentID")
-        
-        
+        saveQRCodeButton.isEnabled = true
+                
         hospitalName.text = fetchedAppointment?.hospital?.name
         
         let formatter = DateFormatter()
@@ -40,25 +36,17 @@ class QRCodeGenerator: UIViewController {
 
         appointmentDate.text = formatter.string(from: (fetchedAppointment?.date)!)
 
-        let qrCodeworked = createQRCode()
+        _ = createQRCode()
         
-        if qrCodeworked == true {
-            print("me here")
-            notifications.scheduleNotification(notificationTitle: "Reminder", identifier: " First Reminder", notificationBody: "We will remind you a day before your Appointment", triggerdate: Date(timeIntervalSinceNow: 3600))
-            
-            if fetchedAppointment != nil {
-                notifications.scheduleNotification(notificationTitle: "Reminder", identifier: "AppointmentReminder", notificationBody: "Your is tomorrow! Don't forget it :)", triggerdate: (fetchedAppointment?.date)!)
-            }
-        }
     }
     
     
     func createQRCode() -> Bool {
+        let userID = UserDefaults.standard.string(forKey: "userID")
+        let fetchedUser = CoreDataUserService.defaults.loadfromID(id : userID!)
         
-        do{
-             
-            if fetchedAppointment != nil {
-                let jsondata = convertToJSONArray(item: fetchedAppointment!.patient!)
+            if fetchedAppointment != nil && fetchedUser != nil{
+                let jsondata = convertToJSONArray(item: fetchedUser!)
                 let data = jsondata.data(using: .ascii, allowLossyConversion: false)
                 let filter = CIFilter(name: "CIQRCodeGenerator")
                 filter?.setValue(data, forKey: "InputMessage")
@@ -74,10 +62,6 @@ class QRCodeGenerator: UIViewController {
                 return false
             }
             
-        } catch let err {
-            print(err)
-            return false
-        }
     }
     
     func convertToJSONArray(item: NSManagedObject) -> String {

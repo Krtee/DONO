@@ -60,9 +60,7 @@ class CoreDataAppointmentService{
     func createAppointment(hospitalID: String, userID: String,donatetype: String, appointmentDate: Date) -> Appointment? {
         print("i am here")
         let appointment = Appointment(context: context)
-        
-        do {
-            
+                    
             let fetchedHospital: Hospitals? = CoreDataService.defaults.loadfromID(id: hospitalID,context: context)
             let fetchedUser: User? = CoreDataUserService.defaults.loadfromID(id: userID,context: context)
              
@@ -70,9 +68,10 @@ class CoreDataAppointmentService{
                 
                 appointment.donateType = donatetype
                 appointment.hospital = fetchedHospital
-                appointment.patient = fetchedUser
                 appointment.date = appointmentDate
-                appointment.appointmentID = formatter.string(from: appointmentDate)
+                appointment.appointmentID = "\(formatter.string(from: appointmentDate)) \(String(describing: fetchedUser?.userID))"
+                
+                fetchedUser?.addToAppointments(appointment)
             } else {
                 return appointment
             }
@@ -80,23 +79,15 @@ class CoreDataAppointmentService{
             saveContext()
             return appointment
 
-        }
-        catch let error {
-        print(error)
-        return nil
-        }
         
     }
     
     //MARK: - Read
-    func loadData() -> [Appointment]? {
-        let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest() //Nur die Anfrage
-        
-        do {
-            let resultArray = try context.fetch(fetchRequest)
-            return resultArray
-        } catch {
-            print("Fehler beim Laden der Daten ", error.localizedDescription)
+    func loadData(userID: String) -> [Appointment]? {
+
+        let fetchedUser: User? = CoreDataUserService.defaults.loadfromID(id: userID,context: context)
+        if fetchedUser != nil {
+            return fetchedUser?.appointments?.allObjects as? [Appointment]
         }
         return nil
     }
@@ -120,18 +111,12 @@ class CoreDataAppointmentService{
     }
     
     //MARK: - ReadlastObject
-    func loadlastAppointment() -> Appointment? {
-        let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest() //Nur die Anfrage
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        fetchRequest.fetchLimit = 1
-        
-        do {
-            let resultArray = try context.fetch(fetchRequest)
-            for r in resultArray {
-                return r
-            }
-        } catch {
-            print("Fehler beim Laden der Daten ", error.localizedDescription)
+    func loadlastAppointment(userID: String) -> Appointment? {
+        let fetchedUser: User? = CoreDataUserService.defaults.loadfromID(id: userID,context: context)
+        if fetchedUser != nil {
+            
+            let allappointments = fetchedUser?.appointments?.allObjects as? [Appointment]
+            return allappointments?[allappointments?.count ?? 0]
         }
         return nil
 

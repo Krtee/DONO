@@ -28,20 +28,18 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     
     func scheduleNotification(notificationTitle: String,identifier: String,notificationBody: String,triggerdate: Date) {
         
-        let content = UNMutableNotificationContent() // Содержимое уведомления
-        let userActions = "User Actions"
+        let content = UNMutableNotificationContent() 
         
         content.title = notificationTitle
         content.body = notificationBody
         content.sound = UNNotificationSound.default
-        content.categoryIdentifier = userActions
         
         let triggerDate = Calendar.current.dateComponents([.year,.month,.day,.hour,.minute,.second,], from: triggerdate)
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
         
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        
+        print(request)
         notificationCenter.add(request) { (error) in
             if let error = error {
                 print("Error \(error.localizedDescription)")
@@ -54,5 +52,14 @@ class NotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
         completionHandler([.alert,.sound])
+    }
+    
+    func getpendingNotifications(){
+            notificationCenter.getPendingNotificationRequests(completionHandler: { (notifications) in
+                        print("num of pending notifications \(notifications)")
+                        
+                    })
+
+
     }
 }

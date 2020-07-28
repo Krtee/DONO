@@ -23,6 +23,8 @@
 		667CEACF24CF137B00ED3BE1 /* CoreDataUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CEACE24CF137B00ED3BE1 /* CoreDataUserService.swift */; };
 		667CEAD324CFA24200ED3BE1 /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CEAD224CFA24200ED3BE1 /* AppointmentViewController.swift */; };
 		667CEAD524CFA5A400ED3BE1 /* AppointmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CEAD424CFA5A400ED3BE1 /* AppointmentTableViewCell.swift */; };
+		667CEAD724D043C600ED3BE1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CEAD624D043C600ED3BE1 /* ProfileViewController.swift */; };
+		667CEAD924D0AAAF00ED3BE1 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667CEAD824D0AAAE00ED3BE1 /* Calendar.swift */; };
 		66CBCCAB24BCD7E900708A97 /* homeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */; };
 		66CBCCB024BCD82B00708A97 /* LandingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */; };
 		66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */; };
@@ -85,6 +87,8 @@
 		667CEACE24CF137B00ED3BE1 /* CoreDataUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataUserService.swift; sourceTree = "<group>"; };
 		667CEAD224CFA24200ED3BE1 /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
 		667CEAD424CFA5A400ED3BE1 /* AppointmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppointmentTableViewCell.swift; path = LifeSaver/View/AppointmentTableViewCell.swift; sourceTree = "<group>"; };
+		667CEAD624D043C600ED3BE1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ViewController/ProfileViewController.swift; sourceTree = "<group>"; };
+		667CEAD824D0AAAE00ED3BE1 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Calendar.swift; path = LifeSaver/Calendar.swift; sourceTree = SOURCE_ROOT; };
 		66CBCCAA24BCD7E900708A97 /* homeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = homeCollectionViewController.swift; sourceTree = "<group>"; };
 		66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LandingPageViewController.swift; path = ViewController/LandingPageViewController.swift; sourceTree = "<group>"; };
 		66CBCCAD24BCD82B00708A97 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				66CBCCAC24BCD82B00708A97 /* LandingPageViewController.swift */,
 				B6C9D74D24BD93F100CA3263 /* HospitalListTableViewController.swift */,
 				66274B6C249FBB5300F433E2 /* Main.storyboard */,
+				667CEAD624D043C600ED3BE1 /* ProfileViewController.swift */,
 				66274B72249FBB5500F433E2 /* Assets.xcassets */,
 				66274B74249FBB5500F433E2 /* LaunchScreen.storyboard */,
 				66274B77249FBB5500F433E2 /* Info.plist */,
@@ -217,6 +222,7 @@
 				B63F110724CB9C2F00468984 /* HospitalDetailsViewController.swift */,
 				B6EBB0B024CF150B00386022 /* HospitalAnnotation.swift */,
 				667CEAD224CFA24200ED3BE1 /* AppointmentViewController.swift */,
+				667CEAD824D0AAAE00ED3BE1 /* Calendar.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -393,6 +399,8 @@
 				B6739B9D24CC793F002ECEA7 /* AnnotationManager.swift in Sources */,
 				66CBCCB124BCD82B00708A97 /* LoginViewController.swift in Sources */,
 				B6EBB0B124CF150B00386022 /* HospitalAnnotation.swift in Sources */,
+				667CEAD924D0AAAF00ED3BE1 /* Calendar.swift in Sources */,
+				667CEAD724D043C600ED3BE1 /* ProfileViewController.swift in Sources */,
 				667CEAD324CFA24200ED3BE1 /* AppointmentViewController.swift in Sources */,
 				66E78FC824C5F2FC002541AA /* button.swift in Sources */,
 				B642EC4F24BDE73800F779EC /* TimeCollectionViewCell.swift in Sources */,

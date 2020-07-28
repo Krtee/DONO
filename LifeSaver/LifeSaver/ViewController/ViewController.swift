@@ -12,18 +12,26 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var contentview: UIView!
     @IBAction func switchToLogin(_ sender: Any) {
+        if currentViewControllerIndex != 0 {
         currentViewControllerIndex = 0
-        configurePageViewController()
+            pageViewController?.setViewControllers([detailViewControllerAt(index: 0)] as? [UIViewController], direction: .reverse, animated: true)
+        }
+
     }
     @IBAction func switchToRegister(_ sender: Any) {
+        if currentViewControllerIndex != 1 {
         currentViewControllerIndex = 1
-        configurePageViewController()
+            pageViewController!.setViewControllers([detailViewControllerAt(index: 1)] as? [UIViewController], direction: .forward, animated: true)
+        }
+
         
     }
     
     let dataSource = ["Viewcontroller one","Viewcontroller two"]
     
     var currentViewControllerIndex = 0
+    
+    var pageViewController: LandingPageViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,31 +42,30 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         let userID: String? = UserDefaults.standard.string(forKey: "userID")
-              print("\(String(describing: userID))")
+        print("\(String(describing: userID))")
               
-              if userID != nil {
+        if userID != nil  && userID !=  "" {
                   self.performSegue(withIdentifier: "shortcutsegue", sender: self)
               }
     }
     
-    
+     
     func configurePageViewController() {
-        guard let pageViewController = storyboard?.instantiateViewController(withIdentifier: String(describing: LandingPageViewController.self)) as? LandingPageViewController else{
-            print("error")
-            return
-        }
+        pageViewController = storyboard?.instantiateViewController(withIdentifier: String(describing: LandingPageViewController.self)) as? LandingPageViewController
         
-        pageViewController.delegate = self
-        pageViewController.dataSource = self
+        if pageViewController != nil {
         
-        addChild(pageViewController)
-        pageViewController.didMove(toParent: self)
+        pageViewController?.delegate = self
+        pageViewController?.dataSource = self
         
-        pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        addChild(pageViewController!)
+        pageViewController?.didMove(toParent: self)
         
-        contentview.addSubview(pageViewController.view)
+        pageViewController?.view.translatesAutoresizingMaskIntoConstraints = false
         
-        let views: [String: Any] = ["pageView": pageViewController.view!]
+        contentview.addSubview((pageViewController?.view)!)
+        
+        let views: [String: Any] = ["pageView": pageViewController!.view!]
         
         contentview.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[pageView]-0-|",
                                                                   options: NSLayoutConstraint.FormatOptions(rawValue: 0),
@@ -75,7 +82,9 @@ class ViewController: UIViewController {
             return
         }
         
-        pageViewController.setViewControllers([startingViewController], direction: .forward, animated: true)
+        pageViewController?.setViewControllers([startingViewController], direction: .forward, animated: true)
+            
+        }
     }
     
     func detailViewControllerAt(index: Int) -> UIViewController? {

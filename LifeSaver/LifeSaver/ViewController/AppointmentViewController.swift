@@ -19,7 +19,9 @@ class AppointmentViewController: UIViewController,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allappointments = CoreDataAppointmentService.defaults.loadData()
+        let userID = UserDefaults.standard.string(forKey: "userID")
+        
+        allappointments = CoreDataAppointmentService.defaults.loadData(userID: userID!)
         // Do any additional setup after loading the view.
     }
     
@@ -48,13 +50,11 @@ class AppointmentViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 120
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toQRCode" {
-            print(chosenAppointment)
-            
             if let vc = segue.destination as? QRCodeGenerator {
 
                 vc.fetchedAppointment = chosenAppointment

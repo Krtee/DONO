@@ -48,19 +48,12 @@ class RegisterViewController: UIViewController {
     
     
     func checkIfUserExist (email: String)-> Bool {
-        do {
-            
             let user: User? = CoreDataUserService.defaults.loadfromID(id: email)
             
             if user != nil {
                 return true
             }
-            
 
-        }
-        catch let error {
-         print(error)
-        }
         return false
     }
     
